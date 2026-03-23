@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Clock, Mail } from "lucide-react";
 import { BRAND, TESTIMONIALS } from "@/lib/constants";
 
@@ -56,17 +57,24 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            <div className="bg-gradient-to-br from-brand-primary/10 to-brand-dark/10 rounded-2xl p-10 text-center">
-              <div className="w-24 h-24 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl font-bold text-white">SR</span>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/founder-headshot.png"
+                alt="Subhanu Roy — Founder & CEO of BrandAlly"
+                width={500}
+                height={600}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              <div className="bg-white p-6 text-center">
+                <h3 className="text-xl font-bold text-brand-dark">
+                  {BRAND.founder.name}
+                </h3>
+                <p className="text-brand-primary font-medium">Founder & CEO</p>
+                <p className="text-gray-500 mt-1">
+                  {BRAND.founder.experience} years in marketing
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-brand-dark">
-                {BRAND.founder.name}
-              </h3>
-              <p className="text-brand-primary font-medium">Founder & CEO</p>
-              <p className="text-gray-500 mt-2">
-                {BRAND.founder.experience} years in marketing
-              </p>
             </div>
           </div>
         </div>
@@ -74,16 +82,29 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="bg-brand-light py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-brand-primary font-semibold text-sm uppercase tracking-wider mb-2">
-            Our Mission
-          </p>
-          <h2 className="text-3xl font-bold text-brand-dark mb-6">
-            Building Systems That Scale Businesses
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            {BRAND.description}
-          </p>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/consulting.png"
+                alt="BrandAlly consulting session"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-brand-primary font-semibold text-sm uppercase tracking-wider mb-2">
+                Our Mission
+              </p>
+              <h2 className="text-3xl font-bold text-brand-dark mb-6">
+                Building Systems That Scale Businesses
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {BRAND.description}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

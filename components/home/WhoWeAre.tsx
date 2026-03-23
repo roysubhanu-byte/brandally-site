@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BRAND } from "@/lib/constants";
 
 export default function WhoWeAre() {
@@ -32,18 +33,14 @@ export default function WhoWeAre() {
           </div>
 
           {/* Visual */}
-          <div className="bg-gradient-to-br from-brand-primary/10 to-brand-dark/10 rounded-2xl p-10 flex items-center justify-center min-h-[300px]">
-            <div className="text-center">
-              <p className="text-6xl font-bold text-brand-primary mb-2">
-                {BRAND.founder.experience}
-              </p>
-              <p className="text-xl text-brand-dark font-medium">
-                Years of Marketing Experience
-              </p>
-              <p className="text-gray-500 mt-2">
-                Paid Media &bull; Growth Strategy &bull; Creative Analysis
-              </p>
-            </div>
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <Image
+              src="/images/working-analytics.png"
+              alt="Subhanu Roy analyzing marketing data"
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover"
+            />
           </div>
         </div>
       </div>
