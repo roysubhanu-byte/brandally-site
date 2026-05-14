@@ -1,11 +1,18 @@
-import { Monitor, TrendingUp, Brain } from "lucide-react";
+import { Monitor, TrendingUp, Brain, Megaphone } from "lucide-react";
 
 const pillars = [
+  {
+    icon: Megaphone,
+    title: "Paid Ads Management",
+    description:
+      "We run your Meta, Google, TikTok, and LinkedIn ads end-to-end on a flat $2,000/month retainer. Strategy, creative, and reporting handled.",
+    highlight: true,
+  },
   {
     icon: Monitor,
     title: "Marketing Tools",
     description:
-      "Research, reporting, creative insights, and automation — all built for marketers who want to move faster.",
+      "Research, reporting, creative insights, and automation, all built for marketers who want to move faster.",
   },
   {
     icon: TrendingUp,
@@ -34,19 +41,47 @@ export default function WhatWeDo() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {pillars.map((pillar) => (
             <div
               key={pillar.title}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition"
+              className={
+                pillar.highlight
+                  ? "bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-2xl p-8 shadow-lg ring-2 ring-brand-accent/30"
+                  : "bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition"
+              }
             >
-              <div className="w-14 h-14 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5">
-                <pillar.icon className="w-7 h-7 text-brand-primary" />
+              <div
+                className={
+                  pillar.highlight
+                    ? "w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center mb-5"
+                    : "w-14 h-14 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5"
+                }
+              >
+                <pillar.icon
+                  className={
+                    pillar.highlight
+                      ? "w-7 h-7 text-brand-accent"
+                      : "w-7 h-7 text-brand-primary"
+                  }
+                />
               </div>
-              <h3 className="text-xl font-bold text-brand-dark mb-3">
+              <h3
+                className={
+                  pillar.highlight
+                    ? "text-xl font-bold text-white mb-3"
+                    : "text-xl font-bold text-brand-dark mb-3"
+                }
+              >
                 {pillar.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p
+                className={
+                  pillar.highlight
+                    ? "text-gray-200 leading-relaxed"
+                    : "text-gray-600 leading-relaxed"
+                }
+              >
                 {pillar.description}
               </p>
             </div>

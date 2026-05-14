@@ -223,7 +223,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Paid Ads as a Service */}
-      <section className="bg-white py-20">
+      <section id="paid-ads" className="bg-white py-20 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 bg-brand-light rounded-2xl p-8 border border-gray-100">

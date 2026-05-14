@@ -15,21 +15,22 @@ export default function Hero() {
           Tools, Tech &amp; Strategy to Power Your Growth
         </h1>
         <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-          We help USA-based agencies, D2C brands, and founders scale with
-          smarter research, powerful SaaS tools, and clear growth systems.
+          Managed paid ads across Meta, Google, TikTok, and LinkedIn, plus
+          SaaS tools and growth consulting for USA-based agencies, D2C brands,
+          and founders.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
           <Link
-            href="/services"
+            href="/services#paid-ads"
             className="bg-brand-accent hover:bg-brand-accent/90 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition shadow-lg shadow-brand-accent/25"
           >
-            Explore Our Tools
+            Run My Ads — $2,000/mo
           </Link>
           <Link
-            href="/contact"
+            href="/services"
             className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition"
           >
-            Book a Consultation
+            Explore All Services
           </Link>
         </div>
       </div>
