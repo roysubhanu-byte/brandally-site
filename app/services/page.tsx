@@ -7,6 +7,7 @@ import {
   Rocket,
   ArrowRight,
   CheckCircle2,
+  Megaphone,
 } from "lucide-react";
 import { PRODUCTS, TESTIMONIALS } from "@/lib/constants";
 
@@ -30,6 +31,77 @@ const consultingIncludes = [
   "Creative and messaging analysis",
   "Competitive landscape review",
   "30-day follow-up check-in",
+];
+
+const paidAdsPlatforms = [
+  "Meta Ads (Facebook & Instagram)",
+  "Google Ads (Search, Shopping, Performance Max)",
+  "TikTok Ads",
+  "LinkedIn Ads",
+];
+
+const paidAdsIncludes = [
+  "Account setup, pixel/conversion tracking, and audience build",
+  "Campaign structure, creative testing, and weekly optimisation",
+  "Creative briefs handed to your team (or ours) every 2 weeks",
+  "Bi-weekly performance reports with next-step recommendations",
+  "Direct Slack/email access to your account lead",
+  "Monthly strategy call to review spend, ROAS, and roadmap",
+];
+
+const platformDetails = [
+  {
+    name: "Meta Ads",
+    tag: "Facebook + Instagram",
+    bestFor: "D2C, ecommerce, lead gen",
+    items: [
+      "Pixel + Conversions API (CAPI) setup with deduplication",
+      "Advantage+ Shopping Campaigns and Advantage+ Audiences",
+      "Full-funnel structure: prospecting, retargeting, retention",
+      "Static, video, UGC, carousel, and Reels creative testing",
+      "Catalog and Dynamic Product Ads (DPA) for ecommerce",
+      "Weekly creative iteration based on top performers",
+    ],
+  },
+  {
+    name: "Google Ads",
+    tag: "Search, Shopping, Performance Max",
+    bestFor: "Bottom-of-funnel demand capture",
+    items: [
+      "Keyword research with intent-mapped Search campaigns",
+      "Performance Max with asset groups and audience signals",
+      "Google Shopping + Merchant Center feed optimisation",
+      "Enhanced Conversions and offline conversion imports",
+      "YouTube ads and demand gen campaigns (where relevant)",
+      "Search-term audits, negative keyword pruning, bid tuning",
+    ],
+  },
+  {
+    name: "TikTok Ads",
+    tag: "Spark Ads, In-Feed, TopView",
+    bestFor: "Brand discovery, viral creative",
+    items: [
+      "Pixel + Events API setup with first-party deduplication",
+      "Spark Ads to amplify organic creator content",
+      "In-Feed and TopView placements for awareness scale",
+      "Creator brief packs and UGC sourcing guidance",
+      "Rapid creative refresh cadence (TikTok burns ads fast)",
+      "Smart Performance and ROAS-optimised campaign builds",
+    ],
+  },
+  {
+    name: "LinkedIn Ads",
+    tag: "Sponsored Content, Lead Gen Forms",
+    bestFor: "B2B, SaaS, enterprise lead gen",
+    items: [
+      "Insight Tag setup and offline conversion tracking",
+      "Sponsored Content (single image, video, carousel, doc)",
+      "Lead Gen Forms with native CRM (HubSpot/Salesforce) sync",
+      "Audience targeting by job title, function, seniority, firmographic",
+      "Account-Based Marketing (ABM) campaigns and matched audiences",
+      "B2B-specific creative briefs tuned for the LinkedIn feed",
+    ],
+  },
 ];
 
 export default function ServicesPage() {
@@ -146,6 +218,147 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Paid Ads as a Service */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1 bg-brand-light rounded-2xl p-8 border border-gray-100">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-brand-primary to-brand-dark rounded-xl flex items-center justify-center">
+                  <Megaphone className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <p className="text-5xl font-bold text-brand-primary leading-none">
+                    $2,000
+                    <span className="text-lg text-gray-500 font-medium">
+                      {" "}
+                      / month
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <p className="text-xl text-brand-dark font-semibold mb-2">
+                Paid Ads Management
+              </p>
+              <p className="text-gray-500 mb-6">
+                Across Meta, Google, TikTok, and LinkedIn
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {paidAdsPlatforms.map((p) => (
+                  <div
+                    key={p}
+                    className="flex items-start gap-2 text-sm text-gray-700"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                    <span>{p}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-gray-200 pt-6 text-center">
+                <p className="text-sm text-gray-500">
+                  No long-term contract.{" "}
+                  <span className="font-semibold text-brand-dark">
+                    Cancel anytime after 30 days.
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div className="order-1 md:order-2">
+              <p className="text-brand-primary font-semibold text-sm uppercase tracking-wider mb-2">
+                Paid Ads as a Service
+              </p>
+              <h2 className="text-3xl font-bold text-brand-dark mb-4">
+                We Run Your Ads, You Run Your Business
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                A flat monthly retainer to manage your paid media across every
+                major channel. We handle the strategy, the creative briefs, the
+                optimisation, and the reporting, so you can focus on the rest
+                of the business.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {paidAdsIncludes.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" />
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/contact"
+                className="inline-flex bg-brand-primary hover:bg-brand-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                Start Running Ads — $2,000/mo
+              </Link>
+              <p className="text-xs text-gray-500 mt-3">
+                Ad spend billed separately. Minimum recommended ad budget:
+                $3,000/month.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platforms We Manage */}
+      <section className="bg-brand-light py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="text-brand-primary font-semibold text-sm uppercase tracking-wider mb-2">
+              Platforms We Manage
+            </p>
+            <h2 className="text-3xl font-bold text-brand-dark">
+              Deep Expertise on Every Channel
+            </h2>
+            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+              The $2,000/mo retainer covers the platforms below. Pick one,
+              pick all four, the price stays the same.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {platformDetails.map((platform) => (
+              <div
+                key={platform.name}
+                className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-primary/30 hover:shadow-lg transition"
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="text-2xl font-bold text-brand-dark">
+                    {platform.name}
+                  </h3>
+                  <span className="text-xs font-semibold uppercase tracking-wider bg-brand-primary/10 text-brand-primary px-3 py-1 rounded-full">
+                    {platform.tag}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-500 mb-5">
+                  Best for: {platform.bestFor}
+                </p>
+                <ul className="space-y-2.5">
+                  {platform.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-gray-700"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" />
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/contact"
+              className="inline-flex bg-brand-primary hover:bg-brand-primary/90 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition shadow-sm"
+            >
+              Get a Custom Plan — $2,000/mo
+            </Link>
           </div>
         </div>
       </section>
