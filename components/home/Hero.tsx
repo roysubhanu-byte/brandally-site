@@ -9,15 +9,15 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-36 text-center">
         <p className="text-brand-accent font-semibold text-sm uppercase tracking-wider mb-4">
-          Digital Marketing Services &amp; Software
+          Paid Ads Management · SaaS · Consulting
         </p>
         <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 max-w-4xl mx-auto text-balance">
-          Tools, Tech &amp; Strategy to Power Your Growth
+          We Run Your Paid Ads.
+          <br className="hidden md:block" /> You Run Your Business.
         </h1>
         <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-          Managed paid ads across Meta, Google, TikTok, and LinkedIn, plus
-          SaaS tools and growth consulting for USA-based agencies, D2C brands,
-          and founders.
+          Managed paid media across Meta, Google, TikTok, and LinkedIn for a
+          flat $2,000 a month. Ad spend is on you, account work is on us.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
           <Link
