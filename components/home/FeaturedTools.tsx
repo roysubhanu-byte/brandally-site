@@ -17,15 +17,19 @@ export default function FeaturedTools() {
             Our products
           </span>
           <h2 className="font-display mt-6 text-4xl md:text-5xl font-bold text-white">
-            The tools behind our paid media work
+            The tool behind our paid media work
           </h2>
           <p className="mt-4 text-muted">
-            We built our own software to research ad creative, watch competitors,
-            and report on spend faster. The same tools we run for clients.
+            We built our own software to research ad creative and watch
+            competitors. The same tool we run for clients.
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-4">
+        <div
+          className={`mt-12 gap-4 ${
+            PRODUCTS.length === 1 ? "max-w-2xl" : "grid md:grid-cols-2"
+          }`}
+        >
           {PRODUCTS.map((product) => {
             const Icon = iconMap[product.icon] || Brain;
             return (

@@ -19,10 +19,11 @@ export default function Footer() {
             </p>
             <p className="mt-2">{BRAND.email}</p>
             <p className="mt-3 text-muted/70">
-              India partner:{" "}
+              Partner:{" "}
               <span className="text-white">
                 click<span className="text-lime">trac</span>
-              </span>
+              </span>{" "}
+              (USA &amp; India)
             </p>
           </div>
 

@@ -124,15 +124,15 @@ export default function ServicesPage() {
               Also from us
             </span>
             <h2 className="font-display mt-6 text-4xl font-bold text-white">
-              The tools behind the work
+              The tool behind the work
             </h2>
             <p className="mt-3 text-muted">
-              Marketing software we built in-house to research creative, watch
-              competitors, and report on spend faster.
+              Marketing software we built in-house to research creative and watch
+              competitors.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className={PRODUCTS.length === 1 ? "max-w-2xl" : "grid md:grid-cols-2 gap-4"}>
             {PRODUCTS.map((product) => {
               const Icon = iconMap[product.icon] || Brain;
               return (

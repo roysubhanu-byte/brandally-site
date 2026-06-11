@@ -86,66 +86,61 @@ export const CASE_STUDIES = [
 
 export const PARTNER = {
   name: "ClickTrac",
-  region: "India",
-  url: "#",
+  tagline: "We work while you sleep.",
   blurb:
-    "We work with ClickTrac, our paid media partner in India, to manage and optimize campaigns across time zones. Your accounts get worked on while you sleep.",
+    "ClickTrac is our paid media partner, with teams across the US and India. Someone is always in your accounts, in every time zone, so the work doesn't stop when your day ends.",
+  locations: ["USA", "India", "Gujarat", "Kolkata", "Pune"],
 };
 
 export const PRODUCTS = [
   {
     name: "CreativeIntel",
     description:
-      "AI-powered market research for D2C brands with competitor ad analysis, messaging insights, and creative intelligence.",
+      "Market research for D2C brands: competitor ad analysis, messaging insights, and creative intelligence in one place.",
     url: "https://www.getcreativeintel.com/",
     icon: "brain" as const,
-  },
-  {
-    name: "ReportX",
-    description:
-      "Automated reporting dashboards and exportable insights for agencies and teams.",
-    url: "#",
-    icon: "barChart3" as const,
-  },
-  {
-    name: "The Last Try IELTS",
-    description:
-      "AI-powered IELTS preparation platform with mock tests and practice support.",
-    url: "#",
-    icon: "graduationCap" as const,
-  },
-  {
-    name: "ScaleUp",
-    description:
-      "Strategy and testing workflows built to help agencies and brands improve offers and scale.",
-    url: "#",
-    icon: "rocketIcon" as const,
   },
 ];
 
 export const TESTIMONIALS = [
   {
+    name: "Powder Addicts",
+    role: "D2C · Ski apparel & home goods",
+    text: "We were stuck around 1.8X and couldn't push past it. They rebuilt our Meta and Google setup and we hit $250K at a 4X return in three months. The $35 CAC is the part that still surprises me.",
+    result: "$250K · 4X ROAS",
+    rating: 5,
+  },
+  {
+    name: "Strat-O-Matic",
+    role: "D2C · Sports simulation",
+    text: "Sixty years in and we'd never scaled paid this cleanly. They reset the whole P&L view, reworked our Meta, and got us to 20X ROAS. New customers are coming in at $25.",
+    result: "$430K · 20X ROAS",
+    rating: 5,
+  },
+  {
+    name: "Heather's Heroes",
+    role: "D2C · Dog training",
+    text: "Our Google account was basically untouched and we were stuck at 1.5X. Three months later we're at 3X and $180K, with CAC down to $26. They fixed the funnel, not just the ads.",
+    result: "$180K · 3X ROAS",
+    rating: 5,
+  },
+  {
+    name: "The Rollout Crew",
+    role: "B2B · Construction tech",
+    text: "No lead nurturing, no real sales process. They built full-funnel paid ABM and turned $50K of spend into $1M closed and a $1.5M pipeline. Sales finally trusts the numbers.",
+    result: "$1M closed",
+    rating: 5,
+  },
+  {
     name: "Mia K.",
     role: "Agency Owner",
-    text: "BrandAlly's tools completely transformed how we handle client research. The insights are actionable and save us hours every week.",
+    text: "Their research tooling changed how we handle client work. The insights are actionable and save us hours every week.",
     rating: 5,
   },
   {
     name: "Jon D.",
     role: "D2C Founder",
-    text: "The consulting and tools together gave us a clear growth path. We saw measurable improvements within the first month.",
-    rating: 5,
-  },
-  {
-    name: "Jenny K.",
-    role: "Marketing Director",
-    text: "BrandAlly's tools helped our agency double client reporting efficiency in just weeks.",
-    rating: 5,
-  },
-  {
-    name: "Mark L.",
-    role: "Growth Lead",
-    text: "Subhanu's consulting sharpened our growth strategy and boosted campaign ROI noticeably.",
+    text: "The strategy and execution together gave us a clear growth path. We saw real movement inside the first month.",
     rating: 5,
   },
 ];
