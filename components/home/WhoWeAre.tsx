@@ -1,39 +1,42 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 
 export default function WhoWeAre() {
   return (
-    <section className="bg-brand-light py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-ink py-24 border-t border-line">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <div>
-            <p className="text-brand-primary font-semibold text-sm uppercase tracking-wider mb-2">
-              Who We Are
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6">
-              Built by Marketers, for Marketers
+            <span className="inline-flex items-center rounded-full border border-lime/40 bg-lime/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-lime">
+              Who we are
+            </span>
+            <h2 className="font-display mt-6 text-4xl md:text-5xl font-bold text-white">
+              Built by media buyers, for growth.
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              {BRAND.description}
+            <p className="mt-6 text-muted leading-relaxed">
+              We're a paid media team for D2C brands and agencies. We manage the
+              ad accounts, test the creative, and own the numbers, so you can
+              spend more without watching ROAS slide.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="mt-4 text-muted leading-relaxed">
               Founded by {BRAND.founder.name} with {BRAND.founder.experience}{" "}
-              years of experience in paid media, growth strategy, and creative
-              analysis — BrandAlly combines deep expertise with modern technology
-              to deliver results.
+              years running paid media across Meta, Google, and TikTok. Deep
+              experience, paired with the tools we built in-house.
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center text-brand-primary font-semibold hover:underline"
+              className="mt-7 inline-flex items-center gap-2 font-semibold text-lime hover:gap-3 transition-all"
             >
-              Learn more about us &rarr;
+              Learn more about us <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           {/* Visual */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
+          <div className="relative rounded-2xl overflow-hidden border border-line">
+            <div className="absolute inset-0 bg-lime/5 mix-blend-overlay z-10" />
             <Image
               src="/images/working-analytics.png"
               alt="Subhanu Roy analyzing marketing data"

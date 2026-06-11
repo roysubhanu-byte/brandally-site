@@ -1,29 +1,36 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function Newsletter() {
   return (
-    <section className="bg-gradient-to-r from-brand-dark to-brand-primary text-white py-20">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Scale Your Business?
-        </h2>
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-          Get in touch to learn how BrandAlly&apos;s tools and consulting can
-          help your agency or brand grow faster and smarter.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/contact"
-            className="bg-brand-accent hover:bg-brand-accent/90 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition shadow-lg shadow-brand-accent/25"
-          >
-            Contact Us Today
-          </Link>
-          <Link
-            href="/services"
-            className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition"
-          >
-            View Services
-          </Link>
+    <section className="bg-ink py-24 border-t border-line">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="relative overflow-hidden rounded-3xl border border-lime/30 bg-surface p-10 md:p-16 text-center">
+          <div className="absolute inset-0 grid-bg grid-bg-fade opacity-60" />
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-40 w-40 rounded-full bg-lime/20 blur-3xl" />
+          <div className="relative">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
+              Ready to make your ad spend profitable?
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
+              Let&apos;s look at your Meta, Google, and TikTok accounts together
+              and find where the budget is leaking. Start with an audit.
+            </p>
+            <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-7 py-3.5 font-semibold text-ink hover:bg-lime-soft transition glow-lime"
+              >
+                Contact us today <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center rounded-full border border-line bg-ink/40 px-7 py-3.5 font-semibold text-white hover:border-white/40 transition"
+              >
+                View services
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 export default function CancellationPolicyPage() {
   return (
-    <div className="prose prose-gray max-w-none">
+    <div className="prose prose-gray bg-white text-brand-text rounded-2xl max-w-3xl mx-4 md:mx-auto my-16 p-8 md:p-12">
       <h1 className="text-3xl font-bold text-[#1a1a2e] mb-2">Cancellation Policy</h1>
       <p className="text-sm text-gray-500 mb-8">Effective Date: March 24, 2026 · Last Updated: March 24, 2026</p>
 

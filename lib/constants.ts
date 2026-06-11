@@ -21,6 +21,77 @@ export const BRAND = {
   },
 };
 
+export const CASE_STUDIES = [
+  {
+    slug: "powder-addicts",
+    client: "Powder Addicts",
+    industry: "D2C · Ski apparel & home goods",
+    headline: "Scaled to $250K at 4X ROAS",
+    timeframe: "in 100 days",
+    summary:
+      "A USA ski brand stuck at 1.79X ROAS. We rebuilt the Meta and Google accounts, fixed the funnel, and scaled spend without losing efficiency.",
+    metrics: [
+      { value: "$250K", label: "Revenue" },
+      { value: "4X", label: "Blended ROAS" },
+      { value: "$35", label: "Blended CAC" },
+    ],
+    pdf: "/case-studies/powder-addicts.pdf",
+  },
+  {
+    slug: "strat-o-matic",
+    client: "Strat-O-Matic",
+    industry: "D2C · Sports simulation",
+    headline: "Scaled to $430K at 20X ROAS",
+    timeframe: "in 3 months",
+    summary:
+      "A 60-year-old brand leaving money on the table. We reset the P&L, reworked Meta, and reported against real profit instead of vanity metrics.",
+    metrics: [
+      { value: "$430K", label: "Revenue" },
+      { value: "20X", label: "ROAS" },
+      { value: "$25", label: "New customer CAC" },
+    ],
+    pdf: "/case-studies/strat-o-matic.pdf",
+  },
+  {
+    slug: "heathers-heroes",
+    client: "Heather's Heroes",
+    industry: "D2C · Dog training",
+    headline: "Scaled to $180K at 3X ROAS",
+    timeframe: "in 3 months",
+    summary:
+      "Stuck at 1.5X ROAS with Google left untouched. We aligned messaging, rebuilt the campaign structure, and scaled profitably.",
+    metrics: [
+      { value: "$180K", label: "Revenue" },
+      { value: "3X", label: "ROAS" },
+      { value: "$26", label: "Blended CAC" },
+    ],
+    pdf: "/case-studies/heathers-heroes.pdf",
+  },
+  {
+    slug: "rollout-crew",
+    client: "The Rollout Crew",
+    industry: "B2B · Construction tech consulting",
+    headline: "$1M closed from a $1.5M pipeline",
+    timeframe: "in 11 months",
+    summary:
+      "No lead nurturing, no clear sales process. We built full-funnel paid ABM, aligned sales and marketing, and turned $50K of spend into seven figures.",
+    metrics: [
+      { value: "$1M", label: "Closed revenue" },
+      { value: "72", label: "SQLs created" },
+      { value: "$50K", label: "Ad spend" },
+    ],
+    pdf: "/case-studies/rollout-crew.pdf",
+  },
+];
+
+export const PARTNER = {
+  name: "ClickTrac",
+  region: "India",
+  url: "#",
+  blurb:
+    "We work with ClickTrac, our paid media partner in India, to manage and optimize campaigns across time zones. Your accounts get worked on while you sleep.",
+};
+
 export const PRODUCTS = [
   {
     name: "CreativeIntel",
