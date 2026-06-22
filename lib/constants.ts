@@ -23,6 +23,21 @@ export const BRAND = {
 
 export const CASE_STUDIES = [
   {
+    slug: "bodyops",
+    client: "Body Ops Coaching",
+    industry: "Coaching · Veteran fitness",
+    headline: "Leads under $6 on Meta",
+    timeframe: "live campaigns",
+    summary:
+      "A veteran fitness coaching brand with a messy CRM and a funnel built for everyone. We cleaned the data and attribution, rewrote the offer for veterans fighting low testosterone, and built Meta and local ads that hold leads under $6.",
+    metrics: [
+      { value: "$4.53", label: "Lowest cost / lead" },
+      { value: "656", label: "Leads, one campaign" },
+      { value: "20%", label: "Local ad conversion" },
+    ],
+    pdf: "/case-studies/bodyops.pdf",
+  },
+  {
     slug: "powder-addicts",
     client: "Powder Addicts",
     industry: "D2C · Ski apparel & home goods",
