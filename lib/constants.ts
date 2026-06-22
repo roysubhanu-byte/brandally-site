@@ -23,6 +23,21 @@ export const BRAND = {
 
 export const CASE_STUDIES = [
   {
+    slug: "nlca",
+    client: "Nurse Life Coaching Academy",
+    industry: "High-ticket · Nurse coaching",
+    headline: "Scaled to $1.47M from $80K",
+    timeframe: "in 6 months",
+    summary:
+      "A high-ticket nurse coaching program stuck at $80K. We tested multiple funnels, built 5 persona ad sets, and rebuilt the upper funnel so closers only got hot, qualified leads. Call-to-close hit 30%.",
+    metrics: [
+      { value: "$1.47M", label: "Closed-won revenue" },
+      { value: "30%", label: "Call-to-close rate" },
+      { value: "$4,184", label: "Average order value" },
+    ],
+    pdf: "/case-studies/nlca.pdf",
+  },
+  {
     slug: "bodyops",
     client: "Body Ops Coaching",
     industry: "Coaching · Veteran fitness",
