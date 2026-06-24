@@ -1,6 +1,21 @@
 import { ArrowUpRight } from "lucide-react";
 import { CASE_STUDIES } from "@/lib/constants";
 
+// Splits a headline around its accent number so the figure can render in lime.
+function Headline({ text, accent }: { text: string; accent?: string }) {
+  if (!accent || !text.includes(accent)) {
+    return <>{text}</>;
+  }
+  const [before, after] = text.split(accent);
+  return (
+    <>
+      {before}
+      <span className="text-lime">{accent}</span>
+      {after}
+    </>
+  );
+}
+
 export default function CaseStudies() {
   return (
     <section className="bg-ink py-24 border-t border-line">
@@ -14,8 +29,8 @@ export default function CaseStudies() {
               Real accounts. Real revenue.
             </h2>
             <p className="mt-4 text-muted">
-              A few brands we&apos;ve scaled, with the numbers pulled straight
-              from their dashboards. Delivered with our partner ClickTrac.
+              Numbers pulled straight from client dashboards. Tap any card to
+              see exactly what we changed and what it produced.
             </p>
           </div>
           {/* BrandAlly stamp */}
@@ -29,51 +44,62 @@ export default function CaseStudies() {
           </div>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-4">
+        <div className="mt-12 grid md:grid-cols-2 gap-5">
           {CASE_STUDIES.map((cs) => (
             <a
               key={cs.slug}
               href={cs.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-line bg-surface p-7 hover:border-lime/40 transition"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-200 hover:-translate-y-1 hover:border-lime/50 hover:shadow-[0_24px_60px_-20px_rgba(198,242,78,0.25)]"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
+              {/* Result panel — outcome is the hero */}
+              <div className="relative overflow-hidden border-b border-line px-7 pt-7 pb-8">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-80"
+                  style={{
+                    background:
+                      "radial-gradient(80% 120% at 0% 0%, rgba(198,242,78,0.16), rgba(198,242,78,0) 55%)",
+                  }}
+                />
+                <div className="relative flex items-start justify-between gap-4">
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted/70">
-                    {cs.industry}
-                  </p>
-                  <h3 className="font-display mt-2 text-2xl font-bold text-white">
                     {cs.client}
-                  </h3>
+                  </p>
+                  <ArrowUpRight className="w-5 h-5 shrink-0 text-muted/50 transition group-hover:text-lime" />
                 </div>
-                <ArrowUpRight className="w-5 h-5 text-muted/50 group-hover:text-lime transition shrink-0" />
-              </div>
-
-              <p className="mt-4 text-lg font-semibold text-lime">
-                {cs.headline}{" "}
-                <span className="text-muted font-normal text-base">
+                <h3 className="font-display relative mt-3 text-3xl md:text-[2.6rem] font-bold leading-[1.02] text-white">
+                  <Headline text={cs.headline} accent={cs.accent} />
+                </h3>
+                <p className="relative mt-3 text-sm font-medium text-muted">
+                  {cs.industry} <span className="text-muted/40">·</span>{" "}
                   {cs.timeframe}
-                </span>
-              </p>
-              <p className="mt-3 text-sm text-muted leading-relaxed">
-                {cs.summary}
-              </p>
-
-              <div className="mt-6 grid grid-cols-3 gap-3 border-t border-line pt-5">
-                {cs.metrics.map((m) => (
-                  <div key={m.label}>
-                    <p className="font-display text-2xl font-bold text-white">
-                      {m.value}
-                    </p>
-                    <p className="text-xs text-muted mt-0.5">{m.label}</p>
-                  </div>
-                ))}
+                </p>
               </div>
 
-              <p className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white group-hover:text-lime transition">
-                View the case study (PDF)
-              </p>
+              {/* Body */}
+              <div className="flex flex-1 flex-col px-7 pb-7 pt-6">
+                <p className="text-sm leading-relaxed text-muted line-clamp-3">
+                  {cs.summary}
+                </p>
+
+                <div className="mt-auto grid grid-cols-3 gap-3 border-t border-line pt-5">
+                  {cs.metrics.map((m) => (
+                    <div key={m.label}>
+                      <p className="font-display text-2xl font-bold text-white">
+                        {m.value}
+                      </p>
+                      <p className="mt-0.5 text-xs text-muted">{m.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition group-hover:text-lime">
+                  Read the case study
+                  <ArrowUpRight className="w-4 h-4" />
+                </p>
+              </div>
             </a>
           ))}
         </div>

@@ -27,6 +27,7 @@ export const CASE_STUDIES = [
     client: "Nurse Life Coaching Academy",
     industry: "High-ticket · Nurse coaching",
     headline: "Scaled to $1.47M from $80K",
+    accent: "$1.47M",
     timeframe: "in 6 months",
     summary:
       "A high-ticket nurse coaching program stuck at $80K. We tested multiple funnels, built 5 persona ad sets, and rebuilt the upper funnel so closers only got hot, qualified leads. Call-to-close hit 30%.",
@@ -42,6 +43,7 @@ export const CASE_STUDIES = [
     client: "Body Ops Coaching",
     industry: "Coaching · Veteran fitness",
     headline: "Leads under $6 on Meta",
+    accent: "$6",
     timeframe: "live campaigns",
     summary:
       "A veteran fitness coaching brand with a messy CRM and a funnel built for everyone. We cleaned the data and attribution, rewrote the offer for veterans fighting low testosterone, and built Meta and local ads that hold leads under $6.",
@@ -57,6 +59,7 @@ export const CASE_STUDIES = [
     client: "Powder Addicts",
     industry: "D2C · Ski apparel & home goods",
     headline: "Scaled to $250K at 4X ROAS",
+    accent: "$250K",
     timeframe: "in 100 days",
     summary:
       "A USA ski brand stuck at 1.79X ROAS. We rebuilt the Meta and Google accounts, fixed the funnel, and scaled spend without losing efficiency.",
@@ -72,6 +75,7 @@ export const CASE_STUDIES = [
     client: "Strat-O-Matic",
     industry: "D2C · Sports simulation",
     headline: "Scaled to $430K at 20X ROAS",
+    accent: "$430K",
     timeframe: "in 3 months",
     summary:
       "A 60-year-old brand leaving money on the table. We reset the P&L, reworked Meta, and reported against real profit instead of vanity metrics.",
@@ -87,6 +91,7 @@ export const CASE_STUDIES = [
     client: "Heather's Heroes",
     industry: "D2C · Dog training",
     headline: "Scaled to $180K at 3X ROAS",
+    accent: "$180K",
     timeframe: "in 3 months",
     summary:
       "Stuck at 1.5X ROAS with Google left untouched. We aligned messaging, rebuilt the campaign structure, and scaled profitably.",
@@ -102,6 +107,7 @@ export const CASE_STUDIES = [
     client: "The Rollout Crew",
     industry: "B2B · Construction tech consulting",
     headline: "$1M closed from a $1.5M pipeline",
+    accent: "$1M",
     timeframe: "in 11 months",
     summary:
       "No lead nurturing, no clear sales process. We built full-funnel paid ABM, aligned sales and marketing, and turned $50K of spend into seven figures.",
