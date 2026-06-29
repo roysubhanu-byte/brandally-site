@@ -22,7 +22,7 @@ export const BRAND = {
 
 export const CASE_STUDIES = [
   {
-    slug: "nlca",
+    slug: "coaching",
     client: "Coaching",
     industry: "High-ticket · Nurse coaching",
     headline: "Scaled to $1.47M from $80K",
@@ -37,7 +37,7 @@ export const CASE_STUDIES = [
     ],
   },
   {
-    slug: "bodyops",
+    slug: "fitness-coaching",
     client: "Fitness coaching",
     industry: "Coaching · Veteran fitness",
     headline: "Leads under $6 on Meta",
@@ -52,7 +52,7 @@ export const CASE_STUDIES = [
     ],
   },
   {
-    slug: "powder-addicts",
+    slug: "ski-apparel",
     client: "Ski apparel",
     industry: "D2C · Ski apparel & home goods",
     headline: "Scaled to $250K at 4X ROAS",
@@ -67,7 +67,7 @@ export const CASE_STUDIES = [
     ],
   },
   {
-    slug: "strat-o-matic",
+    slug: "sports-games",
     client: "Sports games",
     industry: "D2C · Sports simulation",
     headline: "Scaled to $430K at 20X ROAS",
@@ -82,7 +82,7 @@ export const CASE_STUDIES = [
     ],
   },
   {
-    slug: "heathers-heroes",
+    slug: "dog-products",
     client: "Dog products",
     industry: "D2C · Dog training",
     headline: "Scaled to $180K at 3X ROAS",
@@ -97,7 +97,7 @@ export const CASE_STUDIES = [
     ],
   },
   {
-    slug: "rollout-crew",
+    slug: "construction-tech",
     client: "Construction tech",
     industry: "B2B · Construction tech consulting",
     headline: "$1M closed from a $1.5M pipeline",
