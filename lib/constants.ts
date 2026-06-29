@@ -23,7 +23,7 @@ export const BRAND = {
 export const CASE_STUDIES = [
   {
     slug: "nlca",
-    client: "Nurse Life Coaching Academy",
+    client: "Coaching",
     industry: "High-ticket · Nurse coaching",
     headline: "Scaled to $1.47M from $80K",
     accent: "$1.47M",
@@ -35,11 +35,10 @@ export const CASE_STUDIES = [
       { value: "30%", label: "Call-to-close rate" },
       { value: "$4,184", label: "Average order value" },
     ],
-    pdf: "/case-studies/nlca.pdf",
   },
   {
     slug: "bodyops",
-    client: "Body Ops Coaching",
+    client: "Fitness coaching",
     industry: "Coaching · Veteran fitness",
     headline: "Leads under $6 on Meta",
     accent: "$6",
@@ -51,11 +50,10 @@ export const CASE_STUDIES = [
       { value: "656", label: "Leads, one campaign" },
       { value: "20%", label: "Local ad conversion" },
     ],
-    pdf: "/case-studies/bodyops.pdf",
   },
   {
     slug: "powder-addicts",
-    client: "Powder Addicts",
+    client: "Ski apparel",
     industry: "D2C · Ski apparel & home goods",
     headline: "Scaled to $250K at 4X ROAS",
     accent: "$250K",
@@ -67,11 +65,10 @@ export const CASE_STUDIES = [
       { value: "4X", label: "Blended ROAS" },
       { value: "$35", label: "Blended CAC" },
     ],
-    pdf: "/case-studies/powder-addicts.pdf",
   },
   {
     slug: "strat-o-matic",
-    client: "Strat-O-Matic",
+    client: "Sports games",
     industry: "D2C · Sports simulation",
     headline: "Scaled to $430K at 20X ROAS",
     accent: "$430K",
@@ -83,11 +80,10 @@ export const CASE_STUDIES = [
       { value: "20X", label: "ROAS" },
       { value: "$25", label: "New customer CAC" },
     ],
-    pdf: "/case-studies/strat-o-matic.pdf",
   },
   {
     slug: "heathers-heroes",
-    client: "Heather's Heroes",
+    client: "Dog products",
     industry: "D2C · Dog training",
     headline: "Scaled to $180K at 3X ROAS",
     accent: "$180K",
@@ -99,11 +95,10 @@ export const CASE_STUDIES = [
       { value: "3X", label: "ROAS" },
       { value: "$26", label: "Blended CAC" },
     ],
-    pdf: "/case-studies/heathers-heroes.pdf",
   },
   {
     slug: "rollout-crew",
-    client: "The Rollout Crew",
+    client: "Construction tech",
     industry: "B2B · Construction tech consulting",
     headline: "$1M closed from a $1.5M pipeline",
     accent: "$1M",
@@ -115,7 +110,6 @@ export const CASE_STUDIES = [
       { value: "72", label: "SQLs created" },
       { value: "$50K", label: "Ad spend" },
     ],
-    pdf: "/case-studies/rollout-crew.pdf",
   },
 ];
 
@@ -139,28 +133,28 @@ export const PRODUCTS = [
 
 export const TESTIMONIALS = [
   {
-    name: "Powder Addicts",
+    name: "Ski apparel brand",
     role: "D2C · Ski apparel & home goods",
     text: "We were stuck around 1.8X and couldn't push past it. They rebuilt our Meta and Google setup and we hit $250K at a 4X return in three months. The $35 CAC is the part that still surprises me.",
     result: "$250K · 4X ROAS",
     rating: 5,
   },
   {
-    name: "Strat-O-Matic",
+    name: "Sports simulation brand",
     role: "D2C · Sports simulation",
     text: "Sixty years in and we'd never scaled paid this cleanly. They reset the whole P&L view, reworked our Meta, and got us to 20X ROAS. New customers are coming in at $25.",
     result: "$430K · 20X ROAS",
     rating: 5,
   },
   {
-    name: "Heather's Heroes",
+    name: "Dog products brand",
     role: "D2C · Dog training",
     text: "Our Google account was basically untouched and we were stuck at 1.5X. Three months later we're at 3X and $180K, with CAC down to $26. They fixed the funnel, not just the ads.",
     result: "$180K · 3X ROAS",
     rating: 5,
   },
   {
-    name: "The Rollout Crew",
+    name: "Construction tech firm",
     role: "B2B · Construction tech",
     text: "No lead nurturing, no real sales process. They built full-funnel paid ABM and turned $50K of spend into $1M closed and a $1.5M pipeline. Sales finally trusts the numbers.",
     result: "$1M closed",

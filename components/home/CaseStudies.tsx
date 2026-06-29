@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { CASE_STUDIES } from "@/lib/constants";
 
 // Splits a headline around its accent number so the figure can render in lime.
@@ -29,8 +28,8 @@ export default function CaseStudies() {
               Real accounts. Real revenue.
             </h2>
             <p className="mt-4 text-muted">
-              Numbers pulled straight from client dashboards. Tap any card to
-              see exactly what we changed and what it produced.
+              Numbers pulled straight from client dashboards. Categories shown,
+              names kept private.
             </p>
           </div>
           {/* BrandAlly stamp */}
@@ -46,12 +45,9 @@ export default function CaseStudies() {
 
         <div className="mt-12 grid md:grid-cols-2 gap-5">
           {CASE_STUDIES.map((cs) => (
-            <a
+            <div
               key={cs.slug}
-              href={cs.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-200 hover:-translate-y-1 hover:border-lime/50 hover:shadow-[0_24px_60px_-20px_rgba(198,242,78,0.25)]"
+              className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface"
             >
               {/* Result panel — outcome is the hero */}
               <div className="relative overflow-hidden border-b border-line px-7 pt-7 pb-8">
@@ -63,12 +59,9 @@ export default function CaseStudies() {
                       "radial-gradient(80% 120% at 0% 0%, rgba(198,242,78,0.16), rgba(198,242,78,0) 55%)",
                   }}
                 />
-                <div className="relative flex items-start justify-between gap-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted/70">
-                    {cs.client}
-                  </p>
-                  <ArrowUpRight className="w-5 h-5 shrink-0 text-muted/50 transition group-hover:text-lime" />
-                </div>
+                <p className="relative text-xs font-semibold uppercase tracking-wider text-muted/70">
+                  {cs.client}
+                </p>
                 <h3 className="font-display relative mt-3 text-3xl md:text-[2.6rem] font-bold leading-[1.02] text-white">
                   <Headline text={cs.headline} accent={cs.accent} />
                 </h3>
@@ -94,13 +87,8 @@ export default function CaseStudies() {
                     </div>
                   ))}
                 </div>
-
-                <p className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition group-hover:text-lime">
-                  Read the case study
-                  <ArrowUpRight className="w-4 h-4" />
-                </p>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
