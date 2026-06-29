@@ -15,9 +15,8 @@ export const BRAND = {
   },
   hours: "Monday – Friday, 9:00 AM – 5:00 PM (EST)",
   founder: {
-    name: "Subhanu Roy",
     experience: "12+",
-    bio: "With over 12 years of marketing expertise spanning paid media, growth strategy, reporting, and creative analysis, Subhanu founded BrandAlly to transform deep industry experience into practical tools and consulting that accelerate business growth.",
+    bio: "We've spent over 12 years running paid media, growth strategy, reporting, and creative analysis. BrandAlly is how we turn that experience into practical tools and consulting that move real numbers for the teams we work with.",
   },
 };
 
@@ -210,7 +209,7 @@ export const FAQ_ITEMS = [
   {
     question: "Who founded BrandAlly?",
     answer:
-      "BrandAlly was founded by Subhanu Roy, who brings over 12 years of experience in paid media, growth strategy, reporting, and creative analysis.",
+      "BrandAlly was founded by a marketing operator with over 12 years of experience in paid media, growth strategy, reporting, and creative analysis.",
   },
 ];
 

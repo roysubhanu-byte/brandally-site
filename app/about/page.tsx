@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { MapPin, Clock, Mail, ArrowRight } from "lucide-react";
 import { BRAND, TESTIMONIALS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about BrandAlly LLC, founded by Subhanu Roy with 12+ years of marketing expertise.",
+    "Learn about BrandAlly LLC, built on 12+ years of marketing expertise.",
 };
 
 const focusAreas = [
@@ -49,7 +48,7 @@ export default function AboutPage() {
       {/* Founder Story */}
       <section className="bg-ink py-24 border-t border-line">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl">
             <div>
               <span className="inline-flex items-center rounded-full border border-lime/40 bg-lime/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-lime">
                 Our story
@@ -72,26 +71,6 @@ export default function AboutPage() {
                 Explore our services <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-
-            <div className="rounded-2xl overflow-hidden border border-line bg-surface">
-              <Image
-                src="/images/founder-headshot.png"
-                alt="Subhanu Roy, Founder & CEO of BrandAlly"
-                width={500}
-                height={600}
-                className="w-full h-auto object-cover"
-                priority
-              />
-              <div className="p-6 text-center border-t border-line">
-                <h3 className="text-xl font-bold text-white">
-                  {BRAND.founder.name}
-                </h3>
-                <p className="text-lime font-medium">Founder & CEO</p>
-                <p className="text-muted mt-1">
-                  {BRAND.founder.experience} years in marketing
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -99,17 +78,8 @@ export default function AboutPage() {
       {/* Mission */}
       <section className="bg-ink py-24 border-t border-line">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden border border-line order-2 md:order-1">
-              <Image
-                src="/images/consulting.png"
-                alt="BrandAlly consulting session"
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            <div className="order-1 md:order-2">
+          <div className="max-w-3xl">
+            <div>
               <span className="inline-flex items-center rounded-full border border-lime/40 bg-lime/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-lime">
                 Our mission
               </span>

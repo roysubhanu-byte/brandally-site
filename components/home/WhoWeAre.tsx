@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 
@@ -7,7 +6,7 @@ export default function WhoWeAre() {
   return (
     <section className="bg-ink py-24 border-t border-line">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl">
           {/* Text */}
           <div>
             <span className="inline-flex items-center rounded-full border border-lime/40 bg-lime/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-lime">
@@ -22,9 +21,9 @@ export default function WhoWeAre() {
               spend more without watching ROAS slide.
             </p>
             <p className="mt-4 text-muted leading-relaxed">
-              Founded by {BRAND.founder.name} with {BRAND.founder.experience}{" "}
-              years running paid media across Meta, Google, and TikTok. Deep
-              experience, paired with the tools we built in-house.
+              Built on {BRAND.founder.experience} years running paid media across
+              Meta, Google, and TikTok. Deep experience, paired with the tools we
+              built in-house.
             </p>
             <Link
               href="/about"
@@ -32,18 +31,6 @@ export default function WhoWeAre() {
             >
               Learn more about us <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
-
-          {/* Visual */}
-          <div className="relative rounded-2xl overflow-hidden border border-line">
-            <div className="absolute inset-0 bg-lime/5 mix-blend-overlay z-10" />
-            <Image
-              src="/images/working-analytics.png"
-              alt="Subhanu Roy analyzing marketing data"
-              width={600}
-              height={400}
-              className="w-full h-auto object-cover"
-            />
           </div>
         </div>
       </div>
