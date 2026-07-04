@@ -45,9 +45,12 @@ export default function CaseStudies() {
 
         <div className="mt-12 grid md:grid-cols-2 gap-5">
           {CASE_STUDIES.map((cs) => (
-            <div
+            <a
               key={cs.slug}
-              className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface"
+              href={cs.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-200 hover:-translate-y-1 hover:border-lime/50 hover:shadow-[0_0_40px_-12px_rgba(198,242,78,0.35)]"
             >
               {/* Result panel — outcome is the hero */}
               <div className="relative overflow-hidden border-b border-line px-7 pt-7 pb-8">
@@ -87,8 +90,26 @@ export default function CaseStudies() {
                     </div>
                   ))}
                 </div>
+
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-lime">
+                  Read the case study
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 20 20"
+                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      d="M4 10h11M11 5l5 5-5 5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
