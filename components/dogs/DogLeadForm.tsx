@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl border border-line bg-ink text-white placeholder-muted/50 focus:border-lime focus:ring-2 focus:ring-lime/20 outline-none transition";
+  "w-full px-4 py-3 rounded-xl border border-[#e6e4d9] bg-[#faf9f4] text-[#171712] placeholder-[#636256]/50 focus:border-lime focus:ring-2 focus:ring-lime/40 outline-none transition";
 
 const DOG_BUSINESS_TYPES = [
   "Board & train",
@@ -52,18 +52,18 @@ export default function DogLeadForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-lime/40 bg-lime/10 p-8 text-center">
-        <CheckCircle2 className="w-12 h-12 text-lime mx-auto mb-4" />
-        <h3 className="font-display text-xl font-bold text-white mb-2">
+      <div className="rounded-2xl border border-lime bg-lime/25 p-8 text-center">
+        <CheckCircle2 className="w-12 h-12 text-[#5c7a1e] mx-auto mb-4" />
+        <h3 className="font-display text-xl font-bold text-[#171712] mb-2">
           Got it. We&apos;ll be in touch.
         </h3>
-        <p className="text-muted">
+        <p className="text-[#636256]">
           We&apos;ll look at your business and local market, then reach out
           within 1 business day with a plan.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-4 font-semibold text-lime hover:underline"
+          className="mt-4 font-semibold text-[#5c7a1e] hover:underline"
         >
           Submit another
         </button>
@@ -75,7 +75,7 @@ export default function DogLeadForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-muted mb-1.5">
+          <label className="block text-sm font-medium text-[#636256] mb-1.5">
             Your name
           </label>
           <input
@@ -87,7 +87,7 @@ export default function DogLeadForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-muted mb-1.5">
+          <label className="block text-sm font-medium text-[#636256] mb-1.5">
             Business name
           </label>
           <input
@@ -101,7 +101,7 @@ export default function DogLeadForm() {
 
       <div className="grid md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-muted mb-1.5">
+          <label className="block text-sm font-medium text-[#636256] mb-1.5">
             Business email
           </label>
           <input
@@ -113,7 +113,7 @@ export default function DogLeadForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-muted mb-1.5">
+          <label className="block text-sm font-medium text-[#636256] mb-1.5">
             Website
           </label>
           <input
@@ -126,7 +126,7 @@ export default function DogLeadForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-muted mb-1.5">
+        <label className="block text-sm font-medium text-[#636256] mb-1.5">
           What kind of dog business?
         </label>
         <select name="niche" defaultValue="" className={inputClass} required>
@@ -134,7 +134,7 @@ export default function DogLeadForm() {
             Select one
           </option>
           {DOG_BUSINESS_TYPES.map((n) => (
-            <option key={n} value={n} className="bg-ink">
+            <option key={n} value={n} className="bg-white">
               {n}
             </option>
           ))}
@@ -142,7 +142,7 @@ export default function DogLeadForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-red-400 text-sm">
+        <p className="text-red-600 text-sm">
           Something went wrong. Please try again or email us directly.
         </p>
       )}

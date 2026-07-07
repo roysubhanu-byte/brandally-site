@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  // Light-theme landing pages need dark text in the nav
+  const light = pathname?.startsWith("/dog-training");
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
@@ -14,18 +18,30 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-display text-xl font-bold tracking-tight text-white"
+          className={`font-display text-xl font-bold tracking-tight ${
+            light ? "text-[#171712]" : "text-white"
+          }`}
         >
-          brand<span className="text-lime">ally</span>
+          brand<span className={light ? "text-[#5c7a1e]" : "text-lime"}>ally</span>
         </Link>
 
         {/* Desktop pill nav */}
-        <nav className="hidden md:flex items-center gap-1 rounded-full border border-line bg-surface/80 backdrop-blur px-2 py-2">
+        <nav
+          className={`hidden md:flex items-center gap-1 rounded-full border backdrop-blur px-2 py-2 ${
+            light
+              ? "border-[#e6e4d9] bg-white/80"
+              : "border-line bg-surface/80"
+          }`}
+        >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-4 py-1.5 text-sm font-medium text-muted hover:text-white transition rounded-full hover:bg-white/5"
+              className={`px-4 py-1.5 text-sm font-medium transition rounded-full ${
+                light
+                  ? "text-[#636256] hover:text-[#171712] hover:bg-[#171712]/5"
+                  : "text-muted hover:text-white hover:bg-white/5"
+              }`}
             >
               {link.label}
             </Link>
@@ -43,7 +59,11 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-full border border-line bg-surface text-white"
+          className={`md:hidden p-2 rounded-full border ${
+            light
+              ? "border-[#e6e4d9] bg-white text-[#171712]"
+              : "border-line bg-surface text-white"
+          }`}
           aria-label="Toggle menu"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -52,13 +72,21 @@ export default function Navbar() {
 
       {/* Mobile nav */}
       {open && (
-        <nav className="md:hidden mt-3 max-w-6xl mx-auto rounded-2xl border border-line bg-surface p-3">
+        <nav
+          className={`md:hidden mt-3 max-w-6xl mx-auto rounded-2xl border p-3 ${
+            light ? "border-[#e6e4d9] bg-white" : "border-line bg-surface"
+          }`}
+        >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block px-4 py-3 text-muted hover:text-white transition"
+              className={`block px-4 py-3 transition ${
+                light
+                  ? "text-[#636256] hover:text-[#171712]"
+                  : "text-muted hover:text-white"
+              }`}
             >
               {link.label}
             </Link>

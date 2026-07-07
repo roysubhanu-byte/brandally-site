@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, PawPrint, FileText } from "lucide-react";
 
 const WORDS = ["booked solid", "profitable", "predictable", "waitlisted"];
 
 export default function DogHero() {
-  const ref = useRef<HTMLElement>(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [active, setActive] = useState(false);
   const [word, setWord] = useState(0);
 
   useEffect(() => {
@@ -19,95 +17,99 @@ export default function DogHero() {
     return () => clearTimeout(id);
   }, [word]);
 
-  function handleMove(e: React.MouseEvent<HTMLElement>) {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-    if (!active) setActive(true);
-  }
-
-  const flashlight = `radial-gradient(circle 200px at ${pos.x}px ${pos.y}px, #000 0%, rgba(0,0,0,0.35) 45%, transparent 70%)`;
-
   return (
-    <section
-      ref={ref}
-      onMouseMove={handleMove}
-      onMouseLeave={() => setActive(false)}
-      className="relative overflow-hidden bg-ink"
-    >
-      {/* Faint base grid */}
-      <div className="absolute inset-0 grid-bg grid-bg-fade opacity-70" />
+    <section className="relative overflow-hidden bg-[#faf9f4]">
+      {/* Faint technical grid, fading out toward the edges */}
+      <div className="absolute inset-0 grid-bg-light grid-bg-fade" />
+      {/* Soft lime depth glow */}
+      <div className="pointer-events-none absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-lime/25 blur-3xl" />
 
-      {/* Brighter grid, revealed only under the cursor */}
-      <div
-        className="pointer-events-none absolute inset-0 grid-bg-lime transition-opacity duration-500"
-        style={{
-          opacity: active ? 1 : 0,
-          WebkitMaskImage: flashlight,
-          maskImage: flashlight,
-        }}
-      />
-
-      {/* Soft static depth glow behind the headline */}
-      <div className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 h-80 w-[34rem] rounded-full bg-lime/[0.06] blur-3xl" />
-
-      <div className="relative max-w-5xl mx-auto px-6 pt-24 pb-28 md:pt-32 md:pb-36 text-center">
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-lime">
-          <PawPrint className="h-3.5 w-3.5" />
-          We love dogs. We scale dog businesses.
-        </span>
-
-        <h1 className="font-display mt-8 text-5xl md:text-7xl font-bold leading-[1.02]">
-          <span className="block text-white">
-            Board &amp; train programs
+      <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Copy */}
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#e6e4d9] bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
+            <PawPrint className="h-3.5 w-3.5" />
+            We love dogs. We scale dog businesses.
           </span>
-          <span className="block text-white">that stay</span>
-          {/* Rotating word */}
-          <span className="relative block h-[1.15em] overflow-hidden">
-            {WORDS.map((w, i) => (
-              <span
-                key={w}
-                aria-hidden={word !== i}
-                className={`absolute inset-x-0 text-lime transition-all duration-700 ease-[cubic-bezier(0.34,1.3,0.5,1)] ${
-                  word === i
-                    ? "translate-y-0 opacity-100"
-                    : i < word || (word === 0 && i === WORDS.length - 1)
-                      ? "-translate-y-full opacity-0"
-                      : "translate-y-full opacity-0"
-                }`}
-              >
-                {w}.
-              </span>
-            ))}
-          </span>
-        </h1>
 
-        <p className="mx-auto mt-7 max-w-2xl text-lg text-muted">
-          We run{" "}
-          <span className="text-white underline decoration-lime/60 underline-offset-4">
-            Meta and Google ads
-          </span>{" "}
-          for dog trainers and board &amp; train facilities. You train the
-          dogs. We keep qualified local owners on your calendar.
-        </p>
+          <h1 className="font-display mt-7 text-4xl md:text-6xl font-bold leading-[1.05] text-[#171712]">
+            <span className="block">Board &amp; train</span>
+            <span className="block">programs that stay</span>
+            {/* Rotating word */}
+            <span className="relative block h-[1.35em] overflow-hidden">
+              {WORDS.map((w, i) => (
+                <span
+                  key={w}
+                  aria-hidden={word !== i}
+                  className={`absolute inset-x-0 top-[0.08em] transition-all duration-700 ease-[cubic-bezier(0.34,1.3,0.5,1)] ${
+                    word === i
+                      ? "translate-y-0 opacity-100"
+                      : i < word || (word === 0 && i === WORDS.length - 1)
+                        ? "-translate-y-full opacity-0"
+                        : "translate-y-full opacity-0"
+                  }`}
+                >
+                  <span className="inline-block rounded-2xl bg-lime px-3 pb-1">
+                    {w}.
+                  </span>
+                </span>
+              ))}
+            </span>
+          </h1>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="#get-started"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-7 py-3.5 font-semibold text-ink hover:bg-lime-soft transition glow-lime"
-          >
-            Get your free growth plan <ArrowRight className="w-4 h-4" />
-          </Link>
-          <a
-            href="/case-studies/dog-products.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-surface/60 px-7 py-3.5 font-semibold text-white hover:border-white/40 transition"
-          >
-            <FileText className="w-4 h-4" /> See the dog case study
-          </a>
+          <p className="mt-6 max-w-xl text-lg text-[#636256]">
+            We run{" "}
+            <span className="text-[#171712] underline decoration-lime underline-offset-4 decoration-2">
+              Meta and Google ads
+            </span>{" "}
+            for dog trainers and board &amp; train facilities. You train the
+            dogs. We keep qualified local owners on your calendar.
+          </p>
+
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <Link
+              href="#get-started"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#171712] px-7 py-3.5 font-semibold text-white hover:bg-[#171712]/85 transition"
+            >
+              Get your free growth plan <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="/case-studies/dog-products.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d8d6c9] bg-white px-7 py-3.5 font-semibold text-[#171712] hover:border-[#171712]/40 transition"
+            >
+              <FileText className="w-4 h-4" /> See the dog case study
+            </a>
+          </div>
+        </div>
+
+        {/* Photo */}
+        <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+          {/* Offset lime frame behind the photo */}
+          <div className="absolute -inset-2 translate-x-3 translate-y-3 rounded-3xl bg-lime rotate-2" />
+          <Image
+            src="/images/dogs/hero-puppy.jpg"
+            alt="Golden retriever puppy holding a perfect sit"
+            width={1400}
+            height={2245}
+            priority
+            className="relative rounded-3xl object-cover aspect-[4/5] w-full border border-[#e6e4d9]"
+          />
+          {/* Floating note */}
+          <div className="absolute -bottom-5 -left-3 sm:-left-6 flex items-center gap-3 rounded-2xl border border-[#e6e4d9] bg-white px-4 py-3 shadow-lg">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-lime">
+              <PawPrint className="h-4.5 w-4.5 text-[#171712]" />
+            </span>
+            <div>
+              <div className="font-display text-sm font-bold text-[#171712]">
+                Good sit.
+              </div>
+              <div className="text-xs text-[#636256]">
+                Better marketing.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   MapPin,
   Target,
@@ -18,16 +19,16 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { value: "$180K", label: "Revenue in 3 months" },
-  { value: "3X", label: "ROAS" },
-  { value: "$26", label: "Blended CAC" },
+  { value: "$180K", label: "New revenue for one dog brand" },
+  { value: "$26", label: "Cost to win each customer" },
+  { value: "90 days", label: "From stuck ads to scaled" },
 ];
 
 const SERVICES = [
   {
     icon: MapPin,
     title: "Local demand, on tap",
-    body: "Meta and Google campaigns aimed at dog owners in your actual service area. Not clicks from three states away.",
+    body: "Meta and Google campaigns aimed at dog owners in your actual service area. Qualified leads, not clicks from three states away.",
   },
   {
     icon: Target,
@@ -37,7 +38,7 @@ const SERVICES = [
   {
     icon: CalendarCheck,
     title: "Consults, not clicks",
-    body: "Every campaign points to a booked evaluation call. We track cost per consult, so you know exactly what a new client costs you.",
+    body: "Every campaign points to a booked evaluation call on your calendar. We track cost per booked consult, so you know exactly what a new client costs you.",
   },
   {
     icon: TrendingUp,
@@ -48,17 +49,17 @@ const SERVICES = [
 
 const STEPS = [
   {
-    num: "01",
+    num: "1",
     title: "Free growth plan",
     body: "Tell us about your business. We review your ads (if you're running any), your local market, and your competitors. You get a written plan whether you hire us or not.",
   },
   {
-    num: "02",
+    num: "2",
     title: "Launch",
     body: "We build the campaigns, write the ads, and set up tracking down to the booked consult. You approve everything before it goes live.",
   },
   {
-    num: "03",
+    num: "3",
     title: "Fill and scale",
     body: "Weekly reporting on what a consult costs and which ads book them. When your board & train fills, we scale what works.",
   },
@@ -79,28 +80,28 @@ const FAQS = [
   },
   {
     q: "Do you work with dog product brands too?",
-    a: "Yes. The case study on this page is a dog training products brand we scaled to $180K at 3X ROAS. Dogs are the niche, not just the service side.",
+    a: "Yes. The case study on this page is a dog training products brand we took to $180K in 3 months. Dogs are the niche, not just the service side.",
   },
 ];
 
 export default function DogTrainingPage() {
   return (
-    <>
+    <div className="bg-[#faf9f4] text-[#171712]">
       <DogHero />
 
       {/* Proof strip */}
-      <section className="border-y border-line bg-surface/40">
+      <section className="bg-lime">
         <div className="max-w-5xl mx-auto px-6 py-12">
-          <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted">
+          <p className="text-center text-xs font-semibold uppercase tracking-wider text-[#171712]/60">
             A dog brand we run
           </p>
           <div className="mt-6 grid grid-cols-3 gap-4 text-center">
             {STATS.map((s) => (
               <div key={s.label}>
-                <div className="font-display text-3xl md:text-5xl font-bold text-lime">
+                <div className="font-display text-3xl md:text-5xl font-bold text-[#171712]">
                   {s.value}
                 </div>
-                <div className="mt-1 text-sm text-muted">{s.label}</div>
+                <div className="mt-1 text-sm text-[#171712]/70">{s.label}</div>
               </div>
             ))}
           </div>
@@ -108,43 +109,51 @@ export default function DogTrainingPage() {
       </section>
 
       {/* Why only dogs */}
-      <section className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <Image
+            src="/images/dogs/running-duo.jpg"
+            alt="Corgi and terrier running down a trail at sunset"
+            width={1400}
+            height={935}
+            className="rounded-3xl object-cover w-full border border-[#e6e4d9]"
+          />
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-lime">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#e6e4d9] bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
               <PawPrint className="h-3.5 w-3.5" /> Why only dogs
             </span>
-            <h2 className="font-display mt-6 text-3xl md:text-5xl font-bold text-white">
+            <h2 className="font-display mt-5 text-3xl md:text-5xl font-bold">
               Because we love them. And because focus wins.
             </h2>
-          </div>
-          <div className="space-y-5 text-lg text-muted">
-            <p>
-              Most agencies run ads for anyone with a budget. A dentist on
-              Monday, a dog trainer on Tuesday. The ads end up interchangeable.
-            </p>
-            <p>
-              We picked one lane: dogs. Board &amp; train, day training, puppy
-              programs, dog products. That focus means we already know what a
-              high-ticket board &amp; train ad needs to show (the
-              transformation, not the kennel), which objections stop owners
-              from booking, and what separates a tire-kicker from a buyer.
-            </p>
-            <p className="text-white">
-              You shouldn&apos;t have to teach your agency your industry. Ours
-              already lives in it.
-            </p>
+            <div className="mt-6 space-y-5 text-lg text-[#636256]">
+              <p>
+                Most agencies run ads for anyone with a budget. A dentist on
+                Monday, a dog trainer on Tuesday. The ads end up
+                interchangeable.
+              </p>
+              <p>
+                We picked one lane: dogs. Board &amp; train, day training,
+                puppy programs, dog products. That focus means we already know
+                what a high-ticket board &amp; train ad needs to show (the
+                transformation, not the kennel), which objections stop owners
+                from booking, and what separates a tire-kicker from a buyer.
+              </p>
+              <p className="text-[#171712] font-medium">
+                You shouldn&apos;t have to teach your agency your industry.
+                Ours already lives in it.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* What we fix */}
-      <section className="border-t border-line bg-surface/30">
+      <section className="border-y border-[#e6e4d9] bg-white">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white text-center">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
             What we fix
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted">
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
             Four things stand between a good trainer and a full calendar. We
             handle all four.
           </p>
@@ -152,13 +161,15 @@ export default function DogTrainingPage() {
             {SERVICES.map((s) => (
               <div
                 key={s.title}
-                className="rounded-2xl border border-line bg-surface/60 p-7 hover:border-lime/40 transition"
+                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7 hover:border-lime transition"
               >
-                <s.icon className="w-6 h-6 text-lime" />
-                <h3 className="font-display mt-4 text-xl font-bold text-white">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime">
+                  <s.icon className="w-5 h-5 text-[#171712]" />
+                </span>
+                <h3 className="font-display mt-4 text-xl font-bold">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-muted">{s.body}</p>
+                <p className="mt-2 text-[#636256]">{s.body}</p>
               </div>
             ))}
           </div>
@@ -166,64 +177,76 @@ export default function DogTrainingPage() {
       </section>
 
       {/* Case study */}
-      <section className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-        <div className="rounded-3xl border border-line bg-surface/60 p-8 md:p-12 relative overflow-hidden">
-          <div className="pointer-events-none absolute -top-20 right-0 h-64 w-64 rounded-full bg-lime/[0.08] blur-3xl" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-lime">
-            Case study · D2C dog training brand
-          </span>
-          <h2 className="font-display mt-4 text-3xl md:text-4xl font-bold text-white max-w-xl">
-            Stuck at 1.5X ROAS. Scaled to{" "}
-            <span className="text-lime">$180K at 3X</span> in 3 months.
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg text-muted">
-            A dog training products brand came to us with Meta underperforming
-            and Google untouched. We rebuilt the campaign structure, matched
-            the ads to how dog owners actually talk about their problems, and
-            scaled spend only where it stayed profitable.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-6">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <div className="font-display text-2xl font-bold text-white">
-                  {s.value}
+      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
+          <div className="md:col-span-3 p-8 md:p-12">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
+              Case study · D2C dog training brand
+            </span>
+            <h2 className="font-display mt-4 text-3xl md:text-4xl font-bold max-w-xl">
+              From stuck ads to{" "}
+              <span className="rounded-xl bg-lime px-2">$180K</span> in 3
+              months.
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg text-[#636256]">
+              A dog training products brand came to us with Meta
+              underperforming and Google untouched. We rebuilt the campaign
+              structure, matched the ads to how dog owners actually talk about
+              their problems, and scaled spend only where it kept bringing in
+              customers at a price that made sense.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+              {STATS.map((s) => (
+                <div key={s.label}>
+                  <div className="font-display text-2xl font-bold">
+                    {s.value}
+                  </div>
+                  <div className="text-xs uppercase tracking-wider text-[#636256]">
+                    {s.label}
+                  </div>
                 </div>
-                <div className="text-xs uppercase tracking-wider text-muted">
-                  {s.label}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
             <a
               href="/case-studies/dog-products.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 font-semibold text-ink hover:bg-lime-soft transition"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171712] px-6 py-3 font-semibold text-white hover:bg-[#171712]/85 transition"
             >
               <FileText className="w-4 h-4" /> Read the case study
             </a>
+          </div>
+          <div className="md:col-span-2 relative min-h-64">
+            <Image
+              src="/images/dogs/corgi.jpg"
+              alt="Corgi puppy sitting against an orange backdrop"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="border-t border-line bg-surface/30">
+      <section className="border-y border-[#e6e4d9] bg-white">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white text-center">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
             How it works
           </h2>
           <div className="mt-12 grid md:grid-cols-3 gap-5">
             {STEPS.map((s) => (
               <div
                 key={s.num}
-                className="rounded-2xl border border-line bg-surface/60 p-7"
+                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7"
               >
-                <div className="font-display text-4xl font-bold text-lime/50">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime font-display font-bold">
                   {s.num}
-                </div>
-                <h3 className="font-display mt-3 text-xl font-bold text-white">
+                </span>
+                <h3 className="font-display mt-4 text-xl font-bold">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-muted">{s.body}</p>
+                <p className="mt-2 text-[#636256]">{s.body}</p>
               </div>
             ))}
           </div>
@@ -231,60 +254,70 @@ export default function DogTrainingPage() {
       </section>
 
       {/* Lead form */}
-      <section id="get-started" className="max-w-5xl mx-auto px-6 py-20 md:py-28 scroll-mt-24">
+      <section
+        id="get-started"
+        className="max-w-6xl mx-auto px-6 py-20 md:py-28 scroll-mt-24"
+      >
         <div className="grid md:grid-cols-5 gap-10 md:gap-14 items-start">
           <div className="md:col-span-2">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+            <h2 className="font-display text-3xl md:text-4xl font-bold">
               Tell us about your dog business.
             </h2>
-            <p className="mt-4 text-lg text-muted">
+            <p className="mt-4 text-lg text-[#636256]">
               We&apos;ll review your local market and current marketing, then
               send you a written growth plan. Free, and yours to keep either
               way.
             </p>
-            <ul className="mt-6 space-y-3 text-muted">
+            <ul className="mt-6 space-y-3 text-[#636256]">
               <li className="flex gap-3">
-                <ArrowRight className="w-5 h-5 text-lime shrink-0 mt-0.5" />
+                <ArrowRight className="w-5 h-5 text-[#5c7a1e] shrink-0 mt-0.5" />
                 No retainers pitched on the first call
               </li>
               <li className="flex gap-3">
-                <ArrowRight className="w-5 h-5 text-lime shrink-0 mt-0.5" />
+                <ArrowRight className="w-5 h-5 text-[#5c7a1e] shrink-0 mt-0.5" />
                 Response within 1 business day
               </li>
               <li className="flex gap-3">
-                <ArrowRight className="w-5 h-5 text-lime shrink-0 mt-0.5" />
+                <ArrowRight className="w-5 h-5 text-[#5c7a1e] shrink-0 mt-0.5" />
                 Dog businesses only. That&apos;s the whole point.
               </li>
             </ul>
+            <Image
+              src="/images/dogs/golden-portrait.jpg"
+              alt="Golden retriever looking at the camera"
+              width={1400}
+              height={1855}
+              className="mt-8 hidden md:block rounded-2xl object-cover aspect-[4/3] w-full border border-[#e6e4d9]"
+            />
           </div>
-          <div className="md:col-span-3 rounded-3xl border border-line bg-surface/60 p-7 md:p-9">
+          <div className="md:col-span-3 rounded-3xl border border-[#e6e4d9] bg-white p-7 md:p-9">
             <DogLeadForm />
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-line bg-surface/30">
+      <section className="border-t border-[#e6e4d9] bg-white">
         <div className="max-w-3xl mx-auto px-6 py-20 md:py-24">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-center">
             Questions we get
           </h2>
           <div className="mt-10 space-y-4">
             {FAQS.map((f) => (
               <details
                 key={f.q}
-                className="group rounded-2xl border border-line bg-surface/60 p-6"
+                className="group rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-6"
               >
-                <summary className="cursor-pointer list-none font-display font-semibold text-white flex items-center justify-between gap-4">
+                <summary className="cursor-pointer list-none font-display font-semibold flex items-center justify-between gap-4">
                   {f.q}
-                  <ArrowRight className="w-4 h-4 text-lime transition group-open:rotate-90" />
+                  <ArrowRight className="w-4 h-4 text-[#5c7a1e] transition group-open:rotate-90" />
                 </summary>
-                <p className="mt-3 text-muted">{f.a}</p>
+                <p className="mt-3 text-[#636256]">{f.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
