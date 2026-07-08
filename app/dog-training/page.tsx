@@ -11,6 +11,7 @@ import {
 import DogHero from "@/components/dogs/DogHero";
 import DogLeadForm from "@/components/dogs/DogLeadForm";
 import DogAdShowcase from "@/components/dogs/DogAdShowcase";
+import DogTestimonials from "@/components/dogs/DogTestimonials";
 
 export const metadata: Metadata = {
   title: "Paid Ads for Dog Board & Train Businesses",
@@ -156,8 +157,8 @@ export default function DogTrainingPage() {
           </div>
           <div className="md:col-span-2 relative min-h-64">
             <Image
-              src="/images/dogs/real-case.jpg"
-              alt="Happy dog from the case study brand's own ad footage"
+              src="/images/dogs/real-case-2.jpg"
+              alt="Trainer working with a husky on recall in a waterfront park"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
@@ -166,8 +167,11 @@ export default function DogTrainingPage() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <DogTestimonials />
+
       {/* What we fix */}
-      <section className="border-y border-[#e6e4d9] bg-white">
+      <section>
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
             Four reasons great trainers still have empty spots.
@@ -180,7 +184,7 @@ export default function DogTrainingPage() {
             {SERVICES.map((s) => (
               <div
                 key={s.title}
-                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7 hover:border-lime transition"
+                className="rounded-2xl border border-[#e6e4d9] bg-white p-7 hover:border-lime transition"
               >
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime">
                   <s.icon className="w-5 h-5 text-[#171712]" />
@@ -252,11 +256,11 @@ export default function DogTrainingPage() {
               </li>
             </ul>
             <Image
-              src="/images/dogs/real-form.jpg"
-              alt="Man crouching beside his doberman under a park tree"
-              width={1440}
-              height={1080}
-              className="mt-8 hidden md:block rounded-2xl object-cover aspect-[4/3] w-full border border-[#e6e4d9]"
+              src="/images/dogs/real-form-2.jpg"
+              alt="Trainer running a dog through the agility yard"
+              width={1080}
+              height={1350}
+              className="mt-8 hidden md:block rounded-2xl object-cover aspect-[4/5] w-full border border-[#e6e4d9]"
             />
           </div>
           <div className="md:col-span-3 rounded-3xl border border-[#e6e4d9] bg-white p-7 md:p-9">
