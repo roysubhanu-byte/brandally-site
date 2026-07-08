@@ -142,6 +142,33 @@ const VIDEO_ADS: AdCard[] = [
     cta: "Get started",
     video: "/videos/ads/ad-v3.mp4",
   },
+  {
+    brand: "Daycare & Boarding",
+    tag: "Hook video",
+    hook: "Caught on the lobby cam: he knows exactly where he's going.",
+    image: "/videos/ads/ad-v4-poster.jpg",
+    alt: "Lobby camera video of an excited dog arriving at daycare",
+    cta: "Book an intro day",
+    video: "/videos/ads/ad-v4.mp4",
+  },
+  {
+    brand: "Daycare & Boarding",
+    tag: "POV tour",
+    hook: "Max gives the facility tour himself. Follow him in.",
+    image: "/videos/ads/ad-v5-poster.jpg",
+    alt: "Point of view video of a small dog touring the daycare",
+    cta: "Take the tour",
+    video: "/videos/ads/ad-v5.mp4",
+  },
+  {
+    brand: "Daycare & Boarding",
+    tag: "Daycare reel",
+    hook: "Brain games day, obstacle course edition. Tired dogs tonight.",
+    image: "/videos/ads/ad-v6-poster.jpg",
+    alt: "Dogs running an obstacle course at daycare",
+    cta: "See a day here",
+    video: "/videos/ads/ad-v6.mp4",
+  },
 ];
 
 const ROW_ONE: AdCard[] = [
@@ -149,6 +176,7 @@ const ROW_ONE: AdCard[] = [
   MORE_ADS[2],
   VIDEO_ADS[0],
   ADS[2],
+  VIDEO_ADS[4],
   MORE_ADS[4],
   VIDEO_ADS[2],
   ADS[4],
@@ -157,9 +185,10 @@ const ROW_ONE: AdCard[] = [
 const ROW_TWO: AdCard[] = [
   MORE_ADS[6],
   ADS[1],
-  VIDEO_ADS[1],
+  VIDEO_ADS[3],
   MORE_ADS[1],
   ADS[3],
+  VIDEO_ADS[5],
   MORE_ADS[5],
   MORE_ADS[0],
 ];
