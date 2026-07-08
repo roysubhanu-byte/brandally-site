@@ -177,10 +177,12 @@ export default function DogTrainingPage() {
               ))}
             </div>
             <a
-              href="#get-started"
+              href="/case-studies/dog-local.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171712] px-6 py-3 font-semibold text-white hover:bg-[#171712]/85 transition"
             >
-              Get a plan like this <ArrowRight className="w-4 h-4" />
+              <FileText className="w-4 h-4" /> Read the case study
             </a>
           </div>
         </div>
