@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import DogHero from "@/components/dogs/DogHero";
 import DogLeadForm from "@/components/dogs/DogLeadForm";
+import DogAdShowcase from "@/components/dogs/DogAdShowcase";
 
 export const metadata: Metadata = {
   title: "Paid Ads for Dog Board & Train Businesses",
@@ -177,6 +178,9 @@ export default function DogTrainingPage() {
           </div>
         </div>
       </section>
+
+      {/* Ad showcase */}
+      <DogAdShowcase />
 
       {/* Case study */}
       <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
