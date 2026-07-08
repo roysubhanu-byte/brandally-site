@@ -66,6 +66,12 @@ const STEPS = [
   },
 ];
 
+const LOCAL_STATS = [
+  { value: "1,240", label: "Google conversions in 10 months" },
+  { value: "$11", label: "Cost per conversion" },
+  { value: "118", label: "Meta training leads at $35 each" },
+];
+
 const FAQS = [
   {
     q: "We're a small facility. Is this for us?",
@@ -163,6 +169,68 @@ export default function DogTrainingPage() {
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Case study 2: local training & daycare */}
+      <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
+        <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
+          <div className="md:col-span-2 relative min-h-64">
+            <Image
+              src="/images/dogs/case-local.jpg"
+              alt="Trainer rewarding a dog holding a sit inside the training facility"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="md:col-span-3 p-8 md:p-12">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
+              Case study · Local dog training &amp; daycare
+            </span>
+            <h2 className="font-display mt-4 text-3xl md:text-4xl font-bold max-w-xl">
+              Invisible on Maps to{" "}
+              <span className="rounded-xl bg-lime px-2">1,240</span>{" "}
+              conversions at $11 each.
+            </h2>
+            <div className="mt-4 max-w-2xl space-y-4 text-lg text-[#636256]">
+              <p>
+                This facility runs its bookings through Gingr, but none of
+                that data reached Google. Campaigns were fragmented, and brand
+                terms ate 80% of the budget catching existing customers who
+                were coming back anyway. New owners searching nearby barely
+                saw them.
+              </p>
+              <p>
+                Tracking came first, so Google could learn what a paying
+                customer looks like. Performance Max put them on Search and
+                Maps at once, and a new search campaign went after what owners
+                actually type (&ldquo;dog training near me&rdquo;). A month
+                later we added Meta with creatives built on real owner
+                frustrations. They took off locally, brand searches climbed,
+                and Meta started driving direct bookings of its own. Ten
+                months in, the two engines feed each other.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+              {LOCAL_STATS.map((s) => (
+                <div key={s.label}>
+                  <div className="font-display text-2xl font-bold">
+                    {s.value}
+                  </div>
+                  <div className="text-xs uppercase tracking-wider text-[#636256]">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a
+              href="#get-started"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171712] px-6 py-3 font-semibold text-white hover:bg-[#171712]/85 transition"
+            >
+              Get a plan like this <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
