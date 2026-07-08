@@ -7,7 +7,6 @@ import {
   TrendingUp,
   ArrowRight,
   FileText,
-  PawPrint,
 } from "lucide-react";
 import DogHero from "@/components/dogs/DogHero";
 import DogLeadForm from "@/components/dogs/DogLeadForm";
@@ -109,81 +108,11 @@ export default function DogTrainingPage() {
         </div>
       </section>
 
-      {/* Why only dogs */}
-      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <Image
-            src="/images/dogs/running-duo.jpg"
-            alt="Corgi and terrier running down a trail at sunset"
-            width={1400}
-            height={935}
-            className="rounded-3xl object-cover w-full border border-[#e6e4d9]"
-          />
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#e6e4d9] bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
-              <PawPrint className="h-3.5 w-3.5" /> Why only dogs
-            </span>
-            <h2 className="font-display mt-5 text-3xl md:text-5xl font-bold">
-              Because dogs deserve specialists. And so do you.
-            </h2>
-            <div className="mt-6 space-y-5 text-lg text-[#636256]">
-              <p>
-                Most agencies will happily take your money on Monday and run
-                the same template they ran for a chiropractor on Friday. The
-                messaging is generic. The results are average.
-              </p>
-              <p>
-                We work with one niche: dogs. Board &amp; train, day training,
-                puppy classes, dog products. So we already know a high-ticket
-                board &amp; train ad has to sell the transformation, not the
-                kennel. We know the objections owners have before they book a
-                consult. And we know what separates someone serious about
-                fixing their reactive dog from someone who&apos;ll ghost after
-                one DM.
-              </p>
-              <p className="text-[#171712] font-medium">
-                You&apos;ve spent years getting good at dog behaviour. You
-                deserve an agency that&apos;s done the same for your kind of
-                business.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What we fix */}
-      <section className="border-y border-[#e6e4d9] bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
-            Four reasons great trainers still have empty spots.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
-            We fix all four.
-          </p>
-          <div className="mt-12 grid sm:grid-cols-2 gap-5">
-            {SERVICES.map((s) => (
-              <div
-                key={s.title}
-                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7 hover:border-lime transition"
-              >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime">
-                  <s.icon className="w-5 h-5 text-[#171712]" />
-                </span>
-                <h3 className="font-display mt-4 text-xl font-bold">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-[#636256]">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Ad showcase */}
       <DogAdShowcase />
 
       {/* Case study */}
-      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+      <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
         <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
           <div className="md:col-span-3 p-8 md:p-12">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
@@ -227,8 +156,8 @@ export default function DogTrainingPage() {
           </div>
           <div className="md:col-span-2 relative min-h-64">
             <Image
-              src="/images/dogs/corgi.jpg"
-              alt="Corgi puppy sitting against an orange backdrop"
+              src="/images/dogs/real-case.jpg"
+              alt="Happy dog from the case study brand's own ad footage"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
@@ -237,8 +166,37 @@ export default function DogTrainingPage() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* What we fix */}
       <section className="border-y border-[#e6e4d9] bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
+            Four reasons great trainers still have empty spots.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
+            We fix all four. And since dogs are all we do, you&apos;re not
+            paying an agency to learn your industry on your budget.
+          </p>
+          <div className="mt-12 grid sm:grid-cols-2 gap-5">
+            {SERVICES.map((s) => (
+              <div
+                key={s.title}
+                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7 hover:border-lime transition"
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime">
+                  <s.icon className="w-5 h-5 text-[#171712]" />
+                </span>
+                <h3 className="font-display mt-4 text-xl font-bold">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-[#636256]">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section>
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
             How it works
@@ -247,7 +205,7 @@ export default function DogTrainingPage() {
             {STEPS.map((s) => (
               <div
                 key={s.num}
-                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7"
+                className="rounded-2xl border border-[#e6e4d9] bg-white p-7"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime font-display font-bold">
                   {s.num}
@@ -294,10 +252,10 @@ export default function DogTrainingPage() {
               </li>
             </ul>
             <Image
-              src="/images/dogs/golden-portrait.jpg"
-              alt="Golden retriever looking at the camera"
-              width={1400}
-              height={1855}
+              src="/images/dogs/real-form.jpg"
+              alt="Man crouching beside his doberman under a park tree"
+              width={1440}
+              height={1080}
               className="mt-8 hidden md:block rounded-2xl object-cover aspect-[4/3] w-full border border-[#e6e4d9]"
             />
           </div>
