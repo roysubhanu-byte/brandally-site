@@ -42,6 +42,8 @@ export default function DogLeadForm() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
+        const w = window as unknown as { fbq?: (...args: unknown[]) => void };
+        w.fbq?.("track", "Lead");
       } else {
         setStatus("error");
       }

@@ -3,7 +3,7 @@ export const BRAND = {
   legal: "BrandAlly LLC",
   tagline: "Your Digital Partner for Software Development & Growth",
   description:
-    "We help USA-based agencies, D2C brands, and founders use better research, smarter tools, and clear growth systems to scale with confidence.",
+    "We help USA-based agencies, D2C brands, B2B firms, and founders use better research, smarter tools, and clear growth systems to scale with confidence.",
   email: "support@brandally.net",
   domain: "brandally.net",
   address: {
@@ -184,12 +184,12 @@ export const FAQ_ITEMS = [
   {
     question: "What is BrandAlly?",
     answer:
-      "BrandAlly LLC is a Wyoming-registered digital marketing services and software company. We build SaaS tools for marketers and provide hands-on growth consulting for agencies, D2C brands, and founders across the USA.",
+      "BrandAlly LLC is a Wyoming-registered digital marketing services and software company. We build SaaS tools for marketers and provide hands-on growth consulting for agencies, D2C brands, B2B firms, and founders across the USA.",
   },
   {
     question: "Who can use BrandAlly's services?",
     answer:
-      "Our tools and consulting are designed for USA-based marketing agencies, D2C brands, and founders who want to improve their research, reporting, and marketing performance.",
+      "Our tools and consulting are designed for USA-based marketing agencies, D2C brands, B2B firms, and founders who want to improve their research, reporting, and marketing performance.",
   },
   {
     question: "How does consulting work?",

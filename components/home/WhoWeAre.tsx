@@ -16,14 +16,15 @@ export default function WhoWeAre() {
               Built by media buyers, for growth.
             </h2>
             <p className="mt-6 text-muted leading-relaxed">
-              We're a paid media team for D2C brands and agencies. We manage the
-              ad accounts, test the creative, and own the numbers, so you can
-              spend more without watching ROAS slide.
+              We're a paid media and demand gen team for D2C brands, B2B
+              firms, and agencies. We manage the ad accounts, test the
+              creative, and own the numbers, so you can spend more without
+              watching ROAS slide or pipeline dry up.
             </p>
             <p className="mt-4 text-muted leading-relaxed">
               Built on {BRAND.founder.experience} years running paid media across
-              Meta, Google, and TikTok. Deep experience, paired with the tools we
-              built in-house.
+              Meta, Google, LinkedIn, and TikTok. Deep experience, paired with
+              the tools we built in-house.
             </p>
             <Link
               href="/about"

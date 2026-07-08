@@ -66,22 +66,26 @@ export default function DogHero() {
             right local dog owners find you, and they actually book.
           </p>
 
-          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+          <div className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-5">
             <Link
               href="#get-started"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#171712] px-7 py-3.5 font-semibold text-white hover:bg-[#171712]/85 transition"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-8 py-4 font-bold text-[#171712] shadow-lg shadow-lime/40 hover:bg-lime-soft transition"
             >
               Get my free growth plan <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="/case-studies/dog-products.pdf"
+              href="/case-studies/dog-local.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d8d6c9] bg-white px-7 py-3.5 font-semibold text-[#171712] hover:border-[#171712]/40 transition"
+              className="inline-flex items-center gap-1.5 font-medium text-[#636256] underline decoration-[#d8d6c9] underline-offset-4 hover:text-[#171712] transition"
             >
-              <FileText className="w-4 h-4" /> See how we scaled a dog brand
+              <FileText className="w-4 h-4" /> See a dog case study
             </a>
           </div>
+          <p className="mt-4 text-sm text-[#636256]">
+            Free plan, no retainer pitch on the call. 1,240 booked conversions
+            for one local facility.
+          </p>
         </div>
 
         {/* Photo */}

@@ -44,6 +44,8 @@ export default function LeadForm() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
+        const w = window as unknown as { fbq?: (...args: unknown[]) => void };
+        w.fbq?.("track", "Lead");
       } else {
         setStatus("error");
       }

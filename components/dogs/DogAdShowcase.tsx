@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PawPrint, Heart, MessageCircle, Share2 } from "lucide-react";
+import LazyAdVideo from "./LazyAdVideo";
 
 type AdCard = {
   brand: string;
@@ -217,17 +218,7 @@ function AdCardView({ ad }: { ad: AdCard }) {
       {/* Creative */}
       <div className={`relative ${ad.video ? "aspect-[9/16]" : "aspect-square"}`}>
         {ad.video ? (
-          <video
-            src={ad.video}
-            poster={ad.image}
-            muted
-            loop
-            autoPlay
-            playsInline
-            preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover"
-            aria-label={ad.alt}
-          />
+          <LazyAdVideo src={ad.video} poster={ad.image} alt={ad.alt} />
         ) : (
           <Image
             src={ad.image}

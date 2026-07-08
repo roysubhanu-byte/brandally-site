@@ -80,6 +80,14 @@ const BAR_STATS = [
 
 const FAQS = [
   {
+    q: "What does this cost?",
+    a: "The growth plan is free, and there's no retainer pitch on that call. If you decide to work with us after, we quote a flat monthly fee up front based on your market and goals. Ad accounts stay in your name, so your data and your audiences are always yours.",
+  },
+  {
+    q: "We tried ads before and lost money. Why would this be different?",
+    a: "Usually the money went to clicks nobody tracked. We fix tracking before we spend a dollar, so every booking traces back to the ad that caused it. The facility in our case study came to us in exactly that spot (fragmented campaigns, 80% of budget on people who were already customers) and now books at $11 a conversion.",
+  },
+  {
     q: "We're a small facility. Is this for us?",
     a: "If you have capacity for more dogs and a solid program, absolutely. Small facilities often see the fastest turnaround, because three or four extra board & train bookings in a month changes your whole revenue picture.",
   },
@@ -99,7 +107,17 @@ const FAQS = [
 
 export default function DogTrainingPage() {
   return (
-    <div className="bg-[#faf9f4] text-[#171712]">
+    <div className="bg-[#faf9f4] text-[#171712] pb-20 md:pb-0">
+      {/* Sticky mobile CTA */}
+      <div className="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-[#e6e4d9] bg-[#faf9f4]/95 backdrop-blur px-4 py-3">
+        <a
+          href="#get-started"
+          className="flex items-center justify-center gap-2 rounded-full bg-lime px-6 py-3.5 font-bold text-[#171712]"
+        >
+          Get my free growth plan <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+
       <DogHero />
 
       {/* Proof strip */}

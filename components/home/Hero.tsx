@@ -46,7 +46,7 @@ export default function Hero() {
         {/* Badge */}
         <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-lime">
           <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-          Paid media for D2C brands &amp; agencies
+          Paid media &amp; demand gen for D2C, B2B &amp; agencies
         </span>
 
         <h1 className="font-display mt-8 text-5xl md:text-7xl font-bold leading-[0.95]">
@@ -57,9 +57,10 @@ export default function Hero() {
         <p className="mx-auto mt-7 max-w-2xl text-lg text-muted">
           We run and scale{" "}
           <span className="text-white underline decoration-lime/60 underline-offset-4">
-            Meta, Google, and TikTok ads
+            Meta, Google, LinkedIn, and TikTok ads
           </span>{" "}
-          for D2C brands and agencies. You get profit, not just impressions.
+          for D2C brands, B2B firms, and agencies. You get pipeline and
+          profit, not just impressions.
         </p>
 
         {/* Formula pill */}
