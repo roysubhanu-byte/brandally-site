@@ -72,6 +72,12 @@ const LOCAL_STATS = [
   { value: "118", label: "Meta training leads at $35 each" },
 ];
 
+const BAR_STATS = [
+  { value: "1,240", label: "Booked conversions for one local facility" },
+  { value: "$11", label: "Cost per conversion" },
+  { value: "$0.69", label: "Average cost per click" },
+];
+
 const FAQS = [
   {
     q: "We're a small facility. Is this for us?",
@@ -100,10 +106,10 @@ export default function DogTrainingPage() {
       <section className="bg-lime">
         <div className="max-w-5xl mx-auto px-6 py-12">
           <p className="text-center text-xs font-semibold uppercase tracking-wider text-[#171712]/60">
-            A real dog training brand we worked with
+            A real dog training &amp; daycare business we run ads for
           </p>
           <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-            {STATS.map((s) => (
+            {BAR_STATS.map((s) => (
               <div key={s.label}>
                 <div className="font-display text-3xl md:text-5xl font-bold text-[#171712]">
                   {s.value}
@@ -118,62 +124,7 @@ export default function DogTrainingPage() {
       {/* Ad showcase */}
       <DogAdShowcase />
 
-      {/* Case study */}
-      <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
-        <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
-          <div className="md:col-span-3 p-8 md:p-12">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
-              Case study · Dog training products brand
-            </span>
-            <h2 className="font-display mt-4 text-3xl md:text-4xl font-bold max-w-xl">
-              How we took a dog brand from stuck ads to{" "}
-              <span className="rounded-xl bg-lime px-2">$180K</span> in 90
-              days.
-            </h2>
-            <p className="mt-4 max-w-2xl text-lg text-[#636256]">
-              A dog training products brand came to us frustrated. Meta was
-              bleeding budget with nothing to show for it, and Google
-              hadn&apos;t been touched. We rebuilt their campaigns from
-              scratch, rewrote the ads to match how dog owners actually talk
-              (&ldquo;my dog pulls like crazy on leash,&rdquo; &ldquo;he jumps
-              on every guest&rdquo;), and scaled spend only on what was
-              converting at a healthy cost. Ninety days later: $180K in new
-              revenue at $26 per customer.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-              {STATS.map((s) => (
-                <div key={s.label}>
-                  <div className="font-display text-2xl font-bold">
-                    {s.value}
-                  </div>
-                  <div className="text-xs uppercase tracking-wider text-[#636256]">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <a
-              href="/case-studies/dog-products.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171712] px-6 py-3 font-semibold text-white hover:bg-[#171712]/85 transition"
-            >
-              <FileText className="w-4 h-4" /> Read the case study
-            </a>
-          </div>
-          <div className="md:col-span-2 relative min-h-64">
-            <Image
-              src="/images/dogs/real-case-2.jpg"
-              alt="Trainer working with a husky on recall in a waterfront park"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Case study 2: local training & daycare */}
+      {/* Main case study: local training & daycare */}
       <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
         <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
           <div className="md:col-span-2 relative min-h-64">
@@ -231,6 +182,61 @@ export default function DogTrainingPage() {
             >
               Get a plan like this <ArrowRight className="w-4 h-4" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Case study 2: D2C dog products */}
+      <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
+        <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
+          <div className="md:col-span-3 p-8 md:p-12">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
+              Case study · Dog training products brand
+            </span>
+            <h2 className="font-display mt-4 text-3xl md:text-4xl font-bold max-w-xl">
+              How we took a dog brand from stuck ads to{" "}
+              <span className="rounded-xl bg-lime px-2">$180K</span> in 90
+              days.
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg text-[#636256]">
+              A dog training products brand came to us frustrated. Meta was
+              bleeding budget with nothing to show for it, and Google
+              hadn&apos;t been touched. We rebuilt their campaigns from
+              scratch, rewrote the ads to match how dog owners actually talk
+              (&ldquo;my dog pulls like crazy on leash,&rdquo; &ldquo;he jumps
+              on every guest&rdquo;), and scaled spend only on what was
+              converting at a healthy cost. Ninety days later: $180K in new
+              revenue at $26 per customer.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+              {STATS.map((s) => (
+                <div key={s.label}>
+                  <div className="font-display text-2xl font-bold">
+                    {s.value}
+                  </div>
+                  <div className="text-xs uppercase tracking-wider text-[#636256]">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a
+              href="/case-studies/dog-products.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171712] px-6 py-3 font-semibold text-white hover:bg-[#171712]/85 transition"
+            >
+              <FileText className="w-4 h-4" /> Read the case study
+            </a>
+          </div>
+          <div className="md:col-span-2 relative min-h-64">
+            <Image
+              src="/images/dogs/real-case-2.jpg"
+              alt="Trainer working with a husky on recall in a waterfront park"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
