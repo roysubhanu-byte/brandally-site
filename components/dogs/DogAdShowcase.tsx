@@ -8,6 +8,7 @@ type AdCard = {
   image: string;
   alt: string;
   cta: string;
+  video?: string;
 };
 
 // Real ad creatives from a dog training client (brand anonymized in the images)
@@ -113,17 +114,50 @@ const MORE_ADS: AdCard[] = [
   },
 ];
 
+const VIDEO_ADS: AdCard[] = [
+  {
+    brand: "Dog Products Co.",
+    tag: "Video hook",
+    hook: "He went from pulling her down the block to heeling like a pro.",
+    image: "/videos/ads/ad-v1-poster.jpg",
+    alt: "Video ad of a german shepherd learning loose-leash walking",
+    cta: "Watch the change",
+    video: "/videos/ads/ad-v1.mp4",
+  },
+  {
+    brand: "Dog Products Co.",
+    tag: "Street interview",
+    hook: "“That thing changed my dog's walks.” Owners on camera, unscripted.",
+    image: "/videos/ads/ad-v2-poster.jpg",
+    alt: "Street interview video ad with a dog owner",
+    cta: "See why",
+    video: "/videos/ads/ad-v2.mp4",
+  },
+  {
+    brand: "Board & Train Co.",
+    tag: "Reel ad",
+    hook: "Calm, easy walks in just 2 weeks. Here's what that looks like.",
+    image: "/videos/ads/ad-v3-poster.jpg",
+    alt: "Video ad promising calm walks in two weeks",
+    cta: "Get started",
+    video: "/videos/ads/ad-v3.mp4",
+  },
+];
+
 const ROW_ONE: AdCard[] = [
   ADS[0],
   MORE_ADS[2],
+  VIDEO_ADS[0],
   ADS[2],
   MORE_ADS[4],
+  VIDEO_ADS[2],
   ADS[4],
   MORE_ADS[3],
 ];
 const ROW_TWO: AdCard[] = [
   MORE_ADS[6],
   ADS[1],
+  VIDEO_ADS[1],
   MORE_ADS[1],
   ADS[3],
   MORE_ADS[5],
@@ -152,14 +186,28 @@ function AdCardView({ ad }: { ad: AdCard }) {
       </p>
 
       {/* Creative */}
-      <div className="relative aspect-square">
-        <Image
-          src={ad.image}
-          alt={ad.alt}
-          fill
-          sizes="288px"
-          className="object-cover"
-        />
+      <div className={`relative ${ad.video ? "aspect-[9/16]" : "aspect-square"}`}>
+        {ad.video ? (
+          <video
+            src={ad.video}
+            poster={ad.image}
+            muted
+            loop
+            autoPlay
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+            aria-label={ad.alt}
+          />
+        ) : (
+          <Image
+            src={ad.image}
+            alt={ad.alt}
+            fill
+            sizes="288px"
+            className="object-cover"
+          />
+        )}
         <span className="absolute left-3 top-3 rounded-full bg-[#171712]/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur">
           {ad.tag}
         </span>
@@ -192,12 +240,12 @@ function MarqueeRow({
     : "animate-marquee-slow";
   return (
     <div className="overflow-hidden">
-      <div className={`flex w-max gap-5 ${animation}`}>
+      <div className={`flex w-max items-start gap-5 ${animation}`}>
         {[false, true].map((dup) => (
           <div
             key={dup ? "dup" : "main"}
             aria-hidden={dup}
-            className="flex gap-5 pr-5"
+            className="flex items-start gap-5 pr-5"
           >
             {ads.map((ad) => (
               <AdCardView key={`${ad.brand}-${ad.tag}`} ad={ad} />
