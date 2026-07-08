@@ -127,7 +127,7 @@ export default function DogLeadForm() {
 
       <div>
         <label className="block text-sm font-medium text-[#636256] mb-1.5">
-          What kind of dog business?
+          What describes your business best?
         </label>
         <select name="niche" defaultValue="" className={inputClass} required>
           <option value="" disabled>
@@ -153,7 +153,7 @@ export default function DogLeadForm() {
         className="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 font-semibold text-ink hover:bg-lime-soft disabled:opacity-60 transition"
       >
         <Send className="w-4 h-4" />
-        {status === "sending" ? "Sending..." : "Get my free growth plan"}
+        {status === "sending" ? "Sending..." : "Send me the growth plan"}
       </button>
     </form>
   );

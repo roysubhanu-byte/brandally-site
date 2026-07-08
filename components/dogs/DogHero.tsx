@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, PawPrint, FileText } from "lucide-react";
 
-const WORDS = ["booked solid", "profitable", "predictable", "waitlisted"];
+const WORDS = ["bookings", "waitlists", "growth", "pipeline"];
 
 export default function DogHero() {
   const [word, setWord] = useState(0);
@@ -29,12 +29,12 @@ export default function DogHero() {
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-[#e6e4d9] bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
             <PawPrint className="h-3.5 w-3.5" />
-            We love dogs. We scale dog businesses.
+            Built for dog trainers. Run by dog people.
           </span>
 
           <h1 className="font-display mt-7 text-4xl md:text-6xl font-bold leading-[1.05] text-[#171712]">
-            <span className="block">Board &amp; train</span>
-            <span className="block">programs that stay</span>
+            <span className="block">You handle the dogs.</span>
+            <span className="block">We handle the</span>
             {/* Rotating word */}
             <span className="relative block h-[1.35em] overflow-hidden">
               {WORDS.map((w, i) => (
@@ -62,8 +62,8 @@ export default function DogHero() {
             <span className="text-[#171712] underline decoration-lime underline-offset-4 decoration-2">
               Meta and Google ads
             </span>{" "}
-            for dog trainers and board &amp; train facilities. You train the
-            dogs. We keep qualified local owners on your calendar.
+            for dog trainers and board &amp; train businesses. Our job: the
+            right local dog owners find you, and they actually book.
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
@@ -71,7 +71,7 @@ export default function DogHero() {
               href="#get-started"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#171712] px-7 py-3.5 font-semibold text-white hover:bg-[#171712]/85 transition"
             >
-              Get your free growth plan <ArrowRight className="w-4 h-4" />
+              Get my free growth plan <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="/case-studies/dog-products.pdf"
@@ -79,7 +79,7 @@ export default function DogHero() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d8d6c9] bg-white px-7 py-3.5 font-semibold text-[#171712] hover:border-[#171712]/40 transition"
             >
-              <FileText className="w-4 h-4" /> See the dog case study
+              <FileText className="w-4 h-4" /> See how we scaled a dog brand
             </a>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function DogHero() {
                 Good sit.
               </div>
               <div className="text-xs text-[#636256]">
-                Better marketing.
+                Great marketing.
               </div>
             </div>
           </div>

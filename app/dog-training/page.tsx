@@ -19,31 +19,31 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { value: "$180K", label: "New revenue for one dog brand" },
-  { value: "$26", label: "Cost to win each customer" },
-  { value: "90 days", label: "From stuck ads to scaled" },
+  { value: "$180K", label: "New revenue in 90 days" },
+  { value: "$26", label: "Cost per new customer" },
+  { value: "90 days", label: "From stuck ads to scaled and profitable" },
 ];
 
 const SERVICES = [
   {
     icon: MapPin,
     title: "Local demand, on tap",
-    body: "Meta and Google campaigns aimed at dog owners in your actual service area. Qualified leads, not clicks from three states away.",
+    body: "Meta and Google ads aimed at local pet owners who are actively looking for training, boarding, daycare, or grooming. Not random clicks from people who live too far away to ever show up.",
   },
   {
     icon: Target,
     title: "Creative that sells the transformation",
-    body: "Owners don't buy kennels and logos. They buy the calm, off-leash dog at the end. Our ads show the after.",
+    body: "Dog owners aren't really paying for board & train. They're paying to enjoy walks again, host guests without chaos, and stop feeling embarrassed at the park. Our ads sell that after, not the facility.",
   },
   {
     icon: CalendarCheck,
-    title: "Consults, not clicks",
-    body: "Every campaign points to a booked evaluation call on your calendar. We track cost per booked consult, so you know exactly what a new client costs you.",
+    title: "Bookings, not clicks",
+    body: "Clicks don't pay your bills. Booked evaluation calls do. Every campaign is built to put qualified dog owners on your calendar, and we track cost per booked consult (not likes or clicks) so you always know what a new client costs you.",
   },
   {
     icon: TrendingUp,
     title: "Scale without the chaos",
-    body: "Once slots fill, we help you raise prices, open a waitlist, and expand into puppy programs or day training.",
+    body: "Once your board & train slots are full, the real work starts. We help you build a waitlist, raise your prices with confidence, and expand into puppy programs or day training without adding stress to your operation.",
   },
 ];
 
@@ -68,19 +68,19 @@ const STEPS = [
 const FAQS = [
   {
     q: "We're a small facility. Is this for us?",
-    a: "If you have room for more dogs and a program worth selling, yes. Small facilities often see the fastest impact because a handful of extra board & train bookings changes the whole month.",
+    a: "If you have capacity for more dogs and a solid program, absolutely. Small facilities often see the fastest turnaround, because three or four extra board & train bookings in a month changes your whole revenue picture.",
   },
   {
     q: "Will this replace our referrals?",
-    a: "No, and it shouldn't. Referrals are your best clients. Ads sit on top of them so your calendar doesn't depend on word of mouth alone.",
+    a: "No, and it shouldn't. Referral clients are usually your best clients. Paid ads sit alongside your referrals so you're not at the mercy of word of mouth. When referrals slow down (and they always do at some point), your calendar doesn't.",
   },
   {
     q: "What do you need from us?",
-    a: "Footage and photos of real dogs you've trained, a rough idea of your capacity, and someone who answers consult requests fast. We handle the rest.",
+    a: "Real footage and photos of dogs you've worked with (even casual phone videos are great), a rough idea of your current capacity, and someone on your end who answers consult inquiries fast. We take care of everything else.",
   },
   {
     q: "Do you work with dog product brands too?",
-    a: "Yes. The case study on this page is a dog training products brand we took to $180K in 3 months. Dogs are the niche, not just the service side.",
+    a: "Yes. The case study above is a dog training products brand we helped generate $180K in 90 days. Whether you sell programs, gear, or courses, if it's in the dog world, we're in.",
   },
 ];
 
@@ -93,7 +93,7 @@ export default function DogTrainingPage() {
       <section className="bg-lime">
         <div className="max-w-5xl mx-auto px-6 py-12">
           <p className="text-center text-xs font-semibold uppercase tracking-wider text-[#171712]/60">
-            A dog brand we run
+            A real dog training brand we worked with
           </p>
           <div className="mt-6 grid grid-cols-3 gap-4 text-center">
             {STATS.map((s) => (
@@ -123,24 +123,27 @@ export default function DogTrainingPage() {
               <PawPrint className="h-3.5 w-3.5" /> Why only dogs
             </span>
             <h2 className="font-display mt-5 text-3xl md:text-5xl font-bold">
-              Because we love them. And because focus wins.
+              Because dogs deserve specialists. And so do you.
             </h2>
             <div className="mt-6 space-y-5 text-lg text-[#636256]">
               <p>
-                Most agencies run ads for anyone with a budget. A dentist on
-                Monday, a dog trainer on Tuesday. The ads end up
-                interchangeable.
+                Most agencies will happily take your money on Monday and run
+                the same template they ran for a chiropractor on Friday. The
+                messaging is generic. The results are average.
               </p>
               <p>
-                We picked one lane: dogs. Board &amp; train, day training,
-                puppy programs, dog products. That focus means we already know
-                what a high-ticket board &amp; train ad needs to show (the
-                transformation, not the kennel), which objections stop owners
-                from booking, and what separates a tire-kicker from a buyer.
+                We work with one niche: dogs. Board &amp; train, day training,
+                puppy classes, dog products. So we already know a high-ticket
+                board &amp; train ad has to sell the transformation, not the
+                kennel. We know the objections owners have before they book a
+                consult. And we know what separates someone serious about
+                fixing their reactive dog from someone who&apos;ll ghost after
+                one DM.
               </p>
               <p className="text-[#171712] font-medium">
-                You shouldn&apos;t have to teach your agency your industry.
-                Ours already lives in it.
+                You&apos;ve spent years getting good at dog behaviour. You
+                deserve an agency that&apos;s done the same for your kind of
+                business.
               </p>
             </div>
           </div>
@@ -151,11 +154,10 @@ export default function DogTrainingPage() {
       <section className="border-y border-[#e6e4d9] bg-white">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
-            What we fix
+            Four reasons great trainers still have empty spots.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
-            Four things stand between a good trainer and a full calendar. We
-            handle all four.
+            We fix all four.
           </p>
           <div className="mt-12 grid sm:grid-cols-2 gap-5">
             {SERVICES.map((s) => (
@@ -181,19 +183,22 @@ export default function DogTrainingPage() {
         <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
           <div className="md:col-span-3 p-8 md:p-12">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
-              Case study · D2C dog training brand
+              Case study · Dog training products brand
             </span>
             <h2 className="font-display mt-4 text-3xl md:text-4xl font-bold max-w-xl">
-              From stuck ads to{" "}
-              <span className="rounded-xl bg-lime px-2">$180K</span> in 3
-              months.
+              How we took a dog brand from stuck ads to{" "}
+              <span className="rounded-xl bg-lime px-2">$180K</span> in 90
+              days.
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-[#636256]">
-              A dog training products brand came to us with Meta
-              underperforming and Google untouched. We rebuilt the campaign
-              structure, matched the ads to how dog owners actually talk about
-              their problems, and scaled spend only where it kept bringing in
-              customers at a price that made sense.
+              A dog training products brand came to us frustrated. Meta was
+              bleeding budget with nothing to show for it, and Google
+              hadn&apos;t been touched. We rebuilt their campaigns from
+              scratch, rewrote the ads to match how dog owners actually talk
+              (&ldquo;my dog pulls like crazy on leash,&rdquo; &ldquo;he jumps
+              on every guest&rdquo;), and scaled spend only on what was
+              converting at a healthy cost. Ninety days later: $180K in new
+              revenue at $26 per customer.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
               {STATS.map((s) => (
@@ -261,25 +266,27 @@ export default function DogTrainingPage() {
         <div className="grid md:grid-cols-5 gap-10 md:gap-14 items-start">
           <div className="md:col-span-2">
             <h2 className="font-display text-3xl md:text-4xl font-bold">
-              Tell us about your dog business.
+              Let&apos;s look at your market together.
             </h2>
             <p className="mt-4 text-lg text-[#636256]">
-              We&apos;ll review your local market and current marketing, then
-              send you a written growth plan. Free, and yours to keep either
-              way.
+              Share a few details about your business and where you&apos;re at
+              with marketing. We&apos;ll look at your local competition, your
+              current ads (if any), and the demand in your area, then send you
+              a written plan with exactly what we&apos;d do. Completely free.
             </p>
             <ul className="mt-6 space-y-3 text-[#636256]">
               <li className="flex gap-3">
                 <ArrowRight className="w-5 h-5 text-[#5c7a1e] shrink-0 mt-0.5" />
-                No retainers pitched on the first call
+                No retainer pitch on the first call, just a real conversation
               </li>
               <li className="flex gap-3">
                 <ArrowRight className="w-5 h-5 text-[#5c7a1e] shrink-0 mt-0.5" />
-                Response within 1 business day
+                You&apos;ll hear back within 1 business day
               </li>
               <li className="flex gap-3">
                 <ArrowRight className="w-5 h-5 text-[#5c7a1e] shrink-0 mt-0.5" />
-                Dog businesses only. That&apos;s the whole point.
+                We only work with dog businesses. That&apos;s a real policy,
+                not a tagline.
               </li>
             </ul>
             <Image
