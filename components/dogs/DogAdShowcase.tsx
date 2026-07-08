@@ -54,8 +54,81 @@ const ADS: AdCard[] = [
   },
 ];
 
-const ROW_ONE: AdCard[] = ADS;
-const ROW_TWO: AdCard[] = [ADS[2], ADS[4], ADS[1], ADS[0], ADS[3]];
+const MORE_ADS: AdCard[] = [
+  {
+    brand: "Daycare & Boarding",
+    tag: "Social proof",
+    hook: "Daycare that loves them like you do, with the numbers to back it up.",
+    image: "/images/dogs/ads/ad-6.jpg",
+    alt: "Daycare ad listing reviews, square footage, and certified staff",
+    cta: "Book a visit",
+  },
+  {
+    brand: "Daycare & Boarding",
+    tag: "Boarding angle",
+    hook: "A getaway they'll love while you're away. They play, you breathe.",
+    image: "/images/dogs/ads/ad-7.jpg",
+    alt: "Boarding ad with three puppies looking over a ledge",
+    cta: "Book now",
+  },
+  {
+    brand: "Daycare & Boarding",
+    tag: "Objection killer",
+    hook: "Nervous about daycare? Watch your dog anytime on live cameras.",
+    image: "/images/dogs/ads/ad-8.jpg",
+    alt: "Daycare ad showing live camera feed of dogs on a phone",
+    cta: "See the cameras",
+  },
+  {
+    brand: "Daycare & Boarding",
+    tag: "Review ad",
+    hook: "“The daycare dogs drag their humans into.” A real five-star review.",
+    image: "/images/dogs/ads/ad-9.jpg",
+    alt: "Review ad with a happy dalmatian at daycare",
+    cta: "Book an intro day",
+  },
+  {
+    brand: "Board & Train Co.",
+    tag: "Pain point",
+    hook: "A lunging, snapping dog isn't just stressful. It's dangerous.",
+    image: "/images/dogs/ads/ad-10.jpg",
+    alt: "Training ad about reactive dogs with visible results in 2 weeks",
+    cta: "Get help today",
+  },
+  {
+    brand: "Board & Train Co.",
+    tag: "Hook ad",
+    hook: "Is walking your dog a nightmare? Calm, easy walks in 2 weeks.",
+    image: "/images/dogs/ads/ad-11.jpg",
+    alt: "Training ad asking if walking your dog is a nightmare",
+    cta: "Get help today",
+  },
+  {
+    brand: "Board & Train Co.",
+    tag: "Guarantee",
+    hook: "If he isn't better in 7 days, we'll pay you $500 to train somewhere else.",
+    image: "/images/dogs/ads/ad-12.jpg",
+    alt: "Guarantee ad offering $500 if the dog isn't better in 7 days",
+    cta: "Book a consult",
+  },
+];
+
+const ROW_ONE: AdCard[] = [
+  ADS[0],
+  MORE_ADS[2],
+  ADS[2],
+  MORE_ADS[4],
+  ADS[4],
+  MORE_ADS[3],
+];
+const ROW_TWO: AdCard[] = [
+  MORE_ADS[6],
+  ADS[1],
+  MORE_ADS[1],
+  ADS[3],
+  MORE_ADS[5],
+  MORE_ADS[0],
+];
 
 function AdCardView({ ad }: { ad: AdCard }) {
   return (
@@ -144,8 +217,9 @@ export default function DogAdShowcase() {
           What the ads actually look like
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
-          Real ads we built for a dog training business (name hidden, results
-          real). Yours get your dogs, your voice, and your story.
+          Real ads we run for dog training, board &amp; train, and daycare
+          businesses (names hidden). Yours get your dogs, your voice, and your
+          story.
         </p>
       </div>
 
