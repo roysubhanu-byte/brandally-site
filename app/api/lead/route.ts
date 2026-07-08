@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+import { createHash } from "crypto";
+
 type Lead = {
   name: string;
   business: string;
@@ -8,6 +10,56 @@ type Lead = {
   website: string;
   niche: string;
 };
+
+// Server-side Conversions API Lead, deduped with the browser pixel via event_id.
+async function sendCapiLead(
+  lead: Lead,
+  eventId: string | undefined,
+  req: NextRequest
+) {
+  const pixelId = process.env.META_PIXEL_ID;
+  const token = process.env.META_CAPI_TOKEN;
+  if (!pixelId || !token) return;
+
+  try {
+    const em = createHash("sha256")
+      .update(lead.business_email.trim().toLowerCase())
+      .digest("hex");
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() || undefined;
+    const ua = req.headers.get("user-agent") || undefined;
+
+    const res = await fetch(
+      `https://graph.facebook.com/v21.0/${pixelId}/events`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          data: [
+            {
+              event_name: "Lead",
+              event_time: Math.floor(Date.now() / 1000),
+              event_id: eventId,
+              action_source: "website",
+              event_source_url: "https://brandally.net/dog-training",
+              user_data: {
+                em: [em],
+                client_ip_address: ip,
+                client_user_agent: ua,
+              },
+            },
+          ],
+          access_token: token,
+        }),
+      }
+    );
+    if (!res.ok) {
+      console.error("CAPI Lead failed:", res.status, await res.text());
+    }
+  } catch (err) {
+    console.error("CAPI Lead error:", err);
+  }
+}
 
 // Fire-and-forget notification; a mail failure must never lose the lead.
 async function notifyPartners(lead: Lead) {
@@ -64,11 +116,12 @@ export async function POST(req: NextRequest) {
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     const lead = { name, business, business_email, website, niche };
+    const eventId = typeof body.event_id === "string" ? body.event_id : undefined;
 
     // No DB configured yet: log so nothing is lost, still succeed.
     if (!url || !key) {
       console.log("Lead (no DB configured):", lead);
-      await notifyPartners(lead);
+      await Promise.all([notifyPartners(lead), sendCapiLead(lead, eventId, req)]);
       return NextResponse.json({ success: true });
     }
 
@@ -96,7 +149,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Failed to save" }, { status: 500 });
     }
 
-    await notifyPartners(lead);
+    await Promise.all([notifyPartners(lead), sendCapiLead(lead, eventId, req)]);
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

@@ -26,6 +26,7 @@ export default function DogLeadForm() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
+    const eventId = crypto.randomUUID();
 
     try {
       const res = await fetch("/api/lead", {
@@ -37,13 +38,14 @@ export default function DogLeadForm() {
           business_email: data.get("business_email"),
           website: data.get("website"),
           niche: `Dog: ${data.get("niche")}`,
+          event_id: eventId,
         }),
       });
       if (res.ok) {
         setStatus("sent");
         form.reset();
         const w = window as unknown as { fbq?: (...args: unknown[]) => void };
-        w.fbq?.("track", "Lead");
+        w.fbq?.("track", "Lead", {}, { eventID: eventId });
       } else {
         setStatus("error");
       }
