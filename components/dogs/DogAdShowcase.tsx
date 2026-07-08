@@ -10,76 +10,52 @@ type AdCard = {
   cta: string;
 };
 
-// Placeholder creatives — swap `image` paths when real ad images land
-const ROW_ONE: AdCard[] = [
+// Real ad creatives from a dog training client (brand anonymized in the images)
+const ADS: AdCard[] = [
   {
     brand: "Board & Train Co.",
-    tag: "Hook video",
-    hook: "He used to drag me down the entire street. This is week 3 of board & train.",
-    image: "/images/dogs/hero-puppy.jpg",
-    alt: "Golden retriever puppy holding a sit",
+    tag: "Before / after",
+    hook: "He ate a shoe on Monday. Three weeks later, calm and obedient.",
+    image: "/images/dogs/ads/ad-1.jpg",
+    alt: "Before and after ad: reactive dog to calm dog in 3 weeks",
     cta: "Book a free evaluation",
   },
   {
-    brand: "Puppy School",
-    tag: "Puppy angle",
-    hook: "Biting, chewing, zero recall? 8 weeks old is the perfect time to start.",
-    image: "/images/dogs/corgi.jpg",
-    alt: "Corgi puppy against an orange backdrop",
-    cta: "See class times",
+    brand: "Obedience School",
+    tag: "UGC hook",
+    hook: "Commands, focus, and real-world manners. You can see it in 3 weeks.",
+    image: "/images/dogs/ads/ad-3.jpg",
+    alt: "Handwritten whiteboard ad for obedience training",
+    cta: "Book a consult",
   },
-  {
-    brand: "Daycare & Boarding",
-    tag: "Facility tour",
-    hook: "A Tuesday at daycare. This is where the zoomies go.",
-    image: "/images/dogs/running-duo.jpg",
-    alt: "Two dogs running down a trail",
-    cta: "Book a tour",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Testimonial",
-    hook: "“We finally have guests over without hiding the dog.” Sarah, after 21 days.",
-    image: "/images/dogs/golden-portrait.jpg",
-    alt: "Golden retriever looking at the camera",
-    cta: "Read her story",
-  },
-];
-
-const ROW_TWO: AdCard[] = [
   {
     brand: "Board & Train Co.",
     tag: "Offer drop",
-    hook: "3 board & train spots open for spring. Your dog comes home different.",
-    image: "/images/dogs/happy-aussie.jpg",
-    alt: "Happy Australian shepherd",
+    hook: "Summer board & train spots are open. Real results, all summer long.",
+    image: "/images/dogs/ads/ad-4.jpg",
+    alt: "Summer program ad with trainer and dog on the training field",
     cta: "Claim a spot",
   },
   {
-    brand: "Day Training",
-    tag: "Before / after",
-    hook: "Week 1 vs week 3. Same dog, same owner, brand new walks.",
-    image: "/images/dogs/running-duo.jpg",
-    alt: "Two dogs mid-run on a trail",
-    cta: "Watch the change",
+    brand: "Obedience School",
+    tag: "Program ad",
+    hook: "Training that holds up outside the yard, around real distractions.",
+    image: "/images/dogs/ads/ad-5.jpg",
+    alt: "Obedience training ad with dog holding a down-stay",
+    cta: "Book a free consult",
   },
   {
     brand: "Board & Train Co.",
-    tag: "Reactive dog",
-    hook: "A reactive dog doesn't mean a bad owner. It means you need a plan.",
-    image: "/images/dogs/golden-portrait.jpg",
-    alt: "Calm golden retriever portrait",
-    cta: "Get the plan",
-  },
-  {
-    brand: "Grooming Studio",
-    tag: "Local offer",
-    hook: "New local pups get their first groom at $20 off. This week only.",
-    image: "/images/dogs/corgi.jpg",
-    alt: "Freshly groomed corgi puppy",
-    cta: "Book a slot",
+    tag: "Transformation",
+    hook: "From dragging her down the street to walking right beside her.",
+    image: "/images/dogs/ads/ad-2.jpg",
+    alt: "Before and after ad: dog pulling on leash, then walking calmly",
+    cta: "See the program",
   },
 ];
+
+const ROW_ONE: AdCard[] = ADS;
+const ROW_TWO: AdCard[] = [ADS[2], ADS[4], ADS[1], ADS[0], ADS[3]];
 
 function AdCardView({ ad }: { ad: AdCard }) {
   return (
@@ -168,8 +144,8 @@ export default function DogAdShowcase() {
           What the ads actually look like
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
-          A few of the formats and angles we run, written the way dog owners
-          talk. Yours get your dogs, your voice, and your results.
+          Real ads we built for a dog training business (name hidden, results
+          real). Yours get your dogs, your voice, and your story.
         </p>
       </div>
 
