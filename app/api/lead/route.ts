@@ -37,7 +37,6 @@ async function notifyPartners(lead: Lead) {
         `Type: ${lead.niche || "-"}`,
         "",
         "Reply to this email to reach the lead directly.",
-        "All leads: https://supabase.com/dashboard/project/oqojottqgsnxdiwfexca/editor",
       ].join("\n"),
     });
   } catch (err) {
