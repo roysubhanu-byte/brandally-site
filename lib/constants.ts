@@ -86,6 +86,22 @@ export const CASE_STUDIES = [
     ],
   },
   {
+    slug: "dog-local",
+    pdf: "/case-studies/dog-local.pdf",
+    client: "Dog training & daycare",
+    industry: "Local · Dog training & daycare",
+    headline: "1,240 conversions at $11 each",
+    accent: "1,240",
+    timeframe: "in 10 months",
+    summary:
+      "A local facility invisible to owners searching nearby, with brand terms eating 80% of the budget. We fixed tracking first, launched Performance Max across Search and Maps, then layered Meta. Two engines that now feed each other.",
+    metrics: [
+      { value: "1,240", label: "Google conversions" },
+      { value: "$11", label: "Cost per conversion" },
+      { value: "$0.69", label: "Avg cost per click" },
+    ],
+  },
+  {
     slug: "dog-products",
     pdf: "/case-studies/dog-products.pdf",
     client: "Dog products",
@@ -216,6 +232,7 @@ export const FAQ_ITEMS = [
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
