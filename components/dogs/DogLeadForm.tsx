@@ -87,7 +87,6 @@ export default function DogLeadForm() {
             name="name"
             required
             className={inputClass}
-            placeholder="Sarah Miller"
           />
         </div>
         <div>
@@ -98,7 +97,6 @@ export default function DogLeadForm() {
             type="text"
             name="business"
             className={inputClass}
-            placeholder="Good Dog Academy"
           />
         </div>
       </div>
@@ -113,7 +111,6 @@ export default function DogLeadForm() {
             name="business_email"
             required
             className={inputClass}
-            placeholder="you@yourbusiness.com"
           />
         </div>
         <div>
@@ -124,7 +121,6 @@ export default function DogLeadForm() {
             type="text"
             name="website"
             className={inputClass}
-            placeholder="yourbusiness.com"
           />
         </div>
       </div>

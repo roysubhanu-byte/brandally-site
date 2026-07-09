@@ -88,7 +88,6 @@ export default function LeadForm() {
             name="name"
             required
             className={inputClass}
-            placeholder="John Smith"
           />
         </div>
         <div>
@@ -99,7 +98,6 @@ export default function LeadForm() {
             type="text"
             name="business"
             className={inputClass}
-            placeholder="Acme Co."
           />
         </div>
       </div>
@@ -114,7 +112,6 @@ export default function LeadForm() {
             name="business_email"
             required
             className={inputClass}
-            placeholder="you@yourbrand.com"
           />
         </div>
         <div>
@@ -125,7 +122,6 @@ export default function LeadForm() {
             type="text"
             name="website"
             className={inputClass}
-            placeholder="yourbrand.com"
           />
         </div>
       </div>
