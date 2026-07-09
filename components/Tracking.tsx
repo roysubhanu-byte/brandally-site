@@ -3,6 +3,7 @@ import Script from "next/script";
 // Same stack as CreativeIntel: Meta Pixel + Microsoft Clarity.
 const META_PIXEL_ID = "2211241363015031";
 const CLARITY_ID = "weurnbaqoe";
+const RB2B_KEY = "XOE9GHRYLWOM";
 
 export default function Tracking() {
   return (
@@ -35,6 +36,16 @@ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "${CLARITY_ID}");`}
+      </Script>
+      <Script id="rb2b" strategy="afterInteractive">
+        {`!function(key){
+if (window.reb2b) return;
+window.reb2b = {loaded: true};
+var s = document.createElement("script");
+s.async = true;
+s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);
+}("${RB2B_KEY}");`}
       </Script>
     </>
   );
