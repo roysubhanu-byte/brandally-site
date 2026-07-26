@@ -36,6 +36,7 @@ export default function DogLeadForm() {
           name: data.get("name"),
           business: data.get("business"),
           business_email: data.get("business_email"),
+          phone: data.get("phone"),
           website: data.get("website"),
           niche: `Dog: ${data.get("niche")}`,
           event_id: eventId,
@@ -123,6 +124,18 @@ export default function DogLeadForm() {
             className={inputClass}
           />
         </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-[#636256] mb-1.5">
+          Phone <span className="text-[#636256]/60">(optional)</span>
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="(555) 123-4567"
+          className={inputClass}
+        />
       </div>
 
       <div>
