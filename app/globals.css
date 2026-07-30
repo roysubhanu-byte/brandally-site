@@ -95,6 +95,18 @@ h1, h2, h3, .font-display {
   }
 }
 
+/* Slow zoom on the active spotlight ad image */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.animate-kenburns {
+  animation: kenburns 7s ease-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns { animation: none; }
+}
+
 /* Word-by-word reveal for testimonial quotes */
 @keyframes word-in {
   from { opacity: 0; filter: blur(6px); transform: translateY(4px); }

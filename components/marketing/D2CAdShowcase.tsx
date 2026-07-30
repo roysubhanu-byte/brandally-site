@@ -97,132 +97,61 @@ const ADS: AdCard[] = [
   },
 ];
 
-// Cards per second the strip glides at when idle. One full lap of 10 cards
-// takes count / SPEED_PER_MS milliseconds.
-const LAP_MS = 42000;
+const AUTO_ADVANCE_MS = 4200;
 
-function shortestDelta(diff: number, count: number) {
-  let d = diff % count;
-  if (d > count / 2) d -= count;
-  if (d < -count / 2) d += count;
-  return d;
-}
-
-function cardStyle(offset: number) {
-  const abs = Math.abs(offset);
-  if (abs > 2.15) {
-    return { transform: "translateX(0px)", opacity: 0, zIndex: 0, pointerEvents: "none" as const };
-  }
-  const dir = offset < 0 ? -1 : offset > 0 ? 1 : 0;
-  const translate = offset * 250;
-  const scale = Math.max(0.62, 1 - abs * 0.26);
-  const rotate = -dir * Math.min(abs * 26, 50);
-  const opacity = abs < 0.02 ? 1 : Math.max(0.28, 0.68 - abs * 0.24);
-  return {
-    transform: `translateX(${translate}px) scale(${scale}) rotateY(${rotate}deg)`,
-    zIndex: Math.round(100 - abs),
-    opacity,
-    pointerEvents: (abs > 1.2 ? "none" : "auto") as "none" | "auto",
-  };
-}
-
-// Continuously drives a fractional "position" via requestAnimationFrame so
-// the coverflow glides on its own instead of jump-cutting between cards.
-// Manual nav (arrows/dots/click) sets a target that gets eased into, then
-// the idle drift resumes from there.
-function useSelfScrollingCoverflow(
-  count: number,
-  cardRefs: React.MutableRefObject<(HTMLButtonElement | null)[]>
-) {
-  const positionRef = useRef(0);
-  const targetRef = useRef<number | null>(null);
-  const pausedRef = useRef(false);
-  const lastTsRef = useRef<number | null>(null);
-  const rafRef = useRef<number | null>(null);
-  const lastActiveRef = useRef(0);
-  const reducedMotionRef = useRef(false);
+// Single-card spotlight: only one ad is ever fully rendered, so there is
+// nothing to compete with it visually. Auto-advances on its own, crossfades
+// with a slight directional slide, and the active image slowly zooms
+// (Ken Burns) to keep it feeling alive between transitions.
+function useSpotlight(count: number) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const pausedRef = useRef(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const applyStyles = useCallback(() => {
-    const pos = positionRef.current;
-    cardRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const offset = shortestDelta(i - pos, count);
-      const s = cardStyle(offset);
-      el.style.transform = s.transform;
-      el.style.opacity = String(s.opacity);
-      el.style.zIndex = String(s.zIndex);
-      el.style.pointerEvents = s.pointerEvents;
-    });
-    const normalized = ((Math.round(pos) % count) + count) % count;
-    if (normalized !== lastActiveRef.current) {
-      lastActiveRef.current = normalized;
-      setActiveIndex(normalized);
-    }
-  }, [count, cardRefs]);
-
-  useEffect(() => {
-    reducedMotionRef.current =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    applyStyles();
-
-    const speed = count / LAP_MS; // cards per ms
-    function tick(ts: number) {
-      if (lastTsRef.current == null) lastTsRef.current = ts;
-      const dt = ts - lastTsRef.current;
-      lastTsRef.current = ts;
-
-      if (targetRef.current != null) {
-        const d = shortestDelta(targetRef.current - positionRef.current, count);
-        if (Math.abs(d) < 0.01) {
-          positionRef.current = targetRef.current;
-          targetRef.current = null;
-        } else {
-          positionRef.current += d * 0.1;
-        }
-      } else if (!pausedRef.current && !reducedMotionRef.current) {
-        positionRef.current += speed * dt;
-      }
-      positionRef.current = ((positionRef.current % count) + count) % count;
-
-      applyStyles();
-      rafRef.current = requestAnimationFrame(tick);
-    }
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [count, applyStyles]);
-
-  const goTo = useCallback((idx: number) => {
-    const cur = positionRef.current;
-    const d = shortestDelta(idx - cur, count);
-    targetRef.current = cur + d;
+  const goTo = useCallback(
+    (idx: number) => {
+      setDirection(1);
+      setActiveIndex(((idx % count) + count) % count);
+    },
+    [count]
+  );
+  const next = useCallback(() => {
+    setDirection(1);
+    setActiveIndex((i) => (i + 1) % count);
+  }, [count]);
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setActiveIndex((i) => (i - 1 + count) % count);
   }, [count]);
 
-  const next = useCallback(
-    () => goTo(Math.round(positionRef.current) + 1),
-    [goTo]
-  );
-  const prev = useCallback(
-    () => goTo(Math.round(positionRef.current) - 1),
-    [goTo]
-  );
+  useEffect(() => {
+    const reducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    timerRef.current = setInterval(() => {
+      if (!pausedRef.current) {
+        setDirection(1);
+        setActiveIndex((i) => (i + 1) % count);
+      }
+    }, AUTO_ADVANCE_MS);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [count]);
+
   const setPaused = useCallback((v: boolean) => {
     pausedRef.current = v;
   }, []);
 
-  return { activeIndex, goTo, next, prev, setPaused };
+  return { activeIndex, direction, goTo, next, prev, setPaused };
 }
 
-function AdCardView({ ad, active }: { ad: AdCard; active: boolean }) {
+function SpotlightCard({ ad }: { ad: AdCard }) {
   return (
-    <div
-      className={`w-64 md:w-72 shrink-0 rounded-2xl border bg-white shadow-xl overflow-hidden transition-shadow ${
-        active ? "border-lime shadow-[0_20px_60px_-15px_rgba(198,242,78,0.5)]" : "border-[#e6e4d9]"
-      }`}
-    >
+    <div className="w-72 sm:w-80 rounded-2xl border border-lime bg-white shadow-[0_25px_70px_-15px_rgba(198,242,78,0.55)] overflow-hidden">
       <div className="flex items-center gap-2.5 px-4 pt-3.5 pb-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-lime text-[11px] font-bold text-[#171712]">
           {ad.brand
@@ -241,14 +170,15 @@ function AdCardView({ ad, active }: { ad: AdCard; active: boolean }) {
 
       <p className="px-4 pb-3 text-sm leading-snug text-[#171712]">{ad.hook}</p>
 
-      <div className="relative aspect-[4/5]">
+      <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={ad.image}
           alt={ad.alt}
           fill
-          sizes="288px"
-          className="object-cover"
+          sizes="320px"
+          className="object-cover animate-kenburns"
           draggable={false}
+          priority
         />
         <span className="absolute left-3 top-3 rounded-full bg-[#171712]/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur">
           {ad.tag}
@@ -270,10 +200,8 @@ function AdCardView({ ad, active }: { ad: AdCard; active: boolean }) {
 }
 
 export default function D2CAdShowcase() {
-  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const { activeIndex, goTo, next, prev, setPaused } = useSelfScrollingCoverflow(
-    ADS.length,
-    cardRefs
+  const { activeIndex, direction, goTo, next, prev, setPaused } = useSpotlight(
+    ADS.length
   );
 
   return (
@@ -289,34 +217,39 @@ export default function D2CAdShowcase() {
       </div>
 
       <div
-        className="relative mt-14"
+        className="relative mt-14 flex flex-col items-center"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 md:w-40 bg-gradient-to-r from-[#faf9f4] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 md:w-40 bg-gradient-to-l from-[#faf9f4] to-transparent" />
-
-        <div
-          className="flex items-center justify-center"
-          style={{ perspective: "1400px", height: "480px" }}
-        >
-          <div className="relative h-full w-full">
-            {ADS.map((ad, i) => (
-              <button
-                key={`${ad.brand}-${ad.tag}-${i}`}
-                ref={(el) => {
-                  cardRefs.current[i] = el;
-                }}
-                type="button"
-                aria-label={`Show ${ad.brand} ad`}
-                onClick={() => goTo(i)}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ willChange: "transform, opacity" }}
-              >
-                <AdCardView ad={ad} active={i === activeIndex} />
-              </button>
-            ))}
-          </div>
+        <div className="relative h-[420px] w-full max-w-sm sm:h-[460px]">
+          {ADS.map((ad, i) => {
+            const isActive = i === activeIndex;
+            const isPrev =
+              i === (activeIndex - 1 + ADS.length) % ADS.length;
+            const isNext = i === (activeIndex + 1) % ADS.length;
+            let className =
+              "absolute inset-x-0 top-0 mx-auto transition-all duration-700 ease-out";
+            if (isActive) {
+              className += " translate-x-0 opacity-100 scale-100 z-20";
+            } else if ((direction === 1 && isPrev) || (direction === -1 && isNext)) {
+              className +=
+                direction === 1
+                  ? " -translate-x-10 opacity-0 scale-95 z-10"
+                  : " translate-x-10 opacity-0 scale-95 z-10";
+            } else if ((direction === 1 && isNext) || (direction === -1 && isPrev)) {
+              className +=
+                direction === 1
+                  ? " translate-x-10 opacity-0 scale-95 z-10"
+                  : " -translate-x-10 opacity-0 scale-95 z-10";
+            } else {
+              className += " opacity-0 scale-95 pointer-events-none";
+            }
+            return (
+              <div key={`${ad.brand}-${ad.tag}-${i}`} className={className}>
+                <SpotlightCard ad={ad} />
+              </div>
+            );
+          })}
         </div>
 
         <div className="relative z-30 mt-8 flex items-center justify-center gap-4">
