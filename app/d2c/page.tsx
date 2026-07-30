@@ -9,6 +9,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import SnapshotHero from "@/components/marketing/SnapshotHero";
+import D2CAdShowcase from "@/components/marketing/D2CAdShowcase";
 import LeadForm from "@/components/LeadForm";
 import { CASE_STUDIES } from "@/lib/constants";
 
@@ -162,6 +163,8 @@ export default function D2CPage() {
           </div>
         </div>
       </section>
+
+      <D2CAdShowcase />
 
       {/* Guarantee */}
       <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
