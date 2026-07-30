@@ -168,7 +168,9 @@ function SpotlightCard({ ad }: { ad: AdCard }) {
         </div>
       </div>
 
-      <p className="px-4 pb-3 text-sm leading-snug text-[#171712]">{ad.hook}</p>
+      <p className="px-4 pb-3 text-sm leading-snug text-[#171712] line-clamp-2">
+        {ad.hook}
+      </p>
 
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
@@ -221,7 +223,7 @@ export default function D2CAdShowcase() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="relative h-[420px] w-full max-w-sm sm:h-[460px]">
+        <div className="relative h-[560px] w-full max-w-sm sm:h-[600px]">
           {ADS.map((ad, i) => {
             const isActive = i === activeIndex;
             const isPrev =
