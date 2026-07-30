@@ -13,16 +13,6 @@ type AdCard = {
   cta: string;
 };
 
-type WorkedWithLogo = { name: string; image?: string };
-
-const WORKED_WITH: WorkedWithLogo[] = [
-  { name: "Munchkin", image: "/images/d2c-ads/logos/munchkin.png" },
-  { name: "Heather's Heroes", image: "/images/d2c-ads/logos/heathersheroes.png" },
-  { name: "Ancient Aura" },
-  { name: "Lulu Liquor Cakes", image: "/images/d2c-ads/logos/lulu.png" },
-  { name: "Gum of Gods", image: "/images/d2c-ads/logos/gumofgods.png" },
-];
-
 // Real ad creatives pulled from client Meta ad accounts we run (brand names hidden on the cards).
 const ADS: AdCard[] = [
   {
@@ -120,19 +110,19 @@ function shortestDelta(diff: number, count: number) {
 
 function cardStyle(offset: number) {
   const abs = Math.abs(offset);
-  if (abs > 3.4) {
+  if (abs > 2.15) {
     return { transform: "translateX(0px)", opacity: 0, zIndex: 0, pointerEvents: "none" as const };
   }
   const dir = offset < 0 ? -1 : offset > 0 ? 1 : 0;
-  const translate = offset * 168;
-  const scale = Math.max(0.5, 1 - abs * 0.14);
-  const rotate = -dir * Math.min(abs * 14, 34);
-  const opacity = abs < 0.02 ? 1 : Math.max(0.12, 0.78 - abs * 0.22);
+  const translate = offset * 250;
+  const scale = Math.max(0.62, 1 - abs * 0.26);
+  const rotate = -dir * Math.min(abs * 26, 50);
+  const opacity = abs < 0.02 ? 1 : Math.max(0.28, 0.68 - abs * 0.24);
   return {
     transform: `translateX(${translate}px) scale(${scale}) rotateY(${rotate}deg)`,
     zIndex: Math.round(100 - abs),
     opacity,
-    pointerEvents: (abs > 2.4 ? "none" : "auto") as "none" | "auto",
+    pointerEvents: (abs > 1.2 ? "none" : "auto") as "none" | "auto",
   };
 }
 
@@ -296,31 +286,6 @@ export default function D2CAdShowcase() {
           Real ads pulled straight from client accounts we run (names hidden).
           Not mockups.
         </p>
-        <p className="mt-8 text-center text-xs font-semibold uppercase tracking-wider text-[#636256]">
-          Brands we&apos;ve worked with
-        </p>
-        <div className="mx-auto mt-5 flex max-w-4xl flex-wrap items-center justify-center gap-4">
-          {WORKED_WITH.map((b) => (
-            <div
-              key={b.name}
-              className="flex h-20 items-center justify-center rounded-xl border border-[#e6e4d9] bg-white px-6"
-            >
-              {b.image ? (
-                <Image
-                  src={b.image}
-                  alt={`${b.name} logo`}
-                  width={160}
-                  height={64}
-                  className="h-11 w-auto object-contain md:h-12"
-                />
-              ) : (
-                <span className="font-display text-lg font-bold tracking-wide text-[#171712]">
-                  {b.name}
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
       </div>
 
       <div
