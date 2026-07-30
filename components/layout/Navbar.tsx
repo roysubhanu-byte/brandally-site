@@ -7,7 +7,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 
 // Pure conversion landing pages: minimal light header, one CTA, no site nav.
-const LP_ROUTES = ["/dog-training"];
+const LP_ROUTES = ["/dog-training", "/local", "/d2c"];
 // Full site pages that use the light theme.
 const LIGHT_ROUTES = ["/", "/contact", "/about", "/services", "/case-studies"];
 
