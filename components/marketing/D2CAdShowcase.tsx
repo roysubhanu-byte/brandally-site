@@ -13,12 +13,14 @@ type AdCard = {
   cta: string;
 };
 
-const WORKED_WITH = [
-  "Munchkin",
-  "Heather's Heroes",
-  "Ancient Aura",
-  "Lulu Liquor Cakes",
-  "Gum of Gods",
+type WorkedWithLogo = { name: string; image?: string };
+
+const WORKED_WITH: WorkedWithLogo[] = [
+  { name: "Munchkin", image: "/images/d2c-ads/logos/munchkin.png" },
+  { name: "Heather's Heroes", image: "/images/d2c-ads/logos/heathersheroes.png" },
+  { name: "Ancient Aura" },
+  { name: "Lulu Liquor Cakes", image: "/images/d2c-ads/logos/lulu.png" },
+  { name: "Gum of Gods", image: "/images/d2c-ads/logos/gumofgods.png" },
 ];
 
 // Real ad creatives pulled from client Meta ad accounts we run (brand names hidden on the cards).
@@ -105,47 +107,123 @@ const ADS: AdCard[] = [
   },
 ];
 
-const AUTO_ADVANCE_MS = 3800;
+// Cards per second the strip glides at when idle. One full lap of 10 cards
+// takes count / SPEED_PER_MS milliseconds.
+const LAP_MS = 42000;
 
-function useCoverflow(count: number) {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const next = useCallback(() => setActive((a) => (a + 1) % count), [count]);
-  const prev = useCallback(
-    () => setActive((a) => (a - 1 + count) % count),
-    [count]
-  );
-
-  useEffect(() => {
-    if (paused) return;
-    timer.current = setInterval(next, AUTO_ADVANCE_MS);
-    return () => {
-      if (timer.current) clearInterval(timer.current);
-    };
-  }, [paused, next]);
-
-  return { active, setActive, next, prev, setPaused };
+function shortestDelta(diff: number, count: number) {
+  let d = diff % count;
+  if (d > count / 2) d -= count;
+  if (d < -count / 2) d += count;
+  return d;
 }
 
-function cardStyle(offset: number): React.CSSProperties {
+function cardStyle(offset: number) {
   const abs = Math.abs(offset);
-  if (abs > 3) {
-    return { opacity: 0, pointerEvents: "none", transform: "translateX(0)" };
+  if (abs > 3.4) {
+    return { transform: "translateX(0px)", opacity: 0, zIndex: 0, pointerEvents: "none" as const };
   }
-  const dir = Math.sign(offset);
+  const dir = offset < 0 ? -1 : offset > 0 ? 1 : 0;
   const translate = offset * 168;
-  const scale = 1 - abs * 0.14;
+  const scale = Math.max(0.5, 1 - abs * 0.14);
   const rotate = -dir * Math.min(abs * 14, 34);
-  const z = 100 - abs;
-  const opacity = abs === 0 ? 1 : Math.max(0.15, 0.75 - abs * 0.22);
+  const opacity = abs < 0.02 ? 1 : Math.max(0.12, 0.78 - abs * 0.22);
   return {
     transform: `translateX(${translate}px) scale(${scale}) rotateY(${rotate}deg)`,
-    zIndex: z,
+    zIndex: Math.round(100 - abs),
     opacity,
-    pointerEvents: abs > 2 ? "none" : "auto",
+    pointerEvents: (abs > 2.4 ? "none" : "auto") as "none" | "auto",
   };
+}
+
+// Continuously drives a fractional "position" via requestAnimationFrame so
+// the coverflow glides on its own instead of jump-cutting between cards.
+// Manual nav (arrows/dots/click) sets a target that gets eased into, then
+// the idle drift resumes from there.
+function useSelfScrollingCoverflow(
+  count: number,
+  cardRefs: React.MutableRefObject<(HTMLButtonElement | null)[]>
+) {
+  const positionRef = useRef(0);
+  const targetRef = useRef<number | null>(null);
+  const pausedRef = useRef(false);
+  const lastTsRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const lastActiveRef = useRef(0);
+  const reducedMotionRef = useRef(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const applyStyles = useCallback(() => {
+    const pos = positionRef.current;
+    cardRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const offset = shortestDelta(i - pos, count);
+      const s = cardStyle(offset);
+      el.style.transform = s.transform;
+      el.style.opacity = String(s.opacity);
+      el.style.zIndex = String(s.zIndex);
+      el.style.pointerEvents = s.pointerEvents;
+    });
+    const normalized = ((Math.round(pos) % count) + count) % count;
+    if (normalized !== lastActiveRef.current) {
+      lastActiveRef.current = normalized;
+      setActiveIndex(normalized);
+    }
+  }, [count, cardRefs]);
+
+  useEffect(() => {
+    reducedMotionRef.current =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    applyStyles();
+
+    const speed = count / LAP_MS; // cards per ms
+    function tick(ts: number) {
+      if (lastTsRef.current == null) lastTsRef.current = ts;
+      const dt = ts - lastTsRef.current;
+      lastTsRef.current = ts;
+
+      if (targetRef.current != null) {
+        const d = shortestDelta(targetRef.current - positionRef.current, count);
+        if (Math.abs(d) < 0.01) {
+          positionRef.current = targetRef.current;
+          targetRef.current = null;
+        } else {
+          positionRef.current += d * 0.1;
+        }
+      } else if (!pausedRef.current && !reducedMotionRef.current) {
+        positionRef.current += speed * dt;
+      }
+      positionRef.current = ((positionRef.current % count) + count) % count;
+
+      applyStyles();
+      rafRef.current = requestAnimationFrame(tick);
+    }
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [count, applyStyles]);
+
+  const goTo = useCallback((idx: number) => {
+    const cur = positionRef.current;
+    const d = shortestDelta(idx - cur, count);
+    targetRef.current = cur + d;
+  }, [count]);
+
+  const next = useCallback(
+    () => goTo(Math.round(positionRef.current) + 1),
+    [goTo]
+  );
+  const prev = useCallback(
+    () => goTo(Math.round(positionRef.current) - 1),
+    [goTo]
+  );
+  const setPaused = useCallback((v: boolean) => {
+    pausedRef.current = v;
+  }, []);
+
+  return { activeIndex, goTo, next, prev, setPaused };
 }
 
 function AdCardView({ ad, active }: { ad: AdCard; active: boolean }) {
@@ -202,7 +280,11 @@ function AdCardView({ ad, active }: { ad: AdCard; active: boolean }) {
 }
 
 export default function D2CAdShowcase() {
-  const { active, setActive, next, prev, setPaused } = useCoverflow(ADS.length);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const { activeIndex, goTo, next, prev, setPaused } = useSelfScrollingCoverflow(
+    ADS.length,
+    cardRefs
+  );
 
   return (
     <section className="py-20 md:py-28 overflow-hidden">
@@ -214,17 +296,29 @@ export default function D2CAdShowcase() {
           Real ads pulled straight from client accounts we run (names hidden).
           Not mockups.
         </p>
-        <div className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-x-2 gap-y-2 text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#636256]">
-            Brands we&apos;ve worked with:
-          </span>
-          {WORKED_WITH.map((name) => (
-            <span
-              key={name}
-              className="rounded-full border border-[#e6e4d9] bg-white px-3 py-1 text-xs font-medium text-[#171712]"
+        <p className="mt-8 text-center text-xs font-semibold uppercase tracking-wider text-[#636256]">
+          Brands we&apos;ve worked with
+        </p>
+        <div className="mx-auto mt-5 flex max-w-4xl flex-wrap items-center justify-center gap-4">
+          {WORKED_WITH.map((b) => (
+            <div
+              key={b.name}
+              className="flex h-20 items-center justify-center rounded-xl border border-[#e6e4d9] bg-white px-6"
             >
-              {name}
-            </span>
+              {b.image ? (
+                <Image
+                  src={b.image}
+                  alt={`${b.name} logo`}
+                  width={160}
+                  height={64}
+                  className="h-11 w-auto object-contain md:h-12"
+                />
+              ) : (
+                <span className="font-display text-lg font-bold tracking-wide text-[#171712]">
+                  {b.name}
+                </span>
+              )}
+            </div>
           ))}
         </div>
       </div>
@@ -242,23 +336,21 @@ export default function D2CAdShowcase() {
           style={{ perspective: "1400px", height: "480px" }}
         >
           <div className="relative h-full w-full">
-            {ADS.map((ad, i) => {
-              let offset = i - active;
-              if (offset > ADS.length / 2) offset -= ADS.length;
-              if (offset < -ADS.length / 2) offset += ADS.length;
-              return (
-                <button
-                  key={`${ad.brand}-${ad.tag}-${i}`}
-                  type="button"
-                  aria-label={`Show ${ad.brand} ad`}
-                  onClick={() => setActive(i)}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out"
-                  style={cardStyle(offset)}
-                >
-                  <AdCardView ad={ad} active={offset === 0} />
-                </button>
-              );
-            })}
+            {ADS.map((ad, i) => (
+              <button
+                key={`${ad.brand}-${ad.tag}-${i}`}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                type="button"
+                aria-label={`Show ${ad.brand} ad`}
+                onClick={() => goTo(i)}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                style={{ willChange: "transform, opacity" }}
+              >
+                <AdCardView ad={ad} active={i === activeIndex} />
+              </button>
+            ))}
           </div>
         </div>
 
@@ -275,9 +367,9 @@ export default function D2CAdShowcase() {
               <button
                 key={i}
                 aria-label={`Go to ad ${i + 1}`}
-                onClick={() => setActive(i)}
+                onClick={() => goTo(i)}
                 className={`h-1.5 rounded-full transition-all ${
-                  i === active ? "w-6 bg-lime" : "w-1.5 bg-[#e6e4d9]"
+                  i === activeIndex ? "w-6 bg-lime" : "w-1.5 bg-[#e6e4d9]"
                 }`}
               />
             ))}
