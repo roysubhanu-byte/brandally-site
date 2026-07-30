@@ -1,8 +1,5 @@
-"use client";
-
-import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Heart, MessageCircle, Share2 } from "lucide-react";
+import { Heart, MessageCircle, Share2 } from "lucide-react";
 
 type AdCard = {
   brand: string;
@@ -13,8 +10,8 @@ type AdCard = {
   cta: string;
 };
 
-// Real ad creatives pulled from client Meta ad accounts we run (brand names hidden on the cards).
-const ADS: AdCard[] = [
+// Real ad creatives pulled from client Meta ad accounts we run (brand names hidden).
+const ROW_ONE: AdCard[] = [
   {
     brand: "Baby Formula Co.",
     tag: "Offer ad",
@@ -55,6 +52,9 @@ const ADS: AdCard[] = [
     alt: "Jawline mastic gum bundle offer ad",
     cta: "See details",
   },
+];
+
+const ROW_TWO: AdCard[] = [
   {
     brand: "Baby Formula Co.",
     tag: "UGC video",
@@ -97,61 +97,9 @@ const ADS: AdCard[] = [
   },
 ];
 
-const AUTO_ADVANCE_MS = 4200;
-
-// Single-card spotlight: only one ad is ever fully rendered, so there is
-// nothing to compete with it visually. Auto-advances on its own, crossfades
-// with a slight directional slide, and the active image slowly zooms
-// (Ken Burns) to keep it feeling alive between transitions.
-function useSpotlight(count: number) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState<1 | -1>(1);
-  const pausedRef = useRef(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const goTo = useCallback(
-    (idx: number) => {
-      setDirection(1);
-      setActiveIndex(((idx % count) + count) % count);
-    },
-    [count]
-  );
-  const next = useCallback(() => {
-    setDirection(1);
-    setActiveIndex((i) => (i + 1) % count);
-  }, [count]);
-  const prev = useCallback(() => {
-    setDirection(-1);
-    setActiveIndex((i) => (i - 1 + count) % count);
-  }, [count]);
-
-  useEffect(() => {
-    const reducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
-
-    timerRef.current = setInterval(() => {
-      if (!pausedRef.current) {
-        setDirection(1);
-        setActiveIndex((i) => (i + 1) % count);
-      }
-    }, AUTO_ADVANCE_MS);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [count]);
-
-  const setPaused = useCallback((v: boolean) => {
-    pausedRef.current = v;
-  }, []);
-
-  return { activeIndex, direction, goTo, next, prev, setPaused };
-}
-
-function SpotlightCard({ ad }: { ad: AdCard }) {
+function AdCardView({ ad }: { ad: AdCard }) {
   return (
-    <div className="w-72 sm:w-80 rounded-2xl border border-lime bg-white shadow-[0_25px_70px_-15px_rgba(198,242,78,0.55)] overflow-hidden">
+    <div className="w-72 shrink-0 rounded-2xl border border-[#e6e4d9] bg-white shadow-sm overflow-hidden">
       <div className="flex items-center gap-2.5 px-4 pt-3.5 pb-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-lime text-[11px] font-bold text-[#171712]">
           {ad.brand
@@ -168,19 +116,15 @@ function SpotlightCard({ ad }: { ad: AdCard }) {
         </div>
       </div>
 
-      <p className="px-4 pb-3 text-sm leading-snug text-[#171712] line-clamp-2">
-        {ad.hook}
-      </p>
+      <p className="px-4 pb-3 text-sm leading-snug text-[#171712]">{ad.hook}</p>
 
-      <div className="relative aspect-[4/5] overflow-hidden">
+      <div className="relative aspect-[4/5]">
         <Image
           src={ad.image}
           alt={ad.alt}
           fill
-          sizes="320px"
-          className="object-cover animate-kenburns"
-          draggable={false}
-          priority
+          sizes="288px"
+          className="object-cover"
         />
         <span className="absolute left-3 top-3 rounded-full bg-[#171712]/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur">
           {ad.tag}
@@ -201,11 +145,24 @@ function SpotlightCard({ ad }: { ad: AdCard }) {
   );
 }
 
-export default function D2CAdShowcase() {
-  const { activeIndex, direction, goTo, next, prev, setPaused } = useSpotlight(
-    ADS.length
+function MarqueeRow({ ads, reverse = false }: { ads: AdCard[]; reverse?: boolean }) {
+  const animation = reverse ? "animate-marquee-slow-reverse" : "animate-marquee-slow";
+  return (
+    <div className="overflow-hidden">
+      <div className={`flex w-max items-start gap-5 ${animation}`}>
+        {[false, true].map((dup) => (
+          <div key={dup ? "dup" : "main"} aria-hidden={dup} className="flex items-start gap-5 pr-5">
+            {ads.map((ad) => (
+              <AdCardView key={`${ad.brand}-${ad.tag}-${dup}`} ad={ad} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
+}
 
+export default function D2CAdShowcase() {
   return (
     <section className="py-20 md:py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
@@ -218,70 +175,11 @@ export default function D2CAdShowcase() {
         </p>
       </div>
 
-      <div
-        className="relative mt-14 flex flex-col items-center"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div className="relative h-[560px] w-full max-w-sm sm:h-[600px]">
-          {ADS.map((ad, i) => {
-            const isActive = i === activeIndex;
-            const isPrev =
-              i === (activeIndex - 1 + ADS.length) % ADS.length;
-            const isNext = i === (activeIndex + 1) % ADS.length;
-            let className =
-              "absolute inset-x-0 top-0 mx-auto transition-all duration-700 ease-out";
-            if (isActive) {
-              className += " translate-x-0 opacity-100 scale-100 z-20";
-            } else if ((direction === 1 && isPrev) || (direction === -1 && isNext)) {
-              className +=
-                direction === 1
-                  ? " -translate-x-10 opacity-0 scale-95 z-10"
-                  : " translate-x-10 opacity-0 scale-95 z-10";
-            } else if ((direction === 1 && isNext) || (direction === -1 && isPrev)) {
-              className +=
-                direction === 1
-                  ? " translate-x-10 opacity-0 scale-95 z-10"
-                  : " -translate-x-10 opacity-0 scale-95 z-10";
-            } else {
-              className += " opacity-0 scale-95 pointer-events-none";
-            }
-            return (
-              <div key={`${ad.brand}-${ad.tag}-${i}`} className={className}>
-                <SpotlightCard ad={ad} />
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="relative z-30 mt-8 flex items-center justify-center gap-4">
-          <button
-            onClick={prev}
-            aria-label="Previous ad"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e6e4d9] bg-white hover:border-lime transition group"
-          >
-            <ArrowLeft className="h-4 w-4 text-[#171712] group-hover:-translate-x-0.5 transition-transform" />
-          </button>
-          <div className="flex items-center gap-1.5">
-            {ADS.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to ad ${i + 1}`}
-                onClick={() => goTo(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === activeIndex ? "w-6 bg-lime" : "w-1.5 bg-[#e6e4d9]"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={next}
-            aria-label="Next ad"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e6e4d9] bg-white hover:border-lime transition group"
-          >
-            <ArrowRight className="h-4 w-4 text-[#171712] group-hover:translate-x-0.5 transition-transform" />
-          </button>
-        </div>
+      <div className="marquee-hover-pause relative mt-12 space-y-5">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-32 bg-gradient-to-r from-[#faf9f4] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-32 bg-gradient-to-l from-[#faf9f4] to-transparent" />
+        <MarqueeRow ads={ROW_ONE} />
+        <MarqueeRow ads={ROW_TWO} reverse />
       </div>
     </section>
   );
