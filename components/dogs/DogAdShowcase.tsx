@@ -12,51 +12,8 @@ type AdCard = {
   video?: string;
 };
 
-// Real ad creatives from a dog training client (brand anonymized in the images)
-const ADS: AdCard[] = [
-  {
-    brand: "Board & Train Co.",
-    tag: "Before / after",
-    hook: "He ate a shoe on Monday. Three weeks later, calm and obedient.",
-    image: "/images/dogs/ads/ad-1.jpg",
-    alt: "Before and after ad: reactive dog to calm dog in 3 weeks",
-    cta: "Book a free evaluation",
-  },
-  {
-    brand: "Obedience School",
-    tag: "UGC hook",
-    hook: "Commands, focus, and real-world manners. You can see it in 3 weeks.",
-    image: "/images/dogs/ads/ad-3.jpg",
-    alt: "Handwritten whiteboard ad for obedience training",
-    cta: "Book a consult",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Offer drop",
-    hook: "Summer board & train spots are open. Real results, all summer long.",
-    image: "/images/dogs/ads/ad-4.jpg",
-    alt: "Summer program ad with trainer and dog on the training field",
-    cta: "Claim a spot",
-  },
-  {
-    brand: "Obedience School",
-    tag: "Program ad",
-    hook: "Training that holds up outside the yard, around real distractions.",
-    image: "/images/dogs/ads/ad-5.jpg",
-    alt: "Obedience training ad with dog holding a down-stay",
-    cta: "Book a free consult",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Transformation",
-    hook: "From dragging her down the street to walking right beside her.",
-    image: "/images/dogs/ads/ad-2.jpg",
-    alt: "Before and after ad: dog pulling on leash, then walking calmly",
-    cta: "See the program",
-  },
-];
-
-const MORE_ADS: AdCard[] = [
+// Real ad creatives from dog businesses we run ads for (brands anonymized in the images)
+const DAYCARE_ADS: AdCard[] = [
   {
     brand: "Daycare & Boarding",
     tag: "Social proof",
@@ -81,38 +38,6 @@ const MORE_ADS: AdCard[] = [
     alt: "Daycare ad showing live camera feed of dogs on a phone",
     cta: "See the cameras",
   },
-  {
-    brand: "Daycare & Boarding",
-    tag: "Review ad",
-    hook: "“The daycare dogs drag their humans into.” A real five-star review.",
-    image: "/images/dogs/ads/ad-9.jpg",
-    alt: "Review ad with a happy dalmatian at daycare",
-    cta: "Book an intro day",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Pain point",
-    hook: "A lunging, snapping dog isn't just stressful. It's dangerous.",
-    image: "/images/dogs/ads/ad-10.jpg",
-    alt: "Training ad about reactive dogs with visible results in 2 weeks",
-    cta: "Get help today",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Hook ad",
-    hook: "Is walking your dog a nightmare? Calm, easy walks in 2 weeks.",
-    image: "/images/dogs/ads/ad-11.jpg",
-    alt: "Training ad asking if walking your dog is a nightmare",
-    cta: "Get help today",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Guarantee",
-    hook: "If he isn't better in 7 days, we'll pay you $500 to train somewhere else.",
-    image: "/images/dogs/ads/ad-12.jpg",
-    alt: "Guarantee ad offering $500 if the dog isn't better in 7 days",
-    cta: "Book a consult",
-  },
 ];
 
 const VIDEO_ADS: AdCard[] = [
@@ -133,15 +58,6 @@ const VIDEO_ADS: AdCard[] = [
     alt: "Street interview video ad with a dog owner",
     cta: "See why",
     video: "/videos/ads/ad-v2.mp4",
-  },
-  {
-    brand: "Board & Train Co.",
-    tag: "Reel ad",
-    hook: "Calm, easy walks in just 2 weeks. Here's what that looks like.",
-    image: "/videos/ads/ad-v3-poster.jpg",
-    alt: "Video ad promising calm walks in two weeks",
-    cta: "Get started",
-    video: "/videos/ads/ad-v3.mp4",
   },
   {
     brand: "Daycare & Boarding",
@@ -173,25 +89,16 @@ const VIDEO_ADS: AdCard[] = [
 ];
 
 const ROW_ONE: AdCard[] = [
-  ADS[0],
-  MORE_ADS[2],
+  DAYCARE_ADS[0],
   VIDEO_ADS[0],
-  ADS[2],
-  VIDEO_ADS[4],
-  MORE_ADS[4],
-  VIDEO_ADS[2],
-  ADS[4],
-  MORE_ADS[3],
+  DAYCARE_ADS[2],
+  VIDEO_ADS[3],
+  DAYCARE_ADS[1],
 ];
 const ROW_TWO: AdCard[] = [
-  MORE_ADS[6],
-  ADS[1],
-  VIDEO_ADS[3],
-  MORE_ADS[1],
-  ADS[3],
-  VIDEO_ADS[5],
-  MORE_ADS[5],
-  MORE_ADS[0],
+  VIDEO_ADS[2],
+  VIDEO_ADS[1],
+  VIDEO_ADS[4],
 ];
 
 function AdCardView({ ad }: { ad: AdCard }) {
@@ -285,9 +192,8 @@ export default function DogAdShowcase() {
           What the ads actually look like
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
-          Real ads we run for dog training, board &amp; train, and daycare
-          businesses (names hidden). Yours get your dogs, your voice, and your
-          story.
+          Real ads we run for dog daycare, boarding, and dog product brands
+          (names hidden). Yours get your dogs, your voice, and your story.
         </p>
       </div>
 

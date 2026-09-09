@@ -14,13 +14,6 @@ type Testimonial = {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "They talk to dog owners the way we do. The ads sound like us, and the people booking consults actually show up ready to train.",
-    name: "Board & train facility",
-    designation: "Virginia",
-    src: "/images/dogs/testi-board.jpg",
-  },
-  {
-    quote:
       "We can see which ad brought in every single intro day booking. First agency that showed us what a new client actually costs us.",
     name: "Dog daycare & boarding",
     designation: "Columbus, Ohio",
@@ -35,7 +28,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-const TILTS = [-6, 5, -3];
+const TILTS = [-5, 4];
 
 export default function DogTestimonials() {
   const [active, setActive] = useState(0);

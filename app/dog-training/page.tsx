@@ -147,8 +147,8 @@ export default function DogTrainingPage() {
         <div className="rounded-3xl border border-[#e6e4d9] bg-white overflow-hidden grid md:grid-cols-5">
           <div className="md:col-span-2 relative min-h-64">
             <Image
-              src="/images/dogs/case-local.jpg"
-              alt="Trainer rewarding a dog holding a sit inside the training facility"
+              src="/images/dogs/case-local-2.jpg"
+              alt="Dalmatian on the turf yard at a dog daycare and training facility"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
@@ -251,8 +251,8 @@ export default function DogTrainingPage() {
           </div>
           <div className="md:col-span-2 relative min-h-64">
             <Image
-              src="/images/dogs/real-case-2.jpg"
-              alt="Trainer working with a husky on recall in a waterfront park"
+              src="/images/dogs/case-d2c-2.jpg"
+              alt="Owner walking a golden retriever on a loose leash down a country lane"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
@@ -350,10 +350,10 @@ export default function DogTrainingPage() {
               </li>
             </ul>
             <Image
-              src="/images/dogs/real-form-2.jpg"
-              alt="Trainer running a dog through the agility yard"
-              width={1080}
-              height={1350}
+              src="/images/dogs/form-real-3.jpg"
+              alt="Handler walking a dog at heel in front of a training class"
+              width={1000}
+              height={1250}
               className="mt-8 hidden md:block rounded-2xl object-cover aspect-[4/5] w-full border border-[#e6e4d9]"
             />
           </div>

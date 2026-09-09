@@ -93,10 +93,10 @@ export default function DogHero() {
           {/* Offset lime frame behind the photo */}
           <div className="absolute -inset-2 translate-x-3 translate-y-3 rounded-3xl bg-lime rotate-2" />
           <Image
-            src="/images/dogs/real-hero.jpg"
-            alt="Trainer walking a golden retriever at heel across a training field"
-            width={1080}
-            height={1350}
+            src="/images/dogs/hero-real-2.jpg"
+            alt="Handler holding her dog at heel during an outdoor group training class"
+            width={1000}
+            height={1250}
             priority
             className="relative rounded-3xl object-cover aspect-[4/5] w-full border border-[#e6e4d9]"
           />
