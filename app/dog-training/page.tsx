@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import DogHero from "@/components/dogs/DogHero";
 import DogLeadForm from "@/components/dogs/DogLeadForm";
-import DogAdShowcase from "@/components/dogs/DogAdShowcase";
+// HIDDEN 2026-10-24: import DogAdShowcase from "@/components/dogs/DogAdShowcase";
 import DogTestimonials from "@/components/dogs/DogTestimonials";
 
 export const metadata: Metadata = {
@@ -140,7 +140,7 @@ export default function DogTrainingPage() {
       </section>
 
       {/* Ad showcase */}
-      <DogAdShowcase />
+      {/* HIDDEN 2026-10-24: <DogAdShowcase /> */}
 
       {/* Main case study: local training & daycare */}
       <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
