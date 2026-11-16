@@ -59,7 +59,7 @@ const FAQS = [
   },
 ];
 
-const D2C_CASES = ["sports-games", "ski-apparel", "dog-products"]
+const D2C_CASES = ["baby-formula", "sports-games", "ski-apparel", "dog-products"]
   .map((slug) => CASE_STUDIES.find((c) => c.slug === slug))
   .filter(Boolean) as typeof CASE_STUDIES;
 
@@ -123,7 +123,7 @@ export default function D2CPage() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
             Where each one was stuck, what we changed, and the numbers after.
           </p>
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
+          <div className="mt-12 grid md:grid-cols-2 gap-5">
             {D2C_CASES.map((c) => (
               <a
                 key={c.slug}

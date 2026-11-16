@@ -13,7 +13,7 @@ const AGGREGATE = [
   { value: "$3.3M+", label: "Revenue & pipeline driven" },
   { value: "20X", label: "Peak blended ROAS" },
   { value: "$4.53", label: "Lowest cost per lead" },
-  { value: "7", label: "Accounts scaled" },
+  { value: "8", label: "Accounts scaled" },
 ];
 
 // Splits a headline around its accent figure so it can render highlighted.
