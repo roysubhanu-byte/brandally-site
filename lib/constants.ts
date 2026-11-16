@@ -22,22 +22,6 @@ export const BRAND = {
 
 export const CASE_STUDIES = [
   {
-    slug: "baby-formula",
-    pdf: "/case-studies/baby-formula.pdf",
-    client: "Baby formula",
-    industry: "D2C · $220M baby brand",
-    headline: "Cost per purchase $220 to $17",
-    accent: "$17",
-    timeframe: "in 5 weeks",
-    summary:
-      "A $220M baby brand's new formula line was paying $219.62 a sale on Meta. We fixed tracking and waste first, rebuilt the funnel top to bottom, rewrote the offer for each type of parent, then rebuilt the landing page and the subscription path.",
-    metrics: [
-      { value: "$16.86", label: "Cost per purchase" },
-      { value: "$14.27", label: "Cost per subscriber" },
-      { value: "2.79%", label: "Store conversion rate" },
-    ],
-  },
-  {
     slug: "coaching",
     pdf: "/case-studies/coaching.pdf",
     client: "Coaching",

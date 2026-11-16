@@ -8,34 +8,34 @@ import { CASE_STUDIES } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Paid Ads for D2C Brands",
   description:
-    "BrandAlly runs Meta and Google ads for D2C brands. Real case studies, the real ads we run, and how we scale spend while profit per order holds.",
+    "BrandAlly runs Meta ads for D2C brands. Real case studies, the real ads we run, and how we scale spend while profit per order holds.",
 };
 
 const SCALE_STEPS = [
   {
     num: "1",
-    title: "Know the number first",
-    body: "Before we spend a dollar, we work out what you can pay for a sale and still make money: order value minus product cost, shipping and fees. That's the ceiling. We aim below it.",
+    title: "What do you keep per order?",
+    body: "After product, shipping and ads. We call it GPT, gross profit per order, and we add it as a column in Ads Manager. Positive and holding, we scale. Negative, we kill the ad, even if it's a closing ad.",
   },
   {
     num: "2",
-    title: "One campaign, not twenty",
-    body: "Your best ads sit together in one campaign, so budget flows to whatever is selling. No campaigns fighting each other for the same buyer.",
+    title: "Are new customers going up?",
+    body: "We check Shopify, not just Meta. Spend up and new customers up, we scale. Revenue up only from returning customers? That's a red flag. You're paying Meta for people who'd buy anyway.",
   },
   {
     num: "3",
-    title: "Test one idea at a time",
-    body: "Each new idea goes in as 3 visuals, 2 headlines and 2 texts. We judge it on what it does to the whole account, not on one ad's cost per sale.",
+    title: "Are the four ads working together?",
+    body: "Campaign first, then frequency by ad set, then single ads. Winners get broken down by hook rate and hold rate, and we build new ads from the winning piece.",
   },
   {
     num: "4",
-    title: "Raise budget in small steps",
-    body: "While profit per order holds, budget goes up about 5%, three times a week. That's close to double in a month. When it stops holding, we stop, replace the weakest ad, and go again.",
+    title: "Does it all run on one ad?",
+    body: "If one ad or one product stops and the business tanks, that's not scale. Budget goes up in small steps, only while the numbers above hold.",
   },
 ];
 
 const WEEKLY = [
-  { label: "Profit per order", note: "Order value minus cost per sale" },
+  { label: "Gross profit per order", note: "What you keep after product, shipping and ads" },
   { label: "Cost per new customer", note: "Not repeat buyers Meta takes credit for" },
   { label: "Blended cost per sale", note: "All ad spend divided by all orders" },
 ];
@@ -43,7 +43,7 @@ const WEEKLY = [
 const FAQS = [
   {
     q: "What does this cost?",
-    a: "Your ad budget goes straight to Meta and Google, in your name. Our fee depends on how much we're running, and we'll tell you on the first call. No long contract.",
+    a: "Your ad budget goes straight to Meta, in your name. Our fee depends on how much we're running, and we'll tell you on the first call. No long contract.",
   },
   {
     q: "We tried agencies before and just got reports.",
@@ -59,9 +59,39 @@ const FAQS = [
   },
 ];
 
-const D2C_CASES = ["baby-formula", "sports-games", "ski-apparel", "dog-products"]
-  .map((slug) => CASE_STUDIES.find((c) => c.slug === slug))
-  .filter(Boolean) as typeof CASE_STUDIES;
+type Case = {
+  slug: string;
+  pdf?: string;
+  industry: string;
+  headline: string;
+  accent: string;
+  timeframe: string;
+  summary: string;
+  metrics: { value: string; label: string }[];
+};
+
+// Baby formula numbers: client CMO dashboard, Mar vs Jul 2026 (no PDF deck yet).
+const BABY_FORMULA: Case = {
+  slug: "baby-formula",
+  industry: "D2C · Baby formula",
+  headline: "Cost per customer from $499 to $202",
+  accent: "$202",
+  timeframe: "in 4 months",
+  summary:
+    "A US baby formula brand paying $499 for every new customer. We changed the offer and the setup. Spend went down, and new customers more than doubled.",
+  metrics: [
+    { value: "$202", label: "Cost per customer (was $499)" },
+    { value: "351", label: "New customers / mo (was 150)" },
+    { value: "$50", label: "Order value (was $26)" },
+  ],
+};
+
+const D2C_CASES: Case[] = [
+  BABY_FORMULA,
+  ...(["sports-games", "ski-apparel", "dog-products"]
+    .map((slug) => CASE_STUDIES.find((c) => c.slug === slug))
+    .filter(Boolean) as Case[]),
+];
 
 function Headline({ text, accent }: { text: string; accent: string }) {
   const [before, after] = text.split(accent);
@@ -88,17 +118,18 @@ export default function D2CPage() {
       </div>
 
       <SnapshotHero
-        eyebrow="Meta and Google ads for D2C brands"
+        eyebrow="Meta ads for D2C brands"
         staticLine="Scale your spend."
         leadIn="Keep your"
         words={["margin", "profit", "cash"]}
         subhead={
           <>
-            We run paid ads for ecommerce brands and judge every dollar on{" "}
+            We&apos;re founders who&apos;ve built and scaled our own
+            businesses. We run your Meta ads on{" "}
             <span className="text-[#171712] underline decoration-lime underline-offset-4 decoration-2">
               profit per order
             </span>
-            , not the ROAS number Meta shows you.
+            , not the ROAS Meta shows you.
           </>
         }
         primaryLabel="Book a call"
@@ -127,9 +158,9 @@ export default function D2CPage() {
             {D2C_CASES.map((c) => (
               <a
                 key={c.slug}
-                href={c.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={c.pdf ?? "#get-started"}
+                target={c.pdf ? "_blank" : undefined}
+                rel={c.pdf ? "noopener noreferrer" : undefined}
                 className="group flex flex-col rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7 hover:border-lime hover:-translate-y-0.5 transition"
               >
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
@@ -156,7 +187,8 @@ export default function D2CPage() {
                     ))}
                   </div>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#171712] group-hover:underline">
-                    <FileText className="w-4 h-4" /> Read the full case study
+                    <FileText className="w-4 h-4" />{" "}
+                    {c.pdf ? "Read the full case study" : "Ask us for the full numbers"}
                   </span>
                 </div>
               </a>
@@ -172,12 +204,13 @@ export default function D2CPage() {
       <section className="bg-[#171712] text-white">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
-            How we scale without burning margin.
+            Before we scale, we fix the setup.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-white/70">
-            Every week we ask one question: can we spend more tomorrow than
-            today and still make money on each order? If yes, we push. If no,
-            we find out why.
+            When you double spend, Meta has to find people who&apos;ve never
+            heard of you. They aren&apos;t ready to buy yet, and you pay while
+            they warm up. That&apos;s why profit shrinks. So we answer four
+            questions first.
           </p>
 
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -210,9 +243,8 @@ export default function D2CPage() {
               ))}
             </div>
             <p className="mt-6 border-t border-white/10 pt-5 text-sm text-white/60">
-              Not platform ROAS on its own. Meta and Google often both claim the
-              same sale, so we check every number against your store&apos;s
-              real orders.
+              Meta&apos;s dashboard and your store rarely match. We go by
+              Shopify.
             </p>
           </div>
         </div>
