@@ -70,28 +70,9 @@ type Case = {
   metrics: { value: string; label: string }[];
 };
 
-// Baby formula numbers: client CMO dashboard, Mar vs Jul 2026 (no PDF deck yet).
-const BABY_FORMULA: Case = {
-  slug: "baby-formula",
-  industry: "D2C · Baby formula",
-  headline: "Cost per customer from $499 to $202",
-  accent: "$202",
-  timeframe: "in 4 months",
-  summary:
-    "A US baby formula brand paying $499 for every new customer. We changed the offer and the setup. Spend went down, and new customers more than doubled.",
-  metrics: [
-    { value: "$202", label: "Cost per customer (was $499)" },
-    { value: "351", label: "New customers / mo (was 150)" },
-    { value: "$50", label: "Order value (was $26)" },
-  ],
-};
-
-const D2C_CASES: Case[] = [
-  BABY_FORMULA,
-  ...(["sports-games", "ski-apparel", "dog-products"]
-    .map((slug) => CASE_STUDIES.find((c) => c.slug === slug))
-    .filter(Boolean) as Case[]),
-];
+const D2C_CASES = ["baby-formula", "sports-games", "ski-apparel", "dog-products"]
+  .map((slug) => CASE_STUDIES.find((c) => c.slug === slug))
+  .filter(Boolean) as Case[];
 
 function Headline({ text, accent }: { text: string; accent: string }) {
   const [before, after] = text.split(accent);
