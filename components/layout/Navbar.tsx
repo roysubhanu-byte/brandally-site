@@ -33,7 +33,8 @@ export default function Navbar() {
             href="#get-started"
             className="inline-flex items-center gap-1.5 rounded-full bg-lime px-5 py-2.5 text-sm font-semibold text-ink hover:bg-lime-soft transition"
           >
-            Get my free plan <ArrowRight className="w-4 h-4" />
+            {pathname.startsWith("/d2c") ? "Book a call" : "Get my free plan"}{" "}
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </header>

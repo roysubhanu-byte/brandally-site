@@ -1,91 +1,61 @@
 import type { Metadata } from "next";
-import {
-  ArrowRight,
-  FileText,
-  ShieldCheck,
-  BarChart3,
-  Clapperboard,
-  Filter,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import SnapshotHero from "@/components/marketing/SnapshotHero";
-// HIDDEN 2026-10-24: import D2CAdShowcase from "@/components/marketing/D2CAdShowcase";
+import D2CAdJobs from "@/components/marketing/D2CAdJobs";
 import LeadForm from "@/components/LeadForm";
 import { CASE_STUDIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Paid Ads for D2C Brands",
   description:
-    "BrandAlly runs Meta and Google ads for D2C brands in food, beverage, and lifestyle. Scale spend without wrecking margin, reported on profit not vanity ROAS, backed by a profit guarantee.",
+    "BrandAlly runs Meta and Google ads for D2C brands. Real case studies, the real ads we run, and how we scale spend while profit per order holds.",
 };
 
-const BAR_STATS = [
-  { value: "20X", label: "ROAS on a scaled account" },
-  { value: "4X", label: "Blended ROAS at $250K" },
-  { value: "$25", label: "New-customer CAC" },
-];
-
-const SERVICES = [
-  {
-    icon: BarChart3,
-    title: "Real profit tracking",
-    body: "We rebuild your measurement so you see contribution and new-customer CAC, not just platform-reported ROAS that double-counts every sale.",
-  },
-  {
-    icon: Clapperboard,
-    title: "Creative that moves spend",
-    body: "Hooks and angles that sound like your customer, tested fast. We scale the winners and kill the rest before they drain budget.",
-  },
-  {
-    icon: Filter,
-    title: "Funnel and offer, not just ads",
-    body: "Most D2C accounts leak between the click and checkout. We fix the offer, the landing page, and the flow so paid traffic actually converts.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Scale on what converts",
-    body: "We push spend only where the numbers hold, so you grow revenue without watching your margin quietly disappear.",
-  },
-];
-
-const STEPS = [
+const SCALE_STEPS = [
   {
     num: "1",
-    title: "Free profit audit",
-    body: "We review your account, tracking, and funnel, then send a written plan on where you're leaking margin and what we'd fix first. Yours whether you hire us or not.",
+    title: "Know the number first",
+    body: "Before we spend a dollar, we work out what you can pay for a sale and still make money: order value minus product cost, shipping and fees. That's the ceiling. We aim below it.",
   },
   {
     num: "2",
-    title: "Rebuild and launch",
-    body: "We fix tracking, rework the account structure, and build creative that matches how your customer actually talks. You approve before it goes live.",
+    title: "One campaign, not twenty",
+    body: "Your best ads sit together in one campaign, so budget flows to whatever is selling. No campaigns fighting each other for the same buyer.",
   },
   {
     num: "3",
-    title: "Scale on profit",
-    body: "Weekly reporting on contribution and CAC, not vanity ROAS. When the account is profitable, we scale what works.",
+    title: "Test one idea at a time",
+    body: "Each new idea goes in as 3 visuals, 2 headlines and 2 texts. We judge it on what it does to the whole account, not on one ad's cost per sale.",
   },
+  {
+    num: "4",
+    title: "Raise budget in small steps",
+    body: "While profit per order holds, budget goes up about 5%, three times a week. That's close to double in a month. When it stops holding, we stop, replace the weakest ad, and go again.",
+  },
+];
+
+const WEEKLY = [
+  { label: "Profit per order", note: "Order value minus cost per sale" },
+  { label: "Cost per new customer", note: "Not repeat buyers Meta takes credit for" },
+  { label: "Blended cost per sale", note: "All ad spend divided by all orders" },
 ];
 
 const FAQS = [
   {
     q: "What does this cost?",
-    a: "Your ad budget goes to the platforms and stays in your name. Our fee depends on scope, quoted after the free audit. No long lock-in.",
+    a: "Your ad budget goes straight to Meta and Google, in your name. Our fee depends on how much we're running, and we'll tell you on the first call. No long contract.",
   },
   {
-    q: "How does the profit guarantee work?",
-    a: "We agree on a profit target in writing before we start. If we don't hit it in 60 days, the next month is on us. We set the target honestly together, based on your margins and current numbers.",
-  },
-  {
-    q: "We tried agencies before and just paid for reports.",
-    a: "You'll talk to the person running your account, not an account manager. Reporting is on profit and CAC, and if the numbers aren't moving, you're not locked in.",
+    q: "We tried agencies before and just got reports.",
+    a: "You talk to the person running your account, not an account manager. The weekly numbers are profit per order and cost per new customer, so you can see if it's working.",
   },
   {
     q: "Our margins are tight. Can paid ads still work?",
-    a: "Tight margins are exactly why measurement matters. We model your contribution per order first, so we only scale spend where you actually make money on a new customer.",
+    a: "That's why we start with the number. If a sale at your current cost doesn't make money, we'll tell you before you spend more, and fix that first (offer, bundle, page).",
   },
   {
     q: "What do you need from us?",
-    a: "Access to your ad accounts and analytics, your real product costs, and a few hours up front to get the tracking right. We handle the rest.",
+    a: "Access to your ad accounts and analytics, your real product costs, and a few hours up front to get tracking right. We handle the rest.",
   },
 ];
 
@@ -113,164 +83,137 @@ export default function D2CPage() {
           href="#get-started"
           className="flex items-center justify-center gap-2 rounded-full bg-lime px-6 py-3.5 font-bold text-[#171712]"
         >
-          Book a free profit audit <ArrowRight className="w-4 h-4" />
+          Book a call <ArrowRight className="w-4 h-4" />
         </a>
       </div>
 
       <SnapshotHero
-        eyebrow="Paid ads for D2C brands"
+        eyebrow="Meta and Google ads for D2C brands"
         staticLine="Scale your spend."
-        leadIn="Protect your"
-        words={["margin", "profit", "AOV", "cash"]}
+        leadIn="Keep your"
+        words={["margin", "profit", "cash"]}
         subhead={
           <>
-            Food, beverage, lifestyle. We rebuild your{" "}
+            We run paid ads for ecommerce brands and judge every dollar on{" "}
             <span className="text-[#171712] underline decoration-lime underline-offset-4 decoration-2">
-              Meta and Google ads
-            </span>{" "}
-            around profit, not vanity ROAS, so you grow without your CAC quietly
-            eating the business.
+              profit per order
+            </span>
+            , not the ROAS number Meta shows you.
           </>
         }
-        primaryLabel="Book a free profit audit"
-        secondaryHref="/case-studies"
-        secondaryLabel="See D2C case studies →"
-        trustLine="Real client accounts: 20X ROAS scaled, $250K at 4X, new customers at $25."
+        primaryLabel="Book a call"
+        secondaryHref="#ads"
+        secondaryLabel="See the ads we run ↓"
+        trustLine="Real client accounts: $430K at 20X ROAS, $250K at 4X, new customers at $25."
         snapshotTitle="D2C accounts we've scaled"
         snapshotStats={[
           { value: "20X", label: "ROAS on a scaled account ($430K)" },
           { value: "4X", label: "Blended ROAS at $250K revenue" },
           { value: "$25", label: "New-customer CAC" },
         ]}
-        snapshotFootnote="Real client numbers, brands kept private. Full case studies on request."
+        snapshotFootnote="Real client numbers, brands kept private."
       />
 
-      {/* Proof strip */}
-      <section className="bg-lime">
-        <div className="max-w-5xl mx-auto px-6 py-12">
-          <p className="text-center text-xs font-semibold uppercase tracking-wider text-[#171712]/60">
-            Real D2C accounts we&apos;ve scaled
+      {/* Case studies */}
+      <section className="border-y border-[#e6e4d9] bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
+            D2C brands we&apos;ve scaled.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
+            Where each one was stuck, what we changed, and the numbers after.
           </p>
-          <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-            {BAR_STATS.map((s) => (
-              <div key={s.label}>
-                <div className="font-display text-3xl md:text-5xl font-bold text-[#171712]">
-                  {s.value}
+          <div className="mt-12 grid md:grid-cols-3 gap-5">
+            {D2C_CASES.map((c) => (
+              <a
+                key={c.slug}
+                href={c.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7 hover:border-lime hover:-translate-y-0.5 transition"
+              >
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
+                  {c.industry}
+                </span>
+                <h3 className="font-display mt-3 text-2xl font-bold leading-tight">
+                  <Headline text={c.headline} accent={c.accent} />
+                </h3>
+                <p className="mt-1 text-sm font-semibold text-[#636256]">
+                  {c.timeframe}
+                </p>
+                <p className="mt-3 text-sm text-[#636256]">{c.summary}</p>
+                <div className="mt-auto pt-5">
+                  <div className="flex flex-wrap gap-x-6 gap-y-3 border-t border-[#e6e4d9] pt-5">
+                    {c.metrics.map((m) => (
+                      <div key={m.label}>
+                        <div className="font-display text-lg font-bold">
+                          {m.value}
+                        </div>
+                        <div className="text-[11px] uppercase tracking-wider text-[#636256]">
+                          {m.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#171712] group-hover:underline">
+                    <FileText className="w-4 h-4" /> Read the full case study
+                  </span>
                 </div>
-                <div className="mt-1 text-sm text-[#171712]/70">{s.label}</div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HIDDEN 2026-10-24: <D2CAdShowcase /> */}
+      {/* Ads by job */}
+      <D2CAdJobs />
 
-      {/* Guarantee */}
-      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-        <div className="rounded-3xl border border-[#171712] bg-[#171712] text-white p-8 md:p-14 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-lime">
-            <ShieldCheck className="h-3.5 w-3.5" /> Our guarantee
-          </span>
-          <h2 className="font-display mt-6 text-3xl md:text-5xl font-bold max-w-3xl mx-auto">
-            Hit your profit target in 60 days, or the next month is on us.
-          </h2>
-          <p className="mt-5 max-w-2xl mx-auto text-lg text-white/70">
-            No discounts, no vanity metrics. We agree on a profit target in
-            writing, tie ourselves to it, and go get it. Miss it and you
-            don&apos;t pay for the month it takes to fix.
-          </p>
-        </div>
-      </section>
-
-      {/* What we fix */}
-      <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
-        <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
-          Why good D2C brands stall at the same ROAS.
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-[#636256]">
-          We fix all four.
-        </p>
-        <div className="mt-12 grid sm:grid-cols-2 gap-5">
-          {SERVICES.map((s) => (
-            <div
-              key={s.title}
-              className="rounded-2xl border border-[#e6e4d9] bg-white p-7 hover:border-lime transition"
-            >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime">
-                <s.icon className="w-5 h-5 text-[#171712]" />
-              </span>
-              <h3 className="font-display mt-4 text-xl font-bold">{s.title}</h3>
-              <p className="mt-2 text-[#636256]">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Case studies */}
-      <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
-        <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
-          Real D2C accounts. Real profit.
-        </h2>
-        <div className="mt-12 grid md:grid-cols-3 gap-5">
-          {D2C_CASES.map((c) => (
-            <a
-              key={c.slug}
-              href={c.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col rounded-2xl border border-[#e6e4d9] bg-white p-7 hover:border-lime hover:-translate-y-0.5 transition"
-            >
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
-                {c.industry}
-              </span>
-              <h3 className="font-display mt-3 text-2xl font-bold leading-tight">
-                <Headline text={c.headline} accent={c.accent} />
-              </h3>
-              <p className="mt-3 text-sm text-[#636256] line-clamp-3">
-                {c.summary}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#f0efe6] pt-5">
-                {c.metrics.map((m) => (
-                  <div key={m.label}>
-                    <div className="font-display text-lg font-bold">
-                      {m.value}
-                    </div>
-                    <div className="text-[11px] uppercase tracking-wider text-[#636256]">
-                      {m.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#171712]">
-                <FileText className="w-4 h-4" /> Read the case study
-              </span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section className="border-y border-[#e6e4d9] bg-white">
+      {/* How we scale on profit */}
+      <section className="bg-[#171712] text-white">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-center">
-            How it works
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
+            How we scale without burning margin.
           </h2>
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {STEPS.map((s) => (
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-white/70">
+            Every week we ask one question: can we spend more tomorrow than
+            today and still make money on each order? If yes, we push. If no,
+            we find out why.
+          </p>
+
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {SCALE_STEPS.map((s) => (
               <div
                 key={s.num}
-                className="rounded-2xl border border-[#e6e4d9] bg-[#faf9f4] p-7"
+                className="rounded-2xl border border-white/15 bg-white/[0.04] p-6"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime font-display font-bold">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime font-display font-bold text-[#171712]">
                   {s.num}
                 </span>
                 <h3 className="font-display mt-4 text-xl font-bold">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-[#636256]">{s.body}</p>
+                <p className="mt-2 text-sm text-white/70">{s.body}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 rounded-2xl border border-white/15 p-6 md:p-8">
+            <p className="text-xs font-semibold uppercase tracking-wider text-lime">
+              What you see every week
+            </p>
+            <div className="mt-5 grid sm:grid-cols-3 gap-6">
+              {WEEKLY.map((w) => (
+                <div key={w.label}>
+                  <div className="font-display text-lg font-bold">{w.label}</div>
+                  <div className="mt-1 text-sm text-white/60">{w.note}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 border-t border-white/10 pt-5 text-sm text-white/60">
+              Not platform ROAS on its own. Meta and Google often both claim the
+              same sale, so we check every number against your store&apos;s
+              real orders.
+            </p>
           </div>
         </div>
       </section>
@@ -283,17 +226,15 @@ export default function D2CPage() {
         <div className="grid md:grid-cols-5 gap-10 md:gap-14 items-start">
           <div className="md:col-span-2">
             <h2 className="font-display text-3xl md:text-4xl font-bold">
-              Let&apos;s find your leak.
+              Let&apos;s look at your account.
             </h2>
             <p className="mt-4 text-lg text-[#636256]">
-              Share a few details about your brand and where you&apos;re at with
-              paid. We&apos;ll audit your account, tracking, and funnel, then
-              send a written plan on where your margin is leaking and what
-              we&apos;d fix first. Completely free.
+              Tell us about your brand and where paid ads are at right now.
+              We&apos;ll get back to you to set up a call.
             </p>
             <ul className="mt-6 space-y-3 text-[#636256]">
               {[
-                "No retainer pitch on the first call, just a real conversation",
+                "You talk to the person who'd run your account",
                 "You'll hear back within 1 business day",
                 "Your ad accounts stay in your name, always",
               ].map((li) => (
@@ -305,10 +246,7 @@ export default function D2CPage() {
             </ul>
           </div>
           <div className="md:col-span-3 rounded-3xl border border-[#e6e4d9] bg-white p-7 md:p-9">
-            <LeadForm
-              submitLabel="Book my free profit audit"
-              defaultType="D2C brand"
-            />
+            <LeadForm submitLabel="Book a call" defaultType="D2C brand" />
           </div>
         </div>
       </section>
