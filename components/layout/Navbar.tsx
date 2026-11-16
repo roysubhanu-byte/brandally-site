@@ -7,9 +7,9 @@ import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 
 // Pure conversion landing pages: minimal light header, one CTA, no site nav.
-const LP_ROUTES = ["/dog-training", "/local", "/d2c"];
+const LP_ROUTES = ["/dog-training", "/local"];
 // Full site pages that use the light theme.
-const LIGHT_ROUTES = ["/", "/contact", "/about", "/services", "/case-studies"];
+const LIGHT_ROUTES = ["/", "/contact", "/about", "/services", "/case-studies", "/d2c"];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -117,7 +117,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <Link
-          href="/contact"
+          href={pathname === "/d2c" ? "#get-started" : "/contact"}
           className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-lime px-5 py-2.5 text-sm font-semibold text-ink hover:bg-lime-soft transition"
         >
           Book a free audit <ArrowRight className="w-4 h-4" />
@@ -162,7 +162,7 @@ export default function Navbar() {
             </div>
           ))}
           <Link
-            href="/contact"
+            href={pathname === "/d2c" ? "#get-started" : "/contact"}
             onClick={() => setOpen(false)}
             className="mt-2 flex items-center justify-center gap-1.5 rounded-full bg-lime px-5 py-3 font-semibold text-ink"
           >

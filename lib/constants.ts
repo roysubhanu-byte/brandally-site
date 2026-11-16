@@ -100,7 +100,7 @@ export const CASE_STUDIES = [
     pdf: "/case-studies/sports-games.pdf",
     client: "Sports games",
     industry: "D2C · Sports simulation",
-    headline: "Scaled to $430K at 20X ROAS",
+    headline: "Scaled to $430K in revenue",
     accent: "$430K",
     timeframe: "in 3 months",
     summary:

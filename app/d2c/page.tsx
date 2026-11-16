@@ -116,10 +116,10 @@ export default function D2CPage() {
         primaryLabel="Book a call"
         secondaryHref="#ads"
         secondaryLabel="See the ads we run ↓"
-        trustLine="Real client accounts: $430K at 20X ROAS, $250K at 4X, new customers at $25."
+        trustLine="Real client accounts: $430K at 4.6X Meta ROAS, $250K at 4X, new customers at $25."
         snapshotTitle="D2C accounts we've scaled"
         snapshotStats={[
-          { value: "20X", label: "ROAS on a scaled account ($430K)" },
+          { value: "4.6X", label: "Meta ROAS on a $430K account" },
           { value: "4X", label: "Blended ROAS at $250K revenue" },
           { value: "$25", label: "New-customer CAC" },
         ]}
