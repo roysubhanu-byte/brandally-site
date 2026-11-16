@@ -23,6 +23,8 @@ export const BRAND = {
 export const CASE_STUDIES = [
   {
     slug: "baby-formula",
+    category: "d2c",
+    platform: "Meta",
     pdf: "/case-studies/baby-formula.pdf",
     client: "Baby brand",
     industry: "D2C · Baby products & formula",
@@ -30,15 +32,17 @@ export const CASE_STUDIES = [
     accent: "60%",
     timeframe: "in one month",
     summary:
-      "A US baby brand selling online and in big-box retail, plus a new formula line burning cash. We cut the waste, gave every campaign one job, rewrote the offer per parent, and rebuilt the landing page. Website orders went from 179 to 286 a day from fewer visitors.",
+      "A US baby brand selling online and in big-box retail, with a new formula line burning cash on Meta. We cut the zero-sale campaigns, gave every campaign one job, wrote a different reason to buy for each type of parent, and rebuilt the landing page. Website orders went from 179 to 286 a day.",
     metrics: [
-      { value: "2.79%", label: "Store conversion (was 1.64%)" },
-      { value: "$10.60", label: "Google cost per sale (was $13.67)" },
       { value: "286", label: "Orders a day (was 179)" },
+      { value: "2.79%", label: "Store conversion (was 1.64%)" },
+      { value: "$9.37", label: "Meta cost per sale, new offer" },
     ],
   },
   {
     slug: "coaching",
+    category: "leadgen",
+    platform: "Meta",
     pdf: "/case-studies/coaching.pdf",
     client: "Coaching",
     industry: "High-ticket · Nurse coaching",
@@ -46,7 +50,7 @@ export const CASE_STUDIES = [
     accent: "$1.47M",
     timeframe: "in 6 months",
     summary:
-      "A high-ticket nurse coaching program stuck at $80K. We tested multiple funnels, built 5 persona ad sets, and rebuilt the upper funnel so closers only got hot, qualified leads. Call-to-close hit 30%.",
+      "A high-ticket nurse coaching program stuck at $80K. On Meta we tested several funnels across 39 campaigns and built 5 persona ad sets, so closers only got hot, qualified leads. Call-to-close hit 30%.",
     metrics: [
       { value: "$1.47M", label: "Closed-won revenue" },
       { value: "30%", label: "Call-to-close rate" },
@@ -55,6 +59,8 @@ export const CASE_STUDIES = [
   },
   {
     slug: "fitness-coaching",
+    category: "leadgen",
+    platform: "Meta",
     pdf: "/case-studies/fitness-coaching.pdf",
     client: "Fitness coaching",
     industry: "Coaching · Veteran fitness",
@@ -71,6 +77,8 @@ export const CASE_STUDIES = [
   },
   {
     slug: "ski-apparel",
+    category: "d2c",
+    platform: "Meta + Google",
     pdf: "/case-studies/ski-apparel.pdf",
     client: "Ski apparel",
     industry: "D2C · Ski apparel & home goods",
@@ -78,15 +86,17 @@ export const CASE_STUDIES = [
     accent: "$250K",
     timeframe: "in 100 days",
     summary:
-      "A USA ski brand stuck at 1.79X ROAS. We rebuilt the Meta and Google accounts, fixed the funnel, and scaled spend without losing efficiency.",
+      "A USA ski brand stuck at 1.79X ROAS. We rebuilt the Meta account around the products that sell, matched the ads to the site, then added Google search to catch the demand Meta was creating.",
     metrics: [
       { value: "$250K", label: "Revenue" },
-      { value: "4X", label: "Blended ROAS" },
+      { value: "3.4X", label: "Meta ROAS" },
       { value: "$35", label: "Blended CAC" },
     ],
   },
   {
     slug: "sports-games",
+    category: "d2c",
+    platform: "Meta",
     pdf: "/case-studies/sports-games.pdf",
     client: "Sports games",
     industry: "D2C · Sports simulation",
@@ -94,15 +104,17 @@ export const CASE_STUDIES = [
     accent: "$430K",
     timeframe: "in 3 months",
     summary:
-      "A 60-year-old brand leaving money on the table. We reset the P&L, reworked Meta, and reported against real profit instead of vanity metrics.",
+      "A 60-year-old brand with Meta half-run. We rebuilt Meta from structure to creative, reset the P&L, and reported against real profit instead of platform numbers.",
     metrics: [
       { value: "$430K", label: "Revenue" },
-      { value: "20X", label: "ROAS" },
+      { value: "4.6X", label: "Meta ROAS" },
       { value: "$25", label: "New customer CAC" },
     ],
   },
   {
     slug: "dog-local",
+    category: "leadgen",
+    platform: "Google + Meta",
     pdf: "/case-studies/dog-local.pdf",
     client: "Dog training & daycare",
     industry: "Local · Dog training & daycare",
@@ -119,6 +131,8 @@ export const CASE_STUDIES = [
   },
   {
     slug: "dog-products",
+    category: "d2c",
+    platform: "Meta",
     pdf: "/case-studies/dog-products.pdf",
     client: "Dog products",
     industry: "D2C · Dog training",
@@ -126,15 +140,17 @@ export const CASE_STUDIES = [
     accent: "$180K",
     timeframe: "in 3 months",
     summary:
-      "Stuck at 1.5X ROAS with Google left untouched. We aligned messaging, rebuilt the campaign structure, and scaled profitably.",
+      "Stuck at 1.5X ROAS. We rebuilt the Meta campaign structure, matched the ads to the products people actually buy, and scaled spend only while profit held.",
     metrics: [
       { value: "$180K", label: "Revenue" },
-      { value: "3X", label: "ROAS" },
+      { value: "3.1X", label: "Meta ROAS" },
       { value: "$26", label: "Blended CAC" },
     ],
   },
   {
     slug: "construction-tech",
+    category: "leadgen",
+    platform: "Google",
     pdf: "/case-studies/construction-tech.pdf",
     client: "Construction tech",
     industry: "B2B · Construction tech consulting",
@@ -245,9 +261,22 @@ export const FAQ_ITEMS = [
   },
 ];
 
-export const NAV_LINKS = [
+export const NAV_LINKS: {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}[] = [
   { label: "Home", href: "/" },
-  { label: "Case Studies", href: "/case-studies" },
+  { label: "D2C", href: "/d2c" },
+  {
+    label: "Case Studies",
+    href: "/case-studies",
+    children: [
+      { label: "All case studies", href: "/case-studies" },
+      { label: "D2C brands", href: "/case-studies?type=d2c" },
+      { label: "Lead gen", href: "/case-studies?type=leadgen" },
+    ],
+  },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
