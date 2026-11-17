@@ -100,9 +100,9 @@ export const CASE_STUDIES = [
     pdf: "/case-studies/sports-games.pdf",
     client: "Sports games",
     industry: "D2C · Sports simulation",
-    headline: "$430K in sales",
+    headline: "$430K in sales in 3 months",
     accent: "$430K",
-    timeframe: "in 3 months",
+    timeframe: "from the day we took over",
     summary:
       "A 60-year-old brand with Meta half-run. We rebuilt Meta from structure to creative, reset the P&L, and reported against real profit instead of platform numbers.",
     metrics: [
