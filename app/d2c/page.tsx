@@ -135,10 +135,10 @@ export default function D2CPage() {
         primaryLabel="Book a call"
         secondaryHref="#ads"
         secondaryLabel="See the ads we run ↓"
-        trustLine="Real client accounts: cost per purchase from $220 to $17, new customers at $25, $430K scaled."
+        trustLine="Real client accounts: 60% more orders a day, new customers at $25, $430K scaled."
         snapshotTitle="D2C accounts we've scaled"
         snapshotStats={[
-          { value: "$17", label: "Cost per purchase, down from $220" },
+          { value: "60%", label: "More orders a day (179 to 286)" },
           { value: "$25", label: "Cost per new customer" },
           { value: "$430K", label: "Revenue on a scaled account" },
         ]}
