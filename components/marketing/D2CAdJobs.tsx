@@ -9,7 +9,9 @@ const FILTERS: (JobKey | 0)[] = [0, 1, 2, 3, 4];
 
 export default function D2CAdJobs() {
   const [filter, setFilter] = useState<JobKey | 0>(0);
-  const shown = filter === 0 ? ADS : ADS.filter((a) => a.job === filter);
+  const shown = (filter === 0 ? [...ADS] : ADS.filter((a) => a.job === filter)).sort(
+    (a, b) => a.job - b.job,
+  );
 
   return (
     <section id="ads" className="py-20 md:py-28 scroll-mt-24 overflow-hidden">

@@ -135,12 +135,12 @@ export default function D2CPage() {
         primaryLabel="Book a call"
         secondaryHref="#ads"
         secondaryLabel="See the ads we run ↓"
-        trustLine="Real client accounts: $430K at 4.6X Meta ROAS, $250K at 4X, new customers at $25."
+        trustLine="Real client accounts: cost per purchase from $220 to $17, new customers at $25, $430K scaled."
         snapshotTitle="D2C accounts we've scaled"
         snapshotStats={[
-          { value: "4.6X", label: "Meta ROAS on a $430K account" },
-          { value: "4X", label: "Blended ROAS at $250K revenue" },
-          { value: "$25", label: "New-customer CAC" },
+          { value: "$17", label: "Cost per purchase, down from $220" },
+          { value: "$25", label: "Cost per new customer" },
+          { value: "$430K", label: "Revenue on a scaled account" },
         ]}
         snapshotFootnote="Real client numbers, brands kept private."
       />
@@ -171,6 +171,39 @@ export default function D2CPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Founder explains the method */}
+      <section className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
+              60 seconds from our founder
+            </span>
+            <h2 className="font-display mt-3 text-3xl md:text-5xl font-bold text-balance">
+              Why profit shrinks when you raise the budget.
+            </h2>
+            <p className="mt-5 text-lg text-[#636256]">
+              Double your spend and Meta has to find people who&apos;ve never
+              heard of you. You pay while they warm up. Subhanu walks through
+              the fix: know what you keep per order, then run four ads that
+              work together.
+            </p>
+            <p className="mt-6 font-semibold">
+              Subhanu Roy, founder of BrandAlly
+            </p>
+          </div>
+          <div className="mx-auto w-[260px] sm:w-[300px] overflow-hidden rounded-[2rem] border-[8px] border-[#171712] bg-[#171712] shadow-[0_30px_60px_-20px_rgba(23,23,18,0.5)]">
+            <video
+              src="/videos/d2c/founder-4-ads.mp4"
+              poster="/videos/d2c/founder-4-ads.jpg"
+              controls
+              playsInline
+              preload="none"
+              className="block aspect-[9/16] w-full bg-[#171712]"
+            />
           </div>
         </div>
       </section>

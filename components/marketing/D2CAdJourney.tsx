@@ -10,10 +10,10 @@ const STEP_MS = 4200;
 const pick = (id: string) => ADS.find((a) => a.id === id)!;
 
 const STEPS = [
-  { day: "Day 1", ad: pick("ad-03"), action: "Sees it. Doesn't click." },
+  { day: "Day 1", ad: pick("ad-02"), action: "Sees it. Doesn't click." },
   { day: "Day 3", ad: pick("video-01"), action: "Sees real people wearing it. Starts to trust it." },
   { day: "Day 5", ad: pick("video-02"), action: "Wants it. Clicks, looks around, doesn't buy." },
-  { day: "Day 6", ad: pick("ad-09"), action: "Buys. This ad gets the credit." },
+  { day: "Day 6", ad: pick("video-03"), action: "Sees the full set for $144. Buys. This ad gets the credit." },
 ];
 
 export default function D2CAdJourney() {

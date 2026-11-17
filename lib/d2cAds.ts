@@ -124,11 +124,21 @@ export const ADS: MetaAd[] = [
   },
   {
     id: "ad-02",
-    job: 3,
+    job: 1,
     brand: "Jewelry Co.",
     text: "Gold is an investment. We're not selling metal, we're selling culture and identity.",
     image: "/images/d2c-ads/ad-02.jpg",
     alt: "Jewelry ad: gold is an investment",
+    cta: "Shop now",
+  },
+  {
+    id: "video-03",
+    job: 4,
+    brand: "Jewelry Co.",
+    text: "The whole set is a $279 value. Today it's $144, box included. You save $135.",
+    image: "/videos/d2c/jewelry-bundle.jpg",
+    video: "/videos/d2c/jewelry-bundle.mp4",
+    alt: "Video ad: jewelry box set, $279 value for $144",
     cta: "Shop now",
   },
   {
