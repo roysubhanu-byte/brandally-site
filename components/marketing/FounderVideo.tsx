@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 
-// Founder video: nothing downloads until play is pressed. Plays with sound.
+// Founder video: nothing loads with the page. It buffers quietly once the
+// section scrolls near, so play starts instantly, with sound.
 export default function FounderVideo({
   src,
   poster,
@@ -16,11 +17,30 @@ export default function FounderVideo({
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
 
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        if (!v.getAttribute("src")) {
+          v.preload = "auto";
+          v.src = src;
+          v.load();
+        }
+        io.disconnect();
+      },
+      { rootMargin: "1200px 0px" },
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, [src]);
+
   const start = () => {
     const v = ref.current;
     if (!v) return;
     setStarted(true);
-    v.src = src;
+    if (!v.getAttribute("src")) v.src = src;
     v.muted = false;
     v.play().catch(() => {});
   };
