@@ -183,13 +183,13 @@ export default function D2CPage() {
               60 seconds from our founder
             </span>
             <h2 className="font-display mt-3 text-3xl md:text-5xl font-bold text-balance">
-              Why profit shrinks when you raise the budget.
+              Why most brands burn cash when they scale.
             </h2>
             <p className="mt-5 text-lg text-[#636256]">
-              Double your spend and Meta has to find people who&apos;ve never
-              heard of you. You pay while they warm up. Subhanu walks through
-              the fix: know what you keep per order, then run four ads that
-              work together.
+              Most founders run paid ads for years and still struggle. Not
+              because of the ads. Profit per order is thin, most sales come
+              from old customers, and the whole business runs on one ad.
+              Subhanu on what to fix before you spend more.
             </p>
             <p className="mt-6 font-semibold">
               Subhanu Roy, founder of BrandAlly
@@ -197,8 +197,8 @@ export default function D2CPage() {
           </div>
           <div className="mx-auto w-[260px] sm:w-[300px] overflow-hidden rounded-[2rem] border-[8px] border-[#171712] bg-[#171712] shadow-[0_30px_60px_-20px_rgba(23,23,18,0.5)]">
             <video
-              src="/videos/d2c/founder-4-ads.mp4"
-              poster="/videos/d2c/founder-4-ads.jpg"
+              src="/videos/d2c/founder-scale.mp4"
+              poster="/videos/d2c/founder-scale.jpg"
               controls
               playsInline
               preload="none"
