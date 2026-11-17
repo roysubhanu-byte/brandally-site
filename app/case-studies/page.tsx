@@ -11,8 +11,9 @@ export const metadata: Metadata = {
 
 type Filter = "all" | "d2c" | "leadgen";
 
-// D2C buyers are $500K-$5M brands: most relatable results first.
-const D2C_ORDER = ["sports-games", "ski-apparel", "dog-products", "baby-formula"];
+// D2C buyers spend $500K-$5M a year on ads ($2.5M-$25M revenue): biggest brand first,
+// every card framed as short-term growth, not total business size.
+const D2C_ORDER = ["baby-formula", "sports-games", "ski-apparel", "dog-products"];
 
 const FILTERS: { key: Filter; label: string; href: string }[] = [
   { key: "all", label: "All case studies", href: "/case-studies" },
