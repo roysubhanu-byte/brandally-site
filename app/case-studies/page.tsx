@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 
 type Filter = "all" | "d2c" | "leadgen";
 
+// D2C buyers are $500K-$5M brands: most relatable results first.
+const D2C_ORDER = ["sports-games", "ski-apparel", "dog-products", "baby-formula"];
+
 const FILTERS: { key: Filter; label: string; href: string }[] = [
   { key: "all", label: "All case studies", href: "/case-studies" },
   { key: "d2c", label: "D2C brands", href: "/case-studies?type=d2c" },
@@ -133,7 +136,9 @@ export default async function CaseStudiesPage({
   const cases =
     filter === "all"
       ? CASE_STUDIES
-      : CASE_STUDIES.filter((c) => c.category === filter);
+      : filter === "d2c"
+        ? D2C_ORDER.map((slug) => CASE_STUDIES.find((c) => c.slug === slug)!).filter(Boolean)
+        : CASE_STUDIES.filter((c) => c.category === filter);
 
   return (
     <div className="bg-[#faf9f4] text-[#171712]">
