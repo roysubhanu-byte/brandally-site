@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight, FileText } from "lucide-react";
 import SnapshotHero from "@/components/marketing/SnapshotHero";
 import D2CAdJobs from "@/components/marketing/D2CAdJobs";
+import FounderVideo from "@/components/marketing/FounderVideo";
 import LeadForm from "@/components/LeadForm";
 import { CASE_STUDIES } from "@/lib/constants";
 
@@ -180,32 +181,27 @@ export default function D2CPage() {
         <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
-              60 seconds from our founder
+              From our founder
             </span>
             <h2 className="font-display mt-3 text-3xl md:text-5xl font-bold text-balance">
-              Are you paying Meta to sell to your own customers?
+              The mistake most brands make when they scale.
             </h2>
             <p className="mt-5 text-lg text-[#636256]">
-              Meta keeps showing your ads to people who already bought. They
-              would have bought anyway, and Meta takes the credit. Subhanu
-              walks through a real Shopify report: spend up and new customers
-              up, we scale. Revenue up only from returning customers? That&apos;s
-              a red flag.
+              They judge each ad by its own ROAS and switch off the ones with
+              no sales. But those ads were part of the journey. Switch them
+              off and performance drops. Subhanu shows how we read an account
+              instead: campaign first, then frequency, then single ads.
             </p>
             <p className="mt-6 font-semibold">
               Subhanu Roy, founder of BrandAlly
             </p>
           </div>
-          <div className="mx-auto w-[260px] sm:w-[300px] overflow-hidden rounded-[2rem] border-[8px] border-[#171712] bg-[#171712] shadow-[0_30px_60px_-20px_rgba(23,23,18,0.5)]">
-            <video
-              src="/videos/d2c/founder-new-customers.mp4"
-              poster="/videos/d2c/founder-new-customers.jpg"
-              controls
-              playsInline
-              preload="none"
-              className="block aspect-[9/16] w-full bg-[#171712]"
-            />
-          </div>
+          <FounderVideo
+            src="/videos/d2c/founder-ad-credit.mp4"
+            poster="/videos/d2c/founder-ad-credit.jpg"
+            duration="1:41"
+            label="Subhanu on the scaling mistake: judging ads by ROAS"
+          />
         </div>
       </section>
 
