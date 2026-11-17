@@ -5,9 +5,10 @@ import {
   Heart,
   MessageCircle,
   MoreHorizontal,
-  Play,
+  VolumeX,
   Send,
 } from "lucide-react";
+import AdVideo from "@/components/marketing/AdVideo";
 import { JOBS, type MetaAd } from "@/lib/d2cAds";
 
 // A Meta (Facebook / Instagram) feed post wrapper around a real ad creative.
@@ -15,11 +16,13 @@ export default function MetaPost({
   ad,
   showJob = true,
   priority = false,
+  active = true,
   className = "",
 }: {
   ad: MetaAd;
   showJob?: boolean;
   priority?: boolean;
+  active?: boolean;
   className?: string;
 }) {
   const initials = ad.brand
@@ -52,20 +55,22 @@ export default function MetaPost({
       </header>
 
       <div className="relative aspect-[4/5] bg-[#f0efe6]">
-        <Image
-          src={ad.image}
-          alt={ad.alt}
-          fill
-          priority={priority}
-          sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 80vw"
-          className="object-cover"
-        />
-        {ad.video && (
-          <span className="absolute inset-0 flex items-center justify-center">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-black/45 backdrop-blur-sm">
-              <Play className="ml-0.5 h-6 w-6 fill-white text-white" />
+        {ad.video ? (
+          <>
+            <AdVideo src={ad.video} poster={ad.image} label={ad.alt} active={active} />
+            <span className="absolute bottom-2.5 right-2.5 flex h-7 w-7 items-center justify-center rounded-full bg-black/55">
+              <VolumeX className="h-3.5 w-3.5 text-white" />
             </span>
-          </span>
+          </>
+        ) : (
+          <Image
+            src={ad.image}
+            alt={ad.alt}
+            fill
+            priority={priority}
+            sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 80vw"
+            className="object-cover"
+          />
         )}
       </div>
 

@@ -11,8 +11,8 @@ const pick = (id: string) => ADS.find((a) => a.id === id)!;
 
 const STEPS = [
   { day: "Day 1", ad: pick("ad-03"), action: "Sees it. Doesn't click." },
-  { day: "Day 3", ad: pick("ad-06"), action: "Sees it again. Starts to trust it." },
-  { day: "Day 5", ad: pick("ad-01"), action: "Clicks, looks around, doesn't buy." },
+  { day: "Day 3", ad: pick("video-01"), action: "Sees real people wearing it. Starts to trust it." },
+  { day: "Day 5", ad: pick("video-02"), action: "Wants it. Clicks, looks around, doesn't buy." },
   { day: "Day 6", ad: pick("ad-09"), action: "Buys. This ad gets the credit." },
 ];
 
@@ -142,7 +142,7 @@ export default function D2CAdJourney() {
                       : "opacity-0 translate-y-4 scale-[0.97] pointer-events-none"
                   }`}
                 >
-                  <MetaPost ad={s.ad} showJob={false} priority={i === 0} />
+                  <MetaPost ad={s.ad} showJob={false} priority={i === 0} active={i === active} />
                 </div>
               ))}
             </div>

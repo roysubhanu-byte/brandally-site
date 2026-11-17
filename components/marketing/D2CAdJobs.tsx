@@ -52,7 +52,7 @@ export default function D2CAdJobs() {
               Real Meta ads we run.
             </h3>
             <p className="mt-2 text-[#636256]">
-              From D2C client accounts. Brand names hidden.
+              From D2C client accounts. Videos play muted. Brand names hidden.
             </p>
           </div>
           <div

@@ -11,6 +11,25 @@ export const metadata: Metadata = {
     "BrandAlly runs Meta ads for D2C brands. Real case studies, the real ads we run, and how we scale spend while profit per order holds.",
 };
 
+const DIFFERENT = [
+  {
+    them: "Judge every ad by its own ROAS. Switch off the ones with no sales.",
+    us: "Read the four ads as a team. Ad 4 only closes because Ads 1 to 3 warmed people up.",
+  },
+  {
+    them: "Raise budget when the ROAS in Ads Manager looks good.",
+    us: "Raise budget only while profit per order holds and new customers keep going up.",
+  },
+  {
+    them: "Send you the ROAS Meta reports.",
+    us: "Send you profit per order and cost per new customer, checked against Shopify.",
+  },
+  {
+    them: "A junior runs your account after the sales call.",
+    us: "Founders who've built and scaled their own businesses run it.",
+  },
+];
+
 const SCALE_STEPS = [
   {
     num: "1",
@@ -126,8 +145,91 @@ export default function D2CPage() {
         snapshotFootnote="Real client numbers, brands kept private."
       />
 
-      {/* Case studies */}
+      {/* What we do differently */}
       <section className="border-y border-[#e6e4d9] bg-white">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
+            How we run ads differently.
+          </h2>
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#e6e4d9]">
+            <div className="hidden md:grid grid-cols-2 bg-[#f7f6f0] text-xs font-semibold uppercase tracking-wider">
+              <div className="px-6 py-3 text-[#636256]">Most agencies</div>
+              <div className="px-6 py-3 text-[#5c7a1e]">BrandAlly</div>
+            </div>
+            {DIFFERENT.map((d) => (
+              <div
+                key={d.us}
+                className="grid md:grid-cols-2 border-t border-[#e6e4d9] first:border-t-0 md:first:border-t"
+              >
+                <div className="px-6 pt-5 pb-2 md:py-5 text-[#636256]">
+                  <span className="md:hidden block text-[11px] font-semibold uppercase tracking-wider">Most agencies</span>
+                  {d.them}
+                </div>
+                <div className="px-6 pb-5 pt-2 md:py-5 md:bg-[#fbfdf5] font-semibold">
+                  <span className="md:hidden block text-[11px] font-semibold uppercase tracking-wider text-[#5c7a1e]">BrandAlly</span>
+                  {d.us}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ads by job */}
+      <D2CAdJobs />
+
+      {/* How we scale on profit */}
+      <section className="bg-[#171712] text-white">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
+            How we decide to spend more.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-white/70">
+            When you double spend, Meta has to find people who&apos;ve never
+            heard of you. They aren&apos;t ready to buy yet, and you pay while
+            they warm up. That&apos;s why profit shrinks. So we answer four
+            questions first.
+          </p>
+
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {SCALE_STEPS.map((s) => (
+              <div
+                key={s.num}
+                className="rounded-2xl border border-white/15 bg-white/[0.04] p-6"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime font-display font-bold text-[#171712]">
+                  {s.num}
+                </span>
+                <h3 className="font-display mt-4 text-xl font-bold">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-sm text-white/70">{s.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 rounded-2xl border border-white/15 p-6 md:p-8">
+            <p className="text-xs font-semibold uppercase tracking-wider text-lime">
+              What you see every week
+            </p>
+            <div className="mt-5 grid sm:grid-cols-3 gap-6">
+              {WEEKLY.map((w) => (
+                <div key={w.label}>
+                  <div className="font-display text-lg font-bold">{w.label}</div>
+                  <div className="mt-1 text-sm text-white/60">{w.note}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 border-t border-white/10 pt-5 text-sm text-white/60">
+              Meta&apos;s dashboard and your store rarely match. We go by
+              Shopify.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Case studies */}
+      <section className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
             D2C brands we&apos;ve scaled.
@@ -174,59 +276,6 @@ export default function D2CPage() {
                 </div>
               </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ads by job */}
-      <D2CAdJobs />
-
-      {/* How we scale on profit */}
-      <section className="bg-[#171712] text-white">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-center text-balance">
-            Before we scale, we fix the setup.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-white/70">
-            When you double spend, Meta has to find people who&apos;ve never
-            heard of you. They aren&apos;t ready to buy yet, and you pay while
-            they warm up. That&apos;s why profit shrinks. So we answer four
-            questions first.
-          </p>
-
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {SCALE_STEPS.map((s) => (
-              <div
-                key={s.num}
-                className="rounded-2xl border border-white/15 bg-white/[0.04] p-6"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime font-display font-bold text-[#171712]">
-                  {s.num}
-                </span>
-                <h3 className="font-display mt-4 text-xl font-bold">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-sm text-white/70">{s.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 rounded-2xl border border-white/15 p-6 md:p-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-lime">
-              What you see every week
-            </p>
-            <div className="mt-5 grid sm:grid-cols-3 gap-6">
-              {WEEKLY.map((w) => (
-                <div key={w.label}>
-                  <div className="font-display text-lg font-bold">{w.label}</div>
-                  <div className="mt-1 text-sm text-white/60">{w.note}</div>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 border-t border-white/10 pt-5 text-sm text-white/60">
-              Meta&apos;s dashboard and your store rarely match. We go by
-              Shopify.
-            </p>
           </div>
         </div>
       </section>

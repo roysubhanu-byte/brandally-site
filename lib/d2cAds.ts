@@ -10,7 +10,7 @@ export type MetaAd = {
   image: string;
   alt: string;
   cta: string;
-  video?: boolean;
+  video?: string; // muted autoplay clip; image is its poster
 };
 
 export const JOBS: Record<
@@ -56,7 +56,6 @@ export const ADS: MetaAd[] = [
     image: "/images/d2c-ads/ad-03.jpg",
     alt: "Video ad cover: mastic trees, caption 8 grams that's less than 2 teaspoons",
     cta: "Learn more",
-    video: true,
   },
   {
     id: "ad-07",
@@ -84,6 +83,26 @@ export const ADS: MetaAd[] = [
     image: "/images/d2c-ads/ad-05.jpg",
     alt: "Course and leash bundle ad",
     cta: "Learn more",
+  },
+  {
+    id: "video-01",
+    job: 2,
+    brand: "Jewelry Co.",
+    text: "\"This is crazy.\" \"The quality is insane.\" Real people, wearing it, on camera.",
+    image: "/videos/d2c/jewelry-ugc.jpg",
+    video: "/videos/d2c/jewelry-ugc.mp4",
+    alt: "Video ad: customers showing their gold necklaces and rings",
+    cta: "Shop now",
+  },
+  {
+    id: "video-02",
+    job: 3,
+    brand: "Jewelry Co.",
+    text: "\"Prices are great.\" \"You feel my aura.\" Gold that becomes part of who you are.",
+    image: "/videos/d2c/jewelry-mood.jpg",
+    video: "/videos/d2c/jewelry-mood.mp4",
+    alt: "Video ad: gold ankh pieces worn under moody light",
+    cta: "Shop now",
   },
   {
     id: "ad-01",
