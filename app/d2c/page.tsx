@@ -180,16 +180,17 @@ export default function D2CPage() {
         <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-[#5c7a1e]">
-              35 seconds from our founder
+              60 seconds from our founder
             </span>
             <h2 className="font-display mt-3 text-3xl md:text-5xl font-bold text-balance">
-              Why brands work with us.
+              Are you paying Meta to sell to your own customers?
             </h2>
             <p className="mt-5 text-lg text-[#636256]">
-              A sports games brand, three months with us: $430K in sales at $25
-              per new customer, on the brand&apos;s own dashboard. Then how we
-              work: ads, offer, positioning and landing page together, judged
-              on profit per order and retention.
+              Meta keeps showing your ads to people who already bought. They
+              would have bought anyway, and Meta takes the credit. Subhanu
+              walks through a real Shopify report: spend up and new customers
+              up, we scale. Revenue up only from returning customers? That&apos;s
+              a red flag.
             </p>
             <p className="mt-6 font-semibold">
               Subhanu Roy, founder of BrandAlly
@@ -197,8 +198,8 @@ export default function D2CPage() {
           </div>
           <div className="mx-auto w-[260px] sm:w-[300px] overflow-hidden rounded-[2rem] border-[8px] border-[#171712] bg-[#171712] shadow-[0_30px_60px_-20px_rgba(23,23,18,0.5)]">
             <video
-              src="/videos/d2c/founder-proof.mp4"
-              poster="/videos/d2c/founder-proof.jpg"
+              src="/videos/d2c/founder-new-customers.mp4"
+              poster="/videos/d2c/founder-new-customers.jpg"
               controls
               playsInline
               preload="none"
