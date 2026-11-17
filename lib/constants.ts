@@ -86,9 +86,9 @@ export const CASE_STUDIES = [
     accent: "3.4X",
     timeframe: "in 100 days",
     summary:
-      "A USA ski brand stuck at 1.79X ROAS. We rebuilt the Meta account around the products that sell, matched the ads to the site, then added Google search to catch the demand Meta was creating.",
+      "A USA ski brand stuck at 1.79X ROAS. We rebuilt the Meta account around the products that sell, matched the ads to the site, then added Google search to catch the demand Meta was creating. Meta spend went from about $1.5K to $15K a month and ROAS still nearly doubled.",
     metrics: [
-      { value: "$250K", label: "Revenue in 100 days" },
+      { value: "$250K", label: "Store sales in 100 days" },
       { value: "3.4X", label: "Meta ROAS" },
       { value: "$35", label: "Blended CAC" },
     ],
@@ -100,15 +100,15 @@ export const CASE_STUDIES = [
     pdf: "/case-studies/sports-games.pdf",
     client: "Sports games",
     industry: "D2C · Sports simulation",
-    headline: "$430K in sales in 3 months",
-    accent: "$430K",
-    timeframe: "from the day we took over",
+    headline: "New customers from $65 to $25 each",
+    accent: "$25",
+    timeframe: "in our first 2 months",
     summary:
-      "A 60-year-old brand with Meta half-run. We rebuilt Meta from structure to creative, reset the P&L, and reported against real profit instead of platform numbers.",
+      "A 60-year-old games brand with Meta half-run. We rebuilt Meta from structure to creative and judged it on new customers and real profit, not the ROAS Meta reports. In our first 2 months, new customers went from 330 to 810, and each one cost $25 instead of $65.",
     metrics: [
-      { value: "$430K", label: "Sales in 3 months" },
-      { value: "4.6X", label: "Meta ROAS" },
-      { value: "$25", label: "New customer CAC" },
+      { value: "810", label: "New customers in 2 months (was 330)" },
+      { value: "$25", label: "Cost per new customer (was $65)" },
+      { value: "$430K", label: "Store sales in 2 months" },
     ],
   },
   {
@@ -140,9 +140,9 @@ export const CASE_STUDIES = [
     accent: "3.1X",
     timeframe: "in 3 months",
     summary:
-      "Stuck at 1.5X ROAS. We rebuilt the Meta campaign structure, matched the ads to the products people actually buy, and scaled spend only while profit held.",
+      "Stuck at 1.5X ROAS. We rebuilt the Meta campaign structure, matched the ads to the products people actually buy, and raised spend only while profit held. Meta spend went up about 55% and ROAS still doubled.",
     metrics: [
-      { value: "$180K", label: "New revenue in 90 days" },
+      { value: "$180K", label: "Store sales in 90 days" },
       { value: "3.1X", label: "Meta ROAS" },
       { value: "$26", label: "Blended CAC" },
     ],
