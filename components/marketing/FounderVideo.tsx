@@ -1,26 +1,57 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
-// Founder talking-head video: clean cover with one play button, native controls only after play.
+// Founder video: plays muted on its own while on screen, one small sound toggle.
 export default function FounderVideo({
   src,
   poster,
-  duration,
   label,
 }: {
   src: string;
   poster: string;
-  duration: string;
   label: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [started, setStarted] = useState(false);
+  const [muted, setMuted] = useState(true);
 
-  const start = () => {
-    setStarted(true);
-    ref.current?.play().catch(() => {});
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Start fetching a little before it scrolls into view, play while visible.
+    const near = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting && v.preload !== "auto") {
+          v.preload = "auto";
+          v.load();
+        }
+      },
+      { rootMargin: "800px 0px" },
+    );
+    const vis = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting && !reduced) v.play().catch(() => {});
+        else if (!e.isIntersecting) v.pause();
+      },
+      { threshold: 0.4 },
+    );
+    near.observe(v);
+    vis.observe(v);
+    return () => {
+      near.disconnect();
+      vis.disconnect();
+    };
+  }, []);
+
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    const next = !muted;
+    v.muted = next;
+    setMuted(next);
+    if (!next) v.play().catch(() => {});
   };
 
   return (
@@ -29,27 +60,21 @@ export default function FounderVideo({
         ref={ref}
         src={src}
         poster={poster}
-        controls={started}
+        muted
+        loop
         playsInline
         preload="none"
         aria-label={label}
         className="block aspect-[9/16] w-full object-cover"
       />
-      {!started && (
-        <button
-          type="button"
-          onClick={start}
-          aria-label={`Play: ${label}`}
-          className="group absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/45 via-transparent to-transparent pb-8"
-        >
-          <span className="flex items-center gap-3 rounded-full bg-lime py-3 pl-3 pr-5 font-semibold text-[#171712] shadow-lg transition group-hover:scale-105">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#171712]">
-              <Play className="ml-0.5 h-4 w-4 fill-lime text-lime" />
-            </span>
-            Watch · {duration}
-          </span>
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={muted ? "Turn sound on" : "Turn sound off"}
+        className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur transition hover:bg-black/75"
+      >
+        {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+      </button>
     </div>
   );
 }

@@ -199,7 +199,6 @@ export default function D2CPage() {
           <FounderVideo
             src="/videos/d2c/founder-ad-credit.mp4"
             poster="/videos/d2c/founder-ad-credit.jpg"
-            duration="1:41"
             label="Subhanu on the scaling mistake: judging ads by ROAS"
           />
         </div>
